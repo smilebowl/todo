@@ -45,9 +45,9 @@ $(document).ready(function(){
 			'Delete item': function() {
 				
 				$.post("ajaxdelete/"+currentTODO.data('id'),null,function(msg){
-					currentTODO.fadeOut('fast');
+					currentTODO.fadeOut('normal', function() {currentTODO.remove();});
 				});
-				currentTODO.remove();
+				// currentTODO.remove();
 				
 				$(this).dialog('close');
 			},
@@ -101,7 +101,7 @@ $(document).ready(function(){
 		
 		// $('<input type="text">').val(container.text()).appendTo(container.empty());
 		// $('<input type="text">').val(container.text()).appendTo(container.empty()).focus();
-		$('<input type="text">').val(container.text()).appendTo(container.empty()).focus();
+		$('<input type="text" class="input-lg">').val(container.text()).appendTo(container.empty()).focus();
 		
 		// Appending the save and cancel links:
 		container.append(
