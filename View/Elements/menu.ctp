@@ -6,7 +6,7 @@
 			<span class="icon-bar"></span>
 			<span class="icon-bar"></span>
 		</button>
-		<a class="navbar-brand" href="#"><?php echo __('CakePHP'); ?></a>
+		<a class="navbar-brand" href="<?php echo $this->Html->url(array('controller'=>'todos','action'=>'ui'));?>"><?php echo __('Todo'); ?></a>
 	</div>
 
 	<?php // echo debug($this->name); ?>
