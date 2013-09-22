@@ -71,7 +71,11 @@ class TodosController extends AppController {
 		$pos = $this->request->data['pos'];
 		$curpos = 0;
 		foreach ($pos as $key) {
-			$this->Todo->save(array('id'=>$key,'position'=>$curpos++));
+			// $this->Todo->save(array('id'=>$key,'position'=>$curpos++));
+			// 複数のUIで同時実行していた場合の対応
+			if ($this->Todo->exists($key)) {
+				$this->Todo->save(array('id'=>$key,'position'=>$curpos++),false,array('position'));
+			}
 		}
 	}
 
