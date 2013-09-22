@@ -161,58 +161,6 @@
         "homepage": "http://github.com/CakeDC/search"
     },
     {
-        "name": "jquery/jquery",
-        "version": "1.9.1",
-        "version_normalized": "1.9.1.0",
-        "dist": {
-            "type": "file",
-            "url": "http://code.jquery.com/jquery-1.9.1.min.js",
-            "reference": null,
-            "shasum": null
-        },
-        "type": "library",
-        "installation-source": "dist"
-    },
-    {
-        "name": "twitter/bootstrap",
-        "version": "v3.0.0",
-        "version_normalized": "3.0.0.0",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/twbs/bootstrap.git",
-            "reference": "e8a1df5f060bf7e6631554648e0abde150aedbe4"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/twbs/bootstrap/zipball/e8a1df5f060bf7e6631554648e0abde150aedbe4",
-            "reference": "e8a1df5f060bf7e6631554648e0abde150aedbe4",
-            "shasum": ""
-        },
-        "time": "2013-08-19 21:18:20",
-        "type": "library",
-        "installation-source": "dist",
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "Apache-2.0"
-        ],
-        "authors": [
-            {
-                "name": "Mark Otto",
-                "email": "markdotto@gmail.com"
-            },
-            {
-                "name": "Jacob Thornton",
-                "email": "jacobthornton@gmail.com"
-            }
-        ],
-        "description": "Sleek, intuitive, and powerful mobile first front-end framework for faster and easier web development.",
-        "homepage": "http://getbootstrap.com",
-        "keywords": [
-            "bootstrap",
-            "css"
-        ]
-    },
-    {
         "name": "slywalker/boost_cake",
         "version": "1.0.1",
         "version_normalized": "1.0.1.0",
@@ -254,5 +202,71 @@
             "cakephp",
             "twitter"
         ]
+    },
+    {
+        "name": "twitter/bootstrap",
+        "version": "v3.0.0",
+        "version_normalized": "3.0.0.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/twbs/bootstrap.git",
+            "reference": "e8a1df5f060bf7e6631554648e0abde150aedbe4"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/twbs/bootstrap/zipball/e8a1df5f060bf7e6631554648e0abde150aedbe4",
+            "reference": "e8a1df5f060bf7e6631554648e0abde150aedbe4",
+            "shasum": ""
+        },
+        "time": "2013-08-19 21:18:20",
+        "type": "library",
+        "installation-source": "dist",
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "Apache-2.0"
+        ],
+        "authors": [
+            {
+                "name": "Mark Otto",
+                "email": "markdotto@gmail.com"
+            },
+            {
+                "name": "Jacob Thornton",
+                "email": "jacobthornton@gmail.com"
+            }
+        ],
+        "description": "Sleek, intuitive, and powerful mobile first front-end framework for faster and easier web development.",
+        "homepage": "http://getbootstrap.com",
+        "keywords": [
+            "bootstrap",
+            "css"
+        ]
+    },
+    {
+        "name": "thomaspark/bootswatch",
+        "version": "v3.0.0",
+        "version_normalized": "3.0.0.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/thomaspark/bootswatch.git",
+            "reference": "9a15c26e171ec2b6bcee30eafc6ebe120b5f5fce"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/thomaspark/bootswatch/zipball/9a15c26e171ec2b6bcee30eafc6ebe120b5f5fce",
+            "reference": "9a15c26e171ec2b6bcee30eafc6ebe120b5f5fce",
+            "shasum": ""
+        },
+        "time": "2013-08-20 04:43:46",
+        "type": "library",
+        "installation-source": "dist",
+        "notification-url": "https://packagist.org/downloads/",
+        "authors": [
+            {
+                "name": "thomaspark",
+                "email": "hello@thomaspark.me"
+            }
+        ],
+        "description": "Themes for Twitter Bootstrap"
     }
 ]

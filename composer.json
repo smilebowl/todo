@@ -1,0 +1,9 @@
+{
+    "require": {
+        "slywalker/boost_cake": "*"
+        ,"cakephp/debug_kit": "2.2.*"
+        ,"cakedc/search": "*"
+        ,"twitter/bootstrap": "3.*"
+        ,"thomaspark/bootswatch": "*"
+    }
+}
