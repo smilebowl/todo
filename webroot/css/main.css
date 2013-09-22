@@ -162,6 +162,7 @@ a.saveChanges{
 
 /* Green button class: */
 
+/*
 a.green-button,
 a.green-button:visited{
 	color:black;
@@ -176,21 +177,27 @@ a.green-button:visited{
 	text-shadow:1px 1px 1px #DDDDDD;
 	background:url("img/button_green.png") no-repeat left top;
 }
+*/
 
+/*
 a.green-button:hover{
 	text-decoration:none;
 	background-position:left bottom;
 }
+*/
 
 
 /* The styles below are only necessary for the styling of the demo page: */
 
+/*
 #main{
 	position:relative;
 	margin:0 auto;
 	width:960px;
 }
+*/
 
+/*
 h1{
 	padding:30px 0;
 	text-align:center;
@@ -213,6 +220,7 @@ h2{
 	right:40px;
 	top:40px;
 }
+*/
 
 .note{
 	font-size:12px;
@@ -227,10 +235,10 @@ h2{
 	outline:none;
 }*/
 
-a:hover{
+/*a:hover{
 	text-decoration:underline;
 }
 
 a img{
 	border:none;
-}
+}*/
