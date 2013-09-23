@@ -3,7 +3,7 @@ $(document).ready(function(){
 
 	$(".todoList").sortable({
 		axis		: 'y',				// Only vertical movements allowed
-		containment	: 'window',			// Constrained by the window
+//		containment	: 'window',			// Constrained by the window
 		update		: function(){		// The function is called after the todos are rearranged
 		
 			// The toArray method returns an array with the ids of the todos

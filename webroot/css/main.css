@@ -41,14 +41,12 @@ body{
 
 /* The todo items are grouped into an UL unordered list */
 
+
 ul.todoList{
-    
-}
-/*ul.todoList{
 	margin:0 auto;
 	width:500px;
 	position:relative;
-}*/
+}
 
 ul.todoList li{
 	background-color:#F9F9F9;
