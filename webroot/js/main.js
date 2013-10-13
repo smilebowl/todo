@@ -137,7 +137,7 @@ $(document).ready(function($){
 	$('.items').on('blur', '.textbox', function() {
 		// cur('blur :' + $(this).closest('.item').attr('id') + ' / origin : ' +  currentItem.attr('id') + ' : '+ currentItem.data('origin'));
 				
-		var text = currentItem.find("input[type=text]").val();
+		var text = $.trim(currentItem.find("input[type=text]").val());
 
 		if (text == currentItem.data('origin')) {
 			cur('update : none ' + currentItem.attr('id') );

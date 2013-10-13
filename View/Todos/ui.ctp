@@ -1,10 +1,10 @@
 <div id="main">
 
-	<button id="addButton" type="button" class="btn btn-success col-sm-1">
-		Add
+	<button id="addButton" type="button" class="btn btn-success col-sm-2">
+		New Item
 	</button>
 	<button id="historyButton" type="button" class="btn btn-warning col-sm-3">
-		Completed to history
+		Completed items to history
 	</button>
 	<div class="clearfix"></div><br />
 	
