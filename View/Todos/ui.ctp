@@ -3,9 +3,12 @@
 	<button id="addButton" type="button" class="btn btn-success col-sm-1">
 		Add
 	</button>
+	<button id="historyButton" type="button" class="btn btn-warning col-sm-3">
+		Completed to history
+	</button>
 	<div class="clearfix"></div><br />
 	
-	<div class="items col-sm-8">
+	<div class="items col-sm-10">
 		
         <?php foreach($todos as $todo) : ?>
         	
@@ -21,4 +24,4 @@
 <div class="clearfix"><br />
 <div id="mydebug" class="col-sm-9 alert alert-success"></div>
 
-<div id="delete-confirm" title="Delete Item?" style="dispay:none;">本当に削除しますか？</div>
+<div id="delete-confirm" title="Delete Item?">本当に削除しますか？</div>

@@ -11,6 +11,8 @@ $(document).ready(function($){
 		}
 	});
 	$( ".items" ).disableSelection();
+
+
 	
 	function cur(v){
 		$('#mydebug').prepend('<div>'+v+'</div');
@@ -45,6 +47,9 @@ $(document).ready(function($){
 		
 		currentItem = $(this).closest('.item');
 		currentItem.data('id',currentItem.attr('id'));
+		
+		$(this).closest('.item').addClass('itemselected');
+		
 		e.preventDefault();
 	});
 				   
@@ -58,7 +63,7 @@ $(document).ready(function($){
 			return false;
 		}
 		
-		$('<input type="text" class="textbox" style="width:80%;">')
+		$('<input type="text" class="textbox" style="width:70%;">')
 			.val(container.text())
 			.appendTo(container.empty())
 			.focus();
@@ -66,6 +71,20 @@ $(document).ready(function($){
 	
 	$('.items').on('click', '.item a.removeitem', function(){
 		$("#delete-confirm").dialog('open');
+	});
+
+	$('.items').on('click', '.item a.compitem', function(){
+		var itemid = currentItem.attr('id');
+		var compdate = $.datepicker.formatDate('yy-mm-dd', new Date());
+		if ($(this).closest('.item').hasClass('completed')) {
+			compdate = null;
+			$.post("ajaxcomplete",{'id':itemid,'completed':compdate});
+			$(this).closest('.item').removeClass('completed itemselected').find('.date-completed').remove();
+		} else {
+			$.post("ajaxcomplete",{'id':itemid,'completed':compdate});
+			$(this).closest('.item').addClass('completed');
+		}
+		
 	});
 
 	$('.items').on('dblclick', '.item', function(){
@@ -77,11 +96,7 @@ $(document).ready(function($){
 //		cur('blur :' + $(this).closest('.item').attr('id') + ' / origin : ' +  currentItem.attr('id') + ' : '+ currentItem.data('origin'));
 				
 		var text = currentItem.find("input[type=text]").val();
-//		currentItem
-//			.find('.itemtext')
-//			.text(currentItem.data('origin'))
-//			.end()
-//			.removeData('origin');
+
 		if (text == currentItem.data('origin')) {
 			cur('update : none ' + currentItem.attr('id') );
 		} else {
@@ -89,6 +104,7 @@ $(document).ready(function($){
 			var itemid = currentItem.attr('id');
 			$.post("ajaxedit",{'id':itemid,'name':text});
 		}
+		$(this).closest('.item').removeClass('itemselected');
 		currentItem.removeData('origin')
 			.find('.itemtext')
 			.text(text);
@@ -124,5 +140,16 @@ $(document).ready(function($){
 		});
 		
 		e.preventDefault();
+	});
+	
+	$('#historyButton').click(function(){
+		$.ajax({
+			type: "POST",
+			async: false,
+			url: "ajax2history",
+			success : function() {
+				location.reload();
+			}
+		});
 	});
 });

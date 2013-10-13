@@ -21,9 +21,7 @@
 			<th><?php echo $this->Paginator->sort('position'); ?></th>
 			<th><?php echo $this->Paginator->sort('name'); ?></th>
 			<th><?php echo $this->Paginator->sort('created'); ?></th>
-			<th><?php echo $this->Paginator->sort('modified'); ?></th>
-			<th><?php echo $this->Paginator->sort('deleted'); ?></th>
-			<th><?php echo $this->Paginator->sort('deleted_date'); ?></th>
+			<th><?php echo $this->Paginator->sort('completed'); ?></th>
 		</tr>
 	<?php foreach ($todos as $todo): ?>
 	<tr style="white-space: nowrap;">
@@ -36,9 +34,7 @@
 		<td><?php echo h($todo['Todo']['position']); ?>&nbsp;</td>
 		<td><?php echo h($todo['Todo']['name']); ?>&nbsp;</td>
 		<td><?php echo h($todo['Todo']['created']); ?>&nbsp;</td>
-		<td><?php echo h($todo['Todo']['modified']); ?>&nbsp;</td>
-		<td><?php echo h($todo['Todo']['deleted']); ?>&nbsp;</td>
-		<td><?php echo h($todo['Todo']['deleted_date']); ?>&nbsp;</td>
+		<td><?php echo h($todo['Todo']['completed']); ?>&nbsp;</td>
 	</tr>
 <?php endforeach; ?>
 	</table>

@@ -19,9 +19,8 @@
 		<legend><?php echo __('Add Todo'); ?></legend>
 	<?php
 		echo $this->Form->input('position', array('afterInput'=>'<span class="help-block"><span class="label label-warning">'.__('Required').'</span></span>'));
-		echo $this->Form->input('name');
-		echo $this->Form->input('deleted');
-		echo $this->Form->input('deleted_date');
+		echo $this->Form->input('name', array('afterInput'=>'<span class="help-block"><span class="label label-warning">'.__('Required').'</span></span>'));
+		echo $this->Form->input('completed');
 	?>
 	</fieldset>
 <?php echo $this->Form->submit(__('Submit'), array('class'=>'btn btn-primary')); ?>

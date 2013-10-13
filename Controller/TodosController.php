@@ -25,6 +25,14 @@ class TodosController extends AppController {
 		));
 		$this->set(compact('todos'));
 	}
+	
+	// history
+	
+	public function ajax2history() {
+		Configure::write('debug', 0);
+		$this->autoRender = false;
+		echo 1;
+	}
 
 	// edit 
 	
@@ -52,6 +60,15 @@ class TodosController extends AppController {
 		$todo = $this->Todo->read();
 		$this->set(compact('todo'));
 		$this->render('todo_element', 'ajax');
+	}
+	
+	// complete task
+	 
+	public function ajaxcomplete($id = null) {
+		Configure::write('debug', 0);
+		$this->autoRender = false;
+		
+		$this->Todo->save($this->request->data);
 	}
 	
 	// delete

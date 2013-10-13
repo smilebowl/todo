@@ -29,19 +29,9 @@
 			<?php echo h($todo['Todo']['created']); ?>
 			&nbsp;
 		</dd>
-		<dt><?php echo __('Modified'); ?></dt>
+		<dt><?php echo __('Completed'); ?></dt>
 		<dd>
-			<?php echo h($todo['Todo']['modified']); ?>
-			&nbsp;
-		</dd>
-		<dt><?php echo __('Deleted'); ?></dt>
-		<dd>
-			<?php echo h($todo['Todo']['deleted']); ?>
-			&nbsp;
-		</dd>
-		<dt><?php echo __('Deleted Date'); ?></dt>
-		<dd>
-			<?php echo h($todo['Todo']['deleted_date']); ?>
+			<?php echo h($todo['Todo']['completed']); ?>
 			&nbsp;
 		</dd>
 	</dl>
