@@ -3,8 +3,9 @@
 	<button id="addButton" type="button" class="btn btn-success col-sm-1">
 		Add
 	</button>
-
-	<ul class="todoList col-sm-8">
+	<div class="clearfix"></div><br />
+	
+	<div class="items col-sm-8">
 		
         <?php foreach($todos as $todo) : ?>
         	
@@ -14,10 +15,10 @@
 
 		<?php endforeach; ?>
 		
-    </ul>
-
-
-
+    </div>
 </div>
 
-<div id="dialog-confirm" title="Delete TODO Item?">Are you sure you want to delete this TODO item?</div>
+<div class="clearfix"><br />
+<div id="mydebug" class="col-sm-9 alert alert-success"></div>
+
+<div id="delete-confirm" title="Delete Item?" style="dispay:none;">本当に削除しますか？</div>

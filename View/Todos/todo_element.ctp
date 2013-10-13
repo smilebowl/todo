@@ -1,14 +1,21 @@
-<li id="<?php echo $todo['Todo']['id']; ?>" class="todo">
+<div id="<?php echo $todo['Todo']['id']; ?>" class="item">
 
-	<div class="text"><?php echo $todo['Todo']['name']; ?></div>
+	<a href "#" class="edititem">
+		<button type="button" class="btn btn-primary btn-xs">
+			<span class="glyphicon glyphicon-pencil"></span>
+		</button>
+	</a>
+	<a href "#" class="compitem">
+		<button type="button" class="btn btn-success btn-xs">
+			<span class="glyphicon glyphicon-saved"></span>
+		</button>
+	</a>
+	<a href "#" class="removeitem">
+		<button type="button" class="btn btn-warning btn-xs">
+			<span class="glyphicon glyphicon-remove"></span>
+		</button>
+	</a>
 	
-	<div class="actions">
-		<a href="#" class="edit">
-			<button type="button" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-pencil"></span></button>
-		</a>
-		<a href="#" class="delete">
-			<button type="button" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-remove"></span></button>
-		</a>
-	</div>
+	<span class="itemtext"><?php echo $todo['Todo']['name']; ?></span>
 	
-</li>
+</div>

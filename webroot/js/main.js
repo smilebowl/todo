@@ -1,51 +1,32 @@
-$(document).ready(function(){
-	/* The following code is executed once the DOM is loaded */
+$(document).ready(function($){
 
-	$(".todoList").sortable({
-		axis		: 'y',				// Only vertical movements allowed
-//		containment	: 'window',			// Constrained by the window
-		update		: function(){		// The function is called after the todos are rearranged
-		
-			// The toArray method returns an array with the ids of the todos
-			var arr = $(".todoList").sortable('toArray');
-			
-			// Striping the todo- prefix of the ids:
-			
-			
-			// arr = $.map(arr,function(val,key){
-				// return val.replace('todo-','');
-			// });
-			
-			// Saving with AJAX
-			// $.get('ajax.php',{action:'rearrange',positions:arr});
-			
-			var data = $(this).sortable('serialize');
+	var currentItem;
+	
+	$( ".items" ).sortable({
+		axis		: 'y',
+		placeholder	: 'ui-state-highlight',
+		update		: function(){
+			var arr = $(".items").sortable('toArray');
 			$.post("ajaxrearrange",{pos:arr});
-		},
-		
-		/* Opera fix: */
-		
-		stop: function(e,ui) {
-			ui.item.css({'top':'0','left':'0'});
 		}
 	});
+	$( ".items" ).disableSelection();
 	
-	// A global variable, holding a jQuery object 
-	// containing the current todo item:
+	function cur(v){
+		$('#mydebug').prepend('<div>'+v+'</div');
+//		$('#mydebug').html(currentItem.find('.itemtext').text());
+	}
 	
-	var currentTODO;
-	
-	// Configuring the delete confirmation dialog
-	$("#dialog-confirm").dialog({
+	$("#delete-confirm").dialog({
 		resizable: false,
 		// height:130,
 		modal: true,
 		autoOpen:false,
 		buttons: {
-			'Delete item': function() {
+			'Delete': function() {
 				
-				$.post("ajaxdelete/"+currentTODO.data('id'),null,function(msg){
-					currentTODO.fadeOut('normal', function() {currentTODO.remove();});
+				$.post("ajaxdelete/"+currentItem.data('id'),null,function(msg){
+					currentItem.fadeOut('normal', function() {currentItem.remove();});
 				});
 				// currentTODO.remove();
 				
@@ -55,110 +36,93 @@ $(document).ready(function(){
 				$(this).dialog('close');
 			}
 		}
-	});
-
-	// When a double click occurs, just simulate a click on the edit button:
-	$(document).on('dblclick', '.todo', function(){
-		$(this).find('a.edit').click();
-	});
+	});	
 	
-	// If any link in the todo is clicked, assign
-	// the todo item to the currentTODO variable for later use.
-
-	$(document).on('click', '.todo a', function(e){
-									   
-		currentTODO = $(this).closest('.todo');
-		// currentTODO.data('id',currentTODO.attr('id').replace('todo-',''));
-		currentTODO.data('id',currentTODO.attr('id'));
+	
+	$('.items').on('click', '.item a', function(e){
 		
+//		cur('click item a:' + $(this).closest('.item').attr('id'));
+		
+		currentItem = $(this).closest('.item');
+		currentItem.data('id',currentItem.attr('id'));
 		e.preventDefault();
 	});
-
-	// Listening for a click on a delete button:
-
-	$(document).on('click', '.todo a.delete', function(){
-		$("#dialog-confirm").dialog('open');
-	});
-	
-	// Listening for a click on a edit button
-	
-	$(document).on('click', '.todo a.edit', function(){
-
-		var container = currentTODO.find('.text');
+				   
+	$('.items').on('click', '.item a.edititem', function(){
+//		cur('click a.edititem:' + $(this).closest('.item').attr('id'));
+		var container = currentItem.find('.itemtext');
 		
-		if(!currentTODO.data('origText'))
-		{
-			// Saving the current value of the ToDo so we can
-			// restore it later if the user discards the changes:
-			
-			currentTODO.data('origText',container.text());
-		}
-		else
-		{
-			// This will block the edit button if the edit box is already open:
+		if(!currentItem.data('origin')) {
+			currentItem.data('origin', container.text())
+		} else {
 			return false;
 		}
 		
-		// $('<input type="text">').val(container.text()).appendTo(container.empty());
-		// $('<input type="text">').val(container.text()).appendTo(container.empty()).focus();
-		$('<input type="text" class="input-lg">').val(container.text()).appendTo(container.empty()).focus();
-		
-		// Appending the save and cancel links:
-		container.append(
-			'<div class="editTodo">'+
-				'<a class="saveChanges" href="#">Save</a> or <a class="discardChanges" href="#">Cancel</a>'+
-			'</div>'
-		);
-		
+		$('<input type="text" class="textbox" style="width:80%;">')
+			.val(container.text())
+			.appendTo(container.empty())
+			.focus();
 	});
 	
-	// The cancel edit link:
-	
-	$(document).on('click', '.todo a.discardChanges', function(){
-		currentTODO.find('.text')
-					.text(currentTODO.data('origText'))
-					.end()
-					.removeData('origText');
+	$('.items').on('click', '.item a.removeitem', function(){
+		$("#delete-confirm").dialog('open');
+	});
+
+	$('.items').on('dblclick', '.item', function(){
+		$(this).find('a.edititem').focus().click();
 	});
 	
-	// The save changes link:
-	
-	$(document).on('click', '.todo a.saveChanges', function(){
-		var text = currentTODO.find("input[type=text]").val();
-		
-		if (text=='') {
-		    alert('未入力です。');
-		    return false;
+//	$(document).on('blur', '.textbox', function() {
+	$('.items').on('blur', '.textbox', function() {
+//		cur('blur :' + $(this).closest('.item').attr('id') + ' / origin : ' +  currentItem.attr('id') + ' : '+ currentItem.data('origin'));
+				
+		var text = currentItem.find("input[type=text]").val();
+//		currentItem
+//			.find('.itemtext')
+//			.text(currentItem.data('origin'))
+//			.end()
+//			.removeData('origin');
+		if (text == currentItem.data('origin')) {
+			cur('update : none ' + currentItem.attr('id') );
+		} else {
+			cur('update : yes ' + currentItem.attr('id') );
+			var itemid = currentItem.attr('id');
+			$.post("ajaxedit",{'id':itemid,'name':text});
 		}
-		
-//		$.get("ajax.php",{'action':'edit','id':currentTODO.data('id'),'text':text});
-		$.post("ajaxedit",{'id':currentTODO.data('id'),'name':text});
-		
-		currentTODO.removeData('origText')
-					.find(".text")
-					.text(text);
+		currentItem.removeData('origin')
+			.find('.itemtext')
+			.text(text);
+	});
+
+	$('.items').on('keydown', '.textbox', function(e) {
+		// ↓、enter
+		if(e.which == 13 || e.which == 40) {
+			cur('keydown :' + $(this).closest('.item').attr('id'));
+			$(this).closest('.item').next().find('a.edititem').focus().click();
+			e.preventDefault();
+		}
+		// escape
+		if(e.which == 27) {
+			$(this).val(currentItem.data('origin'));
+			e.preventDefault();
+		}
+		// ↑
+		if(e.which == 38) {
+			$(this).closest('.item').prev().find('a.edititem').focus().click();
+			e.preventDefault();
+		}
+//		cur('keydown : '+ e.which);
 	});
 	
-	
-	// The Add New ToDo button:
-	
-	var timestamp=0;
 	$('#addButton').click(function(e){
 
 		// $.get("ajax.php",{'action':'new','text':'New Todo Item. Doubleclick to Edit.','rand':Math.random()},function(msg){
-		$.post("ajaxadd",{'name':'New Todo Item. Doubleclick to Edit.'},function(msg){
+		$.post("ajaxadd",{'name':'New Item.'},function(msg){
 
 			// Appending the new todo and fading it into view:
-			$(msg).hide().prependTo('.todoList').fadeIn();
+			$(msg).hide().prependTo('.items').fadeIn().find('a.edititem').focus().click();
 		});
-
 		
 		e.preventDefault();
 	});
-
-    $("input[type=text]").keydown(function (e) { 
-        if (e.keyCode == 13) {
-            e.preventDefault();
-        }
-    });
 });
