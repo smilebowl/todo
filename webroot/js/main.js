@@ -1,6 +1,10 @@
 $(document).ready(function($){
 
+	// selected item
+	
 	var currentItem;
+	
+	// sortable
 	
 	$( ".items" ).sortable({
 		axis		: 'y',
@@ -12,25 +16,53 @@ $(document).ready(function($){
 	});
 	$( ".items" ).disableSelection();
 
-
+	// デバッグ用
 	
+	$('#mydebug').hide();
 	function cur(v){
-		$('#mydebug').prepend('<div>'+v+'</div');
-//		$('#mydebug').html(currentItem.find('.itemtext').text());
+//		$('#mydebug').prepend('<div>'+v+'</div');
 	}
+	
+	// delete confirmation dialog
 	
 	$("#delete-confirm").dialog({
 		resizable: false,
-		// height:130,
 		modal: true,
 		autoOpen:false,
 		buttons: {
 			'Delete': function() {
+
+				// ajaxdelete
 				
 				$.post("ajaxdelete/"+currentItem.data('id'),null,function(msg){
 					currentItem.fadeOut('normal', function() {currentItem.remove();});
 				});
-				// currentTODO.remove();
+				
+				$(this).dialog('close');
+			},
+			Cancel: function() {
+				$(this).dialog('close');
+			}
+		}
+	});
+	
+	// move to history confirmation dialog
+	
+	$("#history-confirm").dialog({
+		resizable: false,
+		modal: true,
+		autoOpen:false,
+		buttons: {
+			'移動': function() {
+				
+				$.ajax({
+					type: "POST",
+					async: false,
+					url: "ajax2history",
+					success : function() {
+						location.reload();
+					}
+				});
 				
 				$(this).dialog('close');
 			},
@@ -39,11 +71,10 @@ $(document).ready(function($){
 			}
 		}
 	});	
-	
+
+	// selecting item
 	
 	$('.items').on('click', '.item a', function(e){
-		
-//		cur('click item a:' + $(this).closest('.item').attr('id'));
 		
 		currentItem = $(this).closest('.item');
 		currentItem.data('id',currentItem.attr('id'));
@@ -52,9 +83,11 @@ $(document).ready(function($){
 		
 		e.preventDefault();
 	});
-				   
+	
+	// start edit
+	
 	$('.items').on('click', '.item a.edititem', function(){
-//		cur('click a.edititem:' + $(this).closest('.item').attr('id'));
+		// cur('click a.edititem:' + $(this).closest('.item').attr('id'));
 		var container = currentItem.find('.itemtext');
 		
 		if(!currentItem.data('origin')) {
@@ -63,16 +96,22 @@ $(document).ready(function($){
 			return false;
 		}
 		
+		// insert textbox
+		
 		$('<input type="text" class="textbox" style="width:70%;">')
 			.val(container.text())
 			.appendTo(container.empty())
 			.focus();
 	});
 	
+	// remove item
+	
 	$('.items').on('click', '.item a.removeitem', function(){
 		$("#delete-confirm").dialog('open');
 	});
 
+	// complete todo 
+	
 	$('.items').on('click', '.item a.compitem', function(){
 		var itemid = currentItem.attr('id');
 		var compdate = $.datepicker.formatDate('yy-mm-dd', new Date());
@@ -86,14 +125,17 @@ $(document).ready(function($){
 		}
 		
 	});
+	
+	// start edit (double click)
 
 	$('.items').on('dblclick', '.item', function(){
 		$(this).find('a.edititem').focus().click();
 	});
 	
-//	$(document).on('blur', '.textbox', function() {
+	// save item if changed
+	
 	$('.items').on('blur', '.textbox', function() {
-//		cur('blur :' + $(this).closest('.item').attr('id') + ' / origin : ' +  currentItem.attr('id') + ' : '+ currentItem.data('origin'));
+		// cur('blur :' + $(this).closest('.item').attr('id') + ' / origin : ' +  currentItem.attr('id') + ' : '+ currentItem.data('origin'));
 				
 		var text = currentItem.find("input[type=text]").val();
 
@@ -110,6 +152,8 @@ $(document).ready(function($){
 			.text(text);
 	});
 
+	// keydown(uo, down, reset)
+	
 	$('.items').on('keydown', '.textbox', function(e) {
 		// ↓、enter
 		if(e.which == 13 || e.which == 40) {
@@ -127,8 +171,10 @@ $(document).ready(function($){
 			$(this).closest('.item').prev().find('a.edititem').focus().click();
 			e.preventDefault();
 		}
-//		cur('keydown : '+ e.which);
+		// cur('keydown : '+ e.which);
 	});
+	
+	// add new item
 	
 	$('#addButton').click(function(e){
 
@@ -142,14 +188,9 @@ $(document).ready(function($){
 		e.preventDefault();
 	});
 	
+	// move completed items to history
+	
 	$('#historyButton').click(function(){
-		$.ajax({
-			type: "POST",
-			async: false,
-			url: "ajax2history",
-			success : function() {
-				location.reload();
-			}
-		});
+		$("#history-confirm").dialog('open');
 	});
 });

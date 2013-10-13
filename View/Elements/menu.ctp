@@ -26,6 +26,9 @@
 					</li>
 				</ul>
 			</li>
+			<li<?php echo $this->name=='Histories' ? ' class="active"' : ''; ?>>
+				<?php echo $this -> Html -> link(__('History'), array('controller' => 'histories', 'action' => 'index')); ?>
+			</li>
 			<?php
 			if ($this -> Session -> read('Auth.User')) {
 				// $link = $this -> Html -> link($this -> Session -> read('Auth.User.displayname'), array('controller' => 'users', 'action' => 'view', $this -> Session -> read('Auth.User.id')));

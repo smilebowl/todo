@@ -31,6 +31,9 @@ class TodosController extends AppController {
 	public function ajax2history() {
 		Configure::write('debug', 0);
 		$this->autoRender = false;
+		
+		$this->Todo->query('insert into histories select * from todos where todos.completed is not null');
+		$this->Todo->query('delete from todos where todos.completed is not null');
 		echo 1;
 	}
 

@@ -21,6 +21,7 @@ body {
 /* =================================================================== */
 .ui-state-highlight { height: 1.5em; line-height: 1.2em; }
 #delete-confirm {display:none;}
+#history-confirm {display:none;}
 .item {
 	margin: 3px;
 	border-bottom: dotted 1px gray;

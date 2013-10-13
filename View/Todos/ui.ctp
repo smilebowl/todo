@@ -21,7 +21,11 @@
     </div>
 </div>
 
-<div class="clearfix"><br />
+<div class="clearfix"></div>
+<hr />
+<br />
+<br />
 <div id="mydebug" class="col-sm-9 alert alert-success"></div>
 
 <div id="delete-confirm" title="Delete Item?">本当に削除しますか？</div>
+<div id="history-confirm" title="Delete Item?">完了したTodoを履歴に移動しますか？</div>
