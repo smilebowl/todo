@@ -15,6 +15,58 @@ class NotesController extends AppController {
  */
 	public $components = array('Paginator');
 
+
+	// ajax interface
+	
+	public function noteui() {
+		$this->Note->recursive = 0;
+		$notes = $this->Note->find('all', array(
+//			'order' => 'position asc',
+//			'fileds' => array('id','name')
+		));
+		$this->set(compact('notes'));
+	}
+
+	// text update
+	
+	public function ajaxupdate() {
+		Configure::write('debug', 0);
+		$this->autoRender = false;
+		
+		$this->Note->save($this->request->data);
+	}
+
+	// new note
+	
+	public function ajaxnewnote() {
+		Configure::write('debug', 0);
+		$this->autoRender = false;
+		
+//		$this->Note->save($this->request->data);
+		
+		$this->Note->create();
+		if (empty($this->request->data['name'])) $this->request->data['name']='New note.';
+		if (empty($this->request->data['text'])) $this->request->data['text']='note.';
+		$this->request->data['xyz'] = '10.10.1';
+		$this->request->data['wh'] = '200.200';
+		$this->Note->save($this->request->data);
+		
+		$note = $this->Note->read();
+		$this->set(compact('note'));
+		$this->render('note_element', 'ajax');		
+		
+		
+	}
+	
+	// remove note
+	
+	public function ajaxdelete($id = null) {
+		Configure::write('debug', 0);
+		$this->autoRender = false;
+		
+		$this->Note->delete($id);
+	}
+	
 /**
  * index method
  *

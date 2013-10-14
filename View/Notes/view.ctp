@@ -29,9 +29,14 @@
 			<?php echo h($note['Note']['text']); ?>
 			&nbsp;
 		</dd>
-		<dt><?php echo __('Xyzhw'); ?></dt>
+		<dt><?php echo __('Xyz'); ?></dt>
 		<dd>
-			<?php echo h($note['Note']['xyzhw']); ?>
+			<?php echo h($note['Note']['xyz']); ?>
+			&nbsp;
+		</dd>
+		<dt><?php echo __('Wh'); ?></dt>
+		<dd>
+			<?php echo h($note['Note']['wh']); ?>
 			&nbsp;
 		</dd>
 		<dt><?php echo __('Color'); ?></dt>

@@ -32,7 +32,7 @@
 				<?php echo $this -> Html -> link(__('History'), array('controller' => 'histories', 'action' => 'index')); ?>
 			</li>
 			<li<?php echo $this->name=='Notes' ? ' class="active"' : ''; ?>>
-				<?php echo $this -> Html -> link(__('Notes'), array('controller' => 'notes', 'action' => 'index')); ?>
+				<?php echo $this -> Html -> link(__('Notes'), array('controller' => 'notes', 'action' => 'noteui')); ?>
 			</li>
 			<?php
 			if ($this -> Session -> read('Auth.User')) {

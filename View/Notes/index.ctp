@@ -21,7 +21,8 @@
 			<th><?php echo $this->Paginator->sort('position'); ?></th>
 			<th><?php echo $this->Paginator->sort('name'); ?></th>
 			<th><?php echo $this->Paginator->sort('text'); ?></th>
-			<th><?php echo $this->Paginator->sort('xyzhw'); ?></th>
+			<th><?php echo $this->Paginator->sort('xyz'); ?></th>
+			<th><?php echo $this->Paginator->sort('wh'); ?></th>
 			<th><?php echo $this->Paginator->sort('color'); ?></th>
 			<th><?php echo $this->Paginator->sort('created'); ?></th>
 		</tr>
@@ -36,7 +37,8 @@
 		<td><?php echo h($note['Note']['position']); ?>&nbsp;</td>
 		<td><?php echo h($note['Note']['name']); ?>&nbsp;</td>
 		<td><?php echo h($note['Note']['text']); ?>&nbsp;</td>
-		<td><?php echo h($note['Note']['xyzhw']); ?>&nbsp;</td>
+		<td><?php echo h($note['Note']['xyz']); ?>&nbsp;</td>
+		<td><?php echo h($note['Note']['wh']); ?>&nbsp;</td>
 		<td><?php echo h($note['Note']['color']); ?>&nbsp;</td>
 		<td><?php echo h($note['Note']['created']); ?>&nbsp;</td>
 	</tr>

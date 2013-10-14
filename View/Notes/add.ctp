@@ -21,7 +21,8 @@
 		echo $this->Form->input('position');
 		echo $this->Form->input('name');
 		echo $this->Form->input('text');
-		echo $this->Form->input('xyzhw');
+		echo $this->Form->input('xyz');
+		echo $this->Form->input('wh');
 		echo $this->Form->input('color');
 	?>
 	</fieldset>
