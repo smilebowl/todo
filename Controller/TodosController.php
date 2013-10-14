@@ -83,6 +83,16 @@ class TodosController extends AppController {
 		$this->Todo->delete($id);
 	}
 	
+	
+	public function ajaxremovechecks() {
+		Configure::write('debug', 0);
+		$this->autoRender = false;
+		$removes = $this->request->data['removes'];
+		foreach ($removes as $key) {
+			$this->Todo->delete($key);
+		}
+	}
+	
 	// re-arrange
 	
 	public function ajaxrearrange() {

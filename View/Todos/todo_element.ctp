@@ -24,7 +24,7 @@
 			<span class="glyphicon glyphicon-remove"></span>
 		</button>
 	</a>
-	
+	<input type="checkbox" name="check[]" value="<?php echo $todo['Todo']['id'];?>" />
 	
 	<span class="date-created"><?php echo substr($todo['Todo']['created'],5,5); ?></span>
 	<span class="date-completed"><?php echo substr($todo['Todo']['completed'],5,5); ?></span>

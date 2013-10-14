@@ -38,6 +38,7 @@ body {
 
 .item:hover {
 	background-color:rgb(252, 248, 227);
+	border-bottom: solid 1px #dd5600;
 }
 .itemselected {
 	background-color:rgb(252, 248, 227);

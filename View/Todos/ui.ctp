@@ -1,3 +1,8 @@
+<?php
+//	echo $this->Html->css('datepicker', null, array('inline' => false));
+	echo $this->Html->script('todo', array('charset'=>'UTF-8'));
+?>
+
 <div id="main">
 
 	<button id="addButton" type="button" class="btn btn-success col-sm-2">
@@ -5,6 +10,9 @@
 	</button>
 	<button id="historyButton" type="button" class="btn btn-warning col-sm-3">
 		Completed items to history
+	</button>
+	<button id="removeAllButton" type="button" class="btn btn-danger col-sm-3">
+		Remove checked items
 	</button>
 	<div class="clearfix"></div><br />
 	

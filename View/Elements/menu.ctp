@@ -13,8 +13,10 @@
 
     <div class="collapse navbar-collapse navbar-ex1-collapse">
 		<ul class="nav navbar-nav">
+			<?php if (Configure::read('debug')) : ?>
 			<li<?php echo $this->name=='Pages' ? ' class="active"' : ''; ?>>
 				<a href="<?php echo $this->Html->url('/'); ?>">Home</a></li>
+			<?php endif; ?>
 			<li class="dropdown">
 				<a href="#" class="dropdown-toggle" data-toggle="dropdown">Todos <b class="caret"></b></a>
 				<ul class="dropdown-menu">
@@ -28,6 +30,9 @@
 			</li>
 			<li<?php echo $this->name=='Histories' ? ' class="active"' : ''; ?>>
 				<?php echo $this -> Html -> link(__('History'), array('controller' => 'histories', 'action' => 'index')); ?>
+			</li>
+			<li<?php echo $this->name=='Notes' ? ' class="active"' : ''; ?>>
+				<?php echo $this -> Html -> link(__('Notes'), array('controller' => 'notes', 'action' => 'index')); ?>
 			</li>
 			<?php
 			if ($this -> Session -> read('Auth.User')) {

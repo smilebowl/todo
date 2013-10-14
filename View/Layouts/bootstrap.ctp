@@ -11,7 +11,7 @@
 	<?php echo $this->Html->meta('icon'); ?>
 	<!-- Le styles -->
 	<?php echo $this->Html->css('bootstrap.min'); ?>
-	<link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.0/themes/humanity/jquery-ui.css" type="text/css" media="all" />
+	<link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.0/themes/redmond/jquery-ui.css" type="text/css" media="all" />
 <!--
 	<style>
 	body {padding-top: 60px;}
