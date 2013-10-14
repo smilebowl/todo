@@ -7,16 +7,6 @@ $(document).ready(function($){
 //		.prepend( "<span class='ui-icon ui-icon-close'></span>")
 //		.end()
 //		.find( ".portlet-content" );
-	
-	$('.notes').on('click', '.portlet-header .ui-icon', function(){
-		if (!confirm("削除しますか")) return;
-		
-		var curnote = $( this ).closest('.portlet');
-		var itemid = curnote.attr('id');
-		$.post("ajaxdelete/"+itemid, null, function() {
-			curnote.fadeOut('normal', function() {curnote.remove();});
-		});
-	});
 //	$( ".column" ).disableSelection();
 	
 	$( ".portlet" ).draggable({
@@ -37,11 +27,27 @@ $(document).ready(function($){
 		}
 	});
 
+	// remove note
+	
+	$('.notes').on('click', '.portlet-header .ui-icon', function(){
+		if (!confirm("削除しますか")) return;
+		
+		var curnote = $( this ).closest('.portlet');
+		var itemid = curnote.attr('id');
+		$.post("ajaxdelete/"+itemid, null, function() {
+			curnote.fadeOut('normal', function() {curnote.remove();});
+		});
+	});
+
+	// save text
+	
 	$('#main').on('blur', 'div[contenteditable]', function() {
 		var text = $(this).html();
 		var itemid = $( this ).closest('.portlet').attr('id');
 		$.post("ajaxupdate",{'id':itemid,'text':text});
 	});
+	
+	// new note
 	
 	$("#dialog-newnote").dialog({
 		resizable: false,

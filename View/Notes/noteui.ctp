@@ -37,8 +37,8 @@
 	<p class="validateTips">新しいノートを追加</p>
 
 	<label for="name">Title</label><br />
-	<input type="text" name="name" id="note_title" class="text ui-widget-content ui-corner-all" /><br />
+	<input type="text" name="name" id="note_title" class="text ui-widget-content ui-corner-all" value="New note"/><br />
 	<label for="text">Note</label><br />
-	<textarea name="text" id="note_text" rows="4" cols="25" class="text ui-widget-content ui-corner-all"></textarea>
+	<textarea name="text" id="note_text" rows="4" cols="25" class="text ui-widget-content ui-corner-all">note.</textarea>
 
 </div>
