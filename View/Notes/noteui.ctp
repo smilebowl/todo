@@ -14,7 +14,7 @@
 	<button id="addButton" type="button" class="btn btn-success col-sm-2">
 		New Item
 	</button>
-	<div class="clearfix"></div><hr />
+	<div class="clearfix"></div>
 	
 	<div class="notes col-sm-10">
 		
@@ -31,8 +31,6 @@
 
 <div class="clearfix"></div>
 <hr />
-<br />
-<br />
 <!--<div id="mydebug" class="col-sm-9 alert alert-success"></div>-->
 
 <div id="delete-confirm" title="Delete Item?">本当に削除しますか？</div>

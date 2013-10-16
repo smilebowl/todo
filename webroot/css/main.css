@@ -83,6 +83,10 @@ body {
 
 /* =============================== for note ==================================== */
 
+#notepage {
+	background-color:#F5F5DC;
+	padding:5px;
+}
 #notepage #NoteCategoryId {
 	width:200px;
 /*	display:inline;*/
