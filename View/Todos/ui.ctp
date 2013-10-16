@@ -30,8 +30,6 @@
 </div>
 
 <div class="clearfix"></div>
-<hr />
-<br />
 <br />
 <div id="mydebug" class="col-sm-9 alert alert-success"></div>
 

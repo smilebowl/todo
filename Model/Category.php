@@ -1,11 +1,11 @@
 <?php
 App::uses('AppModel', 'Model');
 /**
- * Note Model
+ * Category Model
  *
- * @property Category $Category
+ * @property Note $Note
  */
-class Note extends AppModel {
+class Category extends AppModel {
 
 /**
  * Validation rules
@@ -13,9 +13,9 @@ class Note extends AppModel {
  * @var array
  */
 	public $validate = array(
-		'category_id' => array(
-			'numeric' => array(
-				'rule' => array('numeric'),
+		'name' => array(
+			'notempty' => array(
+				'rule' => array('notempty'),
 				//'message' => 'Your custom message here',
 				//'allowEmpty' => false,
 				//'required' => false,
@@ -28,17 +28,24 @@ class Note extends AppModel {
 	//The Associations below have been created with all possible keys, those that are not needed can be removed
 
 /**
- * belongsTo associations
+ * hasMany associations
  *
  * @var array
  */
-	public $belongsTo = array(
-		'Category' => array(
-			'className' => 'Category',
+	public $hasMany = array(
+		'Note' => array(
+			'className' => 'Note',
 			'foreignKey' => 'category_id',
+			'dependent' => false,
 			'conditions' => '',
 			'fields' => '',
-			'order' => ''
+			'order' => '',
+			'limit' => '',
+			'offset' => '',
+			'exclusive' => '',
+			'finderQuery' => '',
+			'counterQuery' => ''
 		)
 	);
+
 }

@@ -19,8 +19,17 @@ class NotesController extends AppController {
 	// ajax interface
 	
 	public function noteui() {
+		$categories = $this->Note->Category->find('list');
+		$this->set(compact('categories'));
+		if (empty($this->request->data['Note']['category_id'])) {
+			$id=key($categories);
+		} else {
+			$id = $this->request->data['Note']['category_id'];
+		}
+		
 		$this->Note->recursive = 0;
 		$notes = $this->Note->find('all', array(
+			'conditions'=>array('category_id'=>$id)
 //			'order' => 'position asc',
 //			'fileds' => array('id','name')
 		));
@@ -107,6 +116,8 @@ class NotesController extends AppController {
 				$this->Session->setFlashError(__('The note could not be saved. Please, try again.') );
 			}
 		}
+		$categories = $this->Note->Category->find('list');
+		$this->set(compact('categories'));
 	}
 
 /**
@@ -131,6 +142,8 @@ class NotesController extends AppController {
 			$options = array('conditions' => array('Note.' . $this->Note->primaryKey => $id));
 			$this->request->data = $this->Note->find('first', $options);
 		}
+		$categories = $this->Note->Category->find('list');
+		$this->set(compact('categories'));
 	}
 
 /**

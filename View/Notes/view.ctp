@@ -4,6 +4,8 @@
 		<li><?php echo $this->Form->postLink(__('Delete Note'), array('action' => 'delete', $note['Note']['id']), null, __('Are you sure you want to delete # %s?', $note['Note']['id'])); ?> </li>
 		<li><?php echo $this->Html->link(__('List Notes'), array('action' => 'index')); ?> </li>
 		<li><?php echo $this->Html->link(__('New Note'), array('action' => 'add')); ?> </li>
+		<li><?php echo $this->Html->link(__('List Categories'), array('controller' => 'categories', 'action' => 'index')); ?> </li>
+		<li><?php echo $this->Html->link(__('New Category'), array('controller' => 'categories', 'action' => 'add')); ?> </li>
 	</ul>
 </div>
 <div class="notes view well">
@@ -14,9 +16,9 @@
 			<?php echo h($note['Note']['id']); ?>
 			&nbsp;
 		</dd>
-		<dt><?php echo __('Position'); ?></dt>
+		<dt><?php echo __('Category'); ?></dt>
 		<dd>
-			<?php echo h($note['Note']['position']); ?>
+			<?php echo $this->Html->link($note['Category']['name'], array('controller' => 'categories', 'action' => 'view', $note['Category']['id'])); ?>
 			&nbsp;
 		</dd>
 		<dt><?php echo __('Name'); ?></dt>

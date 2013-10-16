@@ -83,6 +83,12 @@ body {
 
 /* =============================== for note ==================================== */
 
+#notepage #NoteCategoryId {
+	width:200px;
+/*	display:inline;*/
+	float:left;
+	margin-right:1em;
+}
 .ui-dialog {
 	z-index:1000000 !important;
 }

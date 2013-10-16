@@ -58,7 +58,7 @@
 				array('target' => '_blank', 'escape' => false)
 			);
 		?>
-		</div>
+	</div>
 
 	<!-- Le javascript
     ================================================== -->
