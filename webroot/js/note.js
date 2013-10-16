@@ -128,7 +128,7 @@ $(document).ready(function($){
 	
 	$('.portlet-header').dblclick(function() {
 		targetTitleChange = $(this);
-		$('#note_newtitle').val($(this).text());
+		$('#note_newtitle').val($.trim($(this).text()));
 		$("#dialog-title").dialog('open');
 	});
 	

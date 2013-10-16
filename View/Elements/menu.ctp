@@ -42,7 +42,7 @@
 						<?php echo $this -> Html -> link(__('Mentenance'), array('controller' => 'notes', 'action' => 'index')); ?>
 					</li>
 					<li<?php echo ($this->name=='Categories') ? ' class="active"' : ''; ?>>
-						<?php echo $this -> Html -> link(__('Categories'), array('controller' => 'notes', 'action' => 'index')); ?>
+						<?php echo $this -> Html -> link(__('Categories'), array('controller' => 'categories', 'action' => 'index')); ?>
 					</li>
 				</ul>
 			</li>
