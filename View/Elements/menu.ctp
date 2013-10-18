@@ -27,6 +27,7 @@
 					<li<?php echo ($this->name=='Todos' && $this->action !='ui') ? ' class="active"' : ''; ?>>
 						<?php echo $this -> Html -> link(__('Mentenance'), array('controller' => 'todos', 'action' => 'index')); ?>
 					</li>
+					<li class="divider"></li>
 					<li<?php echo $this->name=='Histories' ? ' class="active"' : ''; ?>>
 						<?php echo $this -> Html -> link(__('History'), array('controller' => 'histories', 'action' => 'index')); ?>
 					</li>
@@ -41,6 +42,7 @@
 					<li<?php echo ($this->name=='Notes' && $this->action != 'noteui') ? ' class="active"' : ''; ?>>
 						<?php echo $this -> Html -> link(__('Mentenance'), array('controller' => 'notes', 'action' => 'index')); ?>
 					</li>
+					<li class="divider"></li>
 					<li<?php echo ($this->name=='Categories') ? ' class="active"' : ''; ?>>
 						<?php echo $this -> Html -> link(__('Categories'), array('controller' => 'categories', 'action' => 'index')); ?>
 					</li>

@@ -86,7 +86,7 @@ $(document).ready(function($){
 	
 	// start edit
 	
-	$('.items').on('click', '.item a.edititem', function(){
+	$('.items').on('click', '.item a.edititem', function(e){
 		// cur('click a.edititem:' + $(this).closest('.item').attr('id'));
 		var container = currentItem.find('.itemtext');
 		
@@ -101,7 +101,9 @@ $(document).ready(function($){
 		$('<input type="text" class="textbox">')
 			.val(container.text())
 			.appendTo(container.empty())
-			.focus();
+			.focus().select();
+		
+		e.preventDefault();
 	});
 	
 	// remove item
