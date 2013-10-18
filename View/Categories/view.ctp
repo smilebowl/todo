@@ -21,6 +21,11 @@
 			<?php echo h($category['Category']['name']); ?>
 			&nbsp;
 		</dd>
+		<dt><?php echo __('Position'); ?></dt>
+		<dd>
+			<?php echo h($category['Category']['position']); ?>
+			&nbsp;
+		</dd>
 	</dl>
 </div>
 <div class="related">

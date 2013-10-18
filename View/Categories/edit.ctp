@@ -23,6 +23,7 @@
 	<?php
 		echo $this->Form->input('id');
 		echo $this->Form->input('name', array('afterInput'=>'<span class="help-block"><span class="label label-warning">'.__('Required').'</span></span>'));
+		echo $this->Form->input('position', array('afterInput'=>'<span class="help-block"><span class="label label-warning">'.__('Required').'</span></span>'));
 	?>
 	</fieldset>
 <?php echo $this->Form->submit(__('Submit'), array('class'=>'btn btn-primary')); ?>

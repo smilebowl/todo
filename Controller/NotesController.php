@@ -19,7 +19,7 @@ class NotesController extends AppController {
 	// ajax interface
 	
 	public function noteui() {
-		$categories = $this->Note->Category->find('list');
+		$categories = $this->Note->Category->find('list',array('order'=>'position'));
 		$this->set(compact('categories'));
 		if (empty($this->request->data['Note']['category_id'])) {
 			$id=key($categories);

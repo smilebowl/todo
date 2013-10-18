@@ -21,6 +21,7 @@
 		<th class="actions"><?php echo __('Actions'); ?></th>
 			<th><?php echo $this->Paginator->sort('id'); ?></th>
 			<th><?php echo $this->Paginator->sort('name'); ?></th>
+			<th><?php echo $this->Paginator->sort('position'); ?></th>
 		</tr>
 	<?php foreach ($categories as $category): ?>
 	<tr style="white-space: nowrap;">
@@ -31,6 +32,7 @@
 		</td>
 		<td><?php echo h($category['Category']['id']); ?>&nbsp;</td>
 		<td><?php echo h($category['Category']['name']); ?>&nbsp;</td>
+		<td><?php echo h($category['Category']['position']); ?>&nbsp;</td>
 	</tr>
 <?php endforeach; ?>
 	</table>
