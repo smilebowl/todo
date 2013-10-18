@@ -180,16 +180,11 @@ $(document).ready(function($){
 			$(this).closest('.item').prev().find('a.edititem').focus().click();
 			e.preventDefault();
 		}
-//		// inset item into next posion
-//		if(e.which == 45) {
-//			$(this).closest('.item').find('a.compitem').focus();
-//			var itemid = $(this).closest('.item');
-//			$.post("ajaxadd",{'name':'New Item.'},function(msg){
-//				$(msg).after(itemid).find('a.edititem').focus().click();
-////				$(msg).hide().appendTo($(this)).fadeIn().find('a.edititem').focus().click();
-//			});
-//			e.preventDefault();
-//		}
+//		// insert item into next posion
+		if(e.which == 45) {
+			$('#addButton').focus().click();
+			e.preventDefault();
+		}
 		cur('keydown : '+ e.which);
 	});
 	
@@ -204,7 +199,7 @@ $(document).ready(function($){
 			$(msg).hide().prependTo('.items').fadeIn().find('a.edititem').focus().click();
 		});
 		
-		e.preventDefault();
+//		e.preventDefault();
 	});
 	
 	// move completed items to history
