@@ -58,7 +58,7 @@ $(document).ready(function($){
 				$.ajax({
 					type: "POST",
 					async: false,
-					url: "ajax2history",
+					url: "ajax2allhistory",
 					success : function() {
 						location.reload(true);
 					}
@@ -98,7 +98,7 @@ $(document).ready(function($){
 		
 		// insert textbox
 		
-		$('<input type="text" class="textbox" style="width:70%;">')
+		$('<input type="text" class="textbox">')
 			.val(container.text())
 			.appendTo(container.empty())
 			.focus();
@@ -117,22 +117,35 @@ $(document).ready(function($){
 		var compdate = $.datepicker.formatDate('yy-mm-dd', new Date());
 		if ($(this).closest('.item').hasClass('completed')) {
 			
-			// not complete
+			// to uncompleted
 			
 			compdate = null;
 			$.post("ajaxcomplete",{'id':itemid,'completed':compdate});
 			$(this).closest('.item').removeClass('completed itemselected').find('.date-completed').remove();
+			$(this).closest('.item').find('.tohistory button').attr('disabled','disabled');
 			
 		} else {
 
-			// completed
+			// to completed
 			
 			$.post("ajaxcomplete",{'id':itemid,'completed':compdate});
 			$(this).closest('.item').addClass('completed')
 				.find('.date-created')
 				.after('<span class="date-completed">' + compdate.substr(5,5) +'</span>');
+			$(this).closest('.item').find('.tohistory button').removeAttr('disabled');
+			
 		}
 		
+	});
+	
+	// to history
+	
+	$('.items').on('click', '.item a.tohistory', function(){
+		if (confirm('選択したアイテムを履歴に移動しますか？') != true) return;
+		var itemid = currentItem.attr('id');
+		$.post("ajax2history/"+currentItem.data('id'),null,function(msg){
+			currentItem.fadeOut('normal', function() {currentItem.remove();});
+		});
 	});
 	
 	// start edit (double click)
@@ -181,7 +194,7 @@ $(document).ready(function($){
 			e.preventDefault();
 		}
 //		// insert item into next posion
-		if(e.which == 45) {
+		if(e.which == 45 && !e.shiftKey) {
 			$('#addButton').focus().click();
 			e.preventDefault();
 		}
@@ -211,7 +224,7 @@ $(document).ready(function($){
 	// remove checked items
 	
 	$('#removeAllButton').click(function(){
-		if (confirm('選択したアイテムを本当に削除しますか＞') != true) return;
+		if (confirm('選択したアイテムを本当に削除しますか？') != true) return;
 
 		var checks=[];
         $('.items input:checked').each(function(){

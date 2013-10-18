@@ -16,7 +16,7 @@
 	</button>
 	<div class="clearfix"></div><br />
 	
-	<div class="items col-sm-9 col-sm-offset-1">
+	<div class="items col-sm-10 col-sm-offset-1">
 		
         <?php foreach($todos as $todo) : ?>
         	

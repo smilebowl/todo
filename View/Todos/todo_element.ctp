@@ -1,8 +1,10 @@
 <?php
 	if ($todo['Todo']['completed']) {
 		$completed = ' completed';
+		$dishistory = '';
 	} else {
 		$completed = '';
+		$dishistory = 'disabled="disabled"';
 	}
 ?>
 
@@ -17,6 +19,11 @@
 	<a href "#" class="compitem">
 		<button type="button" class="btn btn-success btn-xs">
 			<span class="glyphicon glyphicon-saved"></span>
+		</button>
+	</a>
+	<a href "#" class="tohistory">
+		<button type="button" class="btn btn-info btn-xs" <?php echo $dishistory; ?>>
+			<span class="glyphicon glyphicon-export"></span>
 		</button>
 	</a>
 	<a href "#" class="removeitem">
