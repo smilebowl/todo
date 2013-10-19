@@ -19,12 +19,12 @@ class IconHelper extends AppHelper {
 		switch ($title) {
 			case __('View'):
 				//$title = "<i class=\"icon-search{$icon_color}\"></i>";
-				$title = "<button class=\"btn btn-info btn-xs\"><i class=\"glyphicon glyphicon-th{$icon_color}\"></i></button>";
+				$title = "<button class=\"btn btn-primary btn-xs\"><i class=\"glyphicon glyphicon-th{$icon_color}\"></i></button>";
 				$options['escape'] = false;
 				$options['title'] = __('View');
 				break;
 			case __('Edit'):
-				$title = "<button class=\"btn btn-info btn-xs\"><i class=\"glyphicon glyphicon-pencil{$icon_color}\"></i></button>";
+				$title = "<button class=\"btn btn-primary btn-xs\"><i class=\"glyphicon glyphicon-pencil{$icon_color}\"></i></button>";
 				$options['escape'] = false;
 				$options['title'] = __('Edit');
 				break;

@@ -7,7 +7,7 @@
 			<span class="icon-bar"></span>
 		</button>
 		<a class="navbar-brand" href="<?php echo $this->Html->url(array('controller'=>'todos','action'=>'todoui'));?>"><?php echo __('Todo'); ?></a>
-		<a class="navbar-brand" href="<?php echo $this->Html->url(array('controller'=>'notes','action'=>'noteui'));?>"><?php echo __('Notes'); ?></a>
+		<a class="navbar-brand" href="<?php echo $this->Html->url(array('controller'=>'notes','action'=>'noteui'));?>"><?php echo 'Notes'; ?></a>
 	</div>
 
 	<?php // echo debug($this->name); ?>
