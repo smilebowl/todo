@@ -6,7 +6,7 @@
 			<span class="icon-bar"></span>
 			<span class="icon-bar"></span>
 		</button>
-		<a class="navbar-brand" href="<?php echo $this->Html->url(array('controller'=>'todos','action'=>'ui'));?>"><?php echo __('Todo'); ?></a>
+		<a class="navbar-brand" href="<?php echo $this->Html->url(array('controller'=>'todos','action'=>'todoui'));?>"><?php echo __('Todo'); ?></a>
 		<a class="navbar-brand" href="<?php echo $this->Html->url(array('controller'=>'notes','action'=>'noteui'));?>"><?php echo __('Notes'); ?></a>
 	</div>
 
@@ -22,7 +22,7 @@
 				<a href="#" class="dropdown-toggle" data-toggle="dropdown">Todo <b class="caret"></b></a>
 				<ul class="dropdown-menu">
 					<li<?php echo ($this->name=='Todos' && $this->action=='ui') ? ' class="active"' : ''; ?>>
-						<?php echo $this -> Html -> link(__('Main'), array('controller' => 'todos', 'action' => 'ui')); ?>
+						<?php echo $this -> Html -> link(__('Main'), array('controller' => 'todos', 'action' => 'todoui')); ?>
 					</li>
 					<li<?php echo ($this->name=='Todos' && $this->action !='ui') ? ' class="active"' : ''; ?>>
 						<?php echo $this -> Html -> link(__('Mentenance'), array('controller' => 'todos', 'action' => 'index')); ?>

@@ -17,7 +17,7 @@ class TodosController extends AppController {
 
 	// list 
 
-	public function ui() {
+	public function todoui() {
 		$this->Todo->recursive = 0;
 		$todos = $this->Todo->find('all', array(
 			'order' => 'position asc',
