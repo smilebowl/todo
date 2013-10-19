@@ -1,14 +1,6 @@
 $(document).ready(function($){
 
 
-//	$( ".portlet" ).addClass( "ui-widget ui-widget-content ui-helper-clearfix ui-corner-all" )
-//		.find( ".portlet-header" )
-//		.addClass( "ui-widget-header ui-corner-all" )
-//		.prepend( "<span class='ui-icon ui-icon-close'></span>")
-//		.end()
-//		.find( ".portlet-content" );
-//	$( ".column" ).disableSelection();
-	
 	// draggable
 	
 	$( ".portlet" ).draggable({
@@ -65,7 +57,8 @@ $(document).ready(function($){
 		
 		var h = $(this).height() + portl.find('.portlet-header').height()+26;
 		portl.height(h);
-		var wh = portl.width() + "." + portl.height();
+//		var wh = portl.width() + "." + portl.height();
+		var wh = (portl.width()+2) + "." + (portl.height()+2); // 微調整
 		
 		$.post("ajaxupdate",{'id':itemid,'text':text, 'wh':wh});
 	});

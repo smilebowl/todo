@@ -10,8 +10,6 @@
 		<a class="navbar-brand" href="<?php echo $this->Html->url(array('controller'=>'notes','action'=>'noteui'));?>"><?php echo 'Notes'; ?></a>
 	</div>
 
-	<?php // echo debug($this->name); ?>
-
     <div class="collapse navbar-collapse navbar-ex1-collapse">
 		<ul class="nav navbar-nav">
 			<?php if (Configure::read('debug')) : ?>

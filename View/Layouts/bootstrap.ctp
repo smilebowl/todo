@@ -12,17 +12,8 @@
 	<!-- Le styles -->
 	<?php echo $this->Html->css('bootstrap.min'); ?>
 	<link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.0/themes/redmond/jquery-ui.css" type="text/css" media="all" />
-<!--
-	<style>
-	body {padding-top: 60px;}
-	</style>
--->
-	<?php echo $this->Html->css('main'); ?>
 
-	<!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
-	<!--[if lt IE 9]>
-	<?php // echo $this->Html->script('vendor/html5shiv'); ?>
-	<![endif]-->
+	<?php echo $this->Html->css('main'); ?>
 
 	<?php
 	echo $this->fetch('meta');

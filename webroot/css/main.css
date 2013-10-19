@@ -23,6 +23,8 @@ body {
 /*for ui.sortable*/
 
 .ui-state-highlight { height: 1.5em; line-height: 1.2em; }
+.ui-sortable-placeholder { border: 1px dotted black; visibility: visible !important; height: 50px !important; }
+.ui-sortable-placeholder * { visibility: hidden; }
 
 /*for ui.dialog*/
 
@@ -49,7 +51,7 @@ body {
 	background-color:#ccc;
 }
 #todopage .completed:hover {
-	background-color:#ccc;
+	background-color:#bbb;
 }
 
 /*for item's children*/
@@ -91,7 +93,6 @@ body {
 }
 #notepage #NoteCategoryId {
 	width:200px;
-/*	display:inline;*/
 	float:left;
 	margin-right:1em;
 }
@@ -112,7 +113,5 @@ body {
 .portlet-header .ui-icon { float: right; }
 .portlet-content {
 	padding: 0.4em;
-	font-size:1em;
+	font-size:0.9em;
 }
-.ui-sortable-placeholder { border: 1px dotted black; visibility: visible !important; height: 50px !important; }
-.ui-sortable-placeholder * { visibility: hidden; }

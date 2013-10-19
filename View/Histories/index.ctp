@@ -1,8 +1,3 @@
-<div class="actions">
-	<ul class="nav nav-pills well well-sm">
-		<li><?php echo $this->Html->link(__('New History'), array('action' => 'add')); ?></li>
-	</ul>
-</div>
 <div class="histories index">
 	<h2><?php echo __('Histories'); ?></h2>
 

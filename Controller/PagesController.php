@@ -39,6 +39,11 @@ class PagesController extends AppController {
  *	or MissingViewException in debug mode.
  */
 	public function display() {
+		
+		if (!Configure::read('debug')){
+			$this->redirect(array('controller'=>'todos','action'=>'todoui'));
+		}
+		
 		$path = func_get_args();
 
 		$count = count($path);
