@@ -195,7 +195,7 @@ $(document).ready(function($){
 			$(this).closest('.item').prev().find('a.edititem').focus().click();
 			e.preventDefault();
 		}
-//		// insert item into next posion
+		// insert item into next posion
 		if(e.which == 45 && !e.shiftKey) {
 			$('#addButton').focus().click();
 			e.preventDefault();
@@ -214,7 +214,7 @@ $(document).ready(function($){
 			$(msg).hide().prependTo('.items').fadeIn().find('a.edititem').focus().click();
 		});
 		
-//		e.preventDefault();
+		e.preventDefault();
 	});
 	
 	// move completed items to history
@@ -233,7 +233,6 @@ $(document).ready(function($){
             checks.push(this.value);
         });
 		
-//		$.post("ajaxrearrange",{pos:arr});
 		$.ajax({
 			type: "POST",
 			async: false,

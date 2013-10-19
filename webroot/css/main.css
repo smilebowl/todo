@@ -1,17 +1,16 @@
 /* ==========================================================================
-   Author's custom styles
+   custom styles
    ========================================================================== */
 
 body { 
-  font-family: "Helvetica Neue",Helvetica,Arial,"Meiryo UI", "メイリオ", sans-serif;
-  padding-top: 70px;
-  padding-bottom: 30px;
+	font-family: "Helvetica Neue",Helvetica,Arial,"Meiryo UI", "メイリオ", sans-serif;
+	padding-top: 70px;
 }
 
 /* Reset the container for Non-responsive */
 .container {
-  max-width: none !important;
-  width: 870px;
+	max-width: none !important;
+	width: 850px;
 }
 
 .loginform {

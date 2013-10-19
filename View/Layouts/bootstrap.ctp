@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<title>
-		<?php echo __('CakePHP: Todo:'); ?>
+		<?php echo __('Todo:'); ?>
 		<?php echo $title_for_layout; ?>
 	</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -33,8 +33,6 @@
     <?php echo $this->element('menu'); ?>
     
 	<div class="container col-sm-8">
-
-<!-- 		<h1>Bootstrap starter template</h1> -->
 
 		<?php echo $this->Session->flash(); ?>
 
