@@ -3,7 +3,7 @@
 	echo $this->Html->script('todo', array('charset'=>'UTF-8'));
 ?>
 
-<div id="main">
+<div id="todopage">
 
 	<button id="addButton" type="button" class="btn btn-success col-sm-2">
 		New Item
