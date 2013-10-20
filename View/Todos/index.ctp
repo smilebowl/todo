@@ -1,6 +1,8 @@
 <div class="actions">
 	<ul class="nav nav-pills well well-sm">
 		<li><?php echo $this->Html->link(__('New Todo'), array('action' => 'add')); ?></li>
+		<li><?php echo $this->Html->link(__('List Todopages'), array('controller' => 'todopages', 'action' => 'index')); ?> </li>
+		<li><?php echo $this->Html->link(__('New Todopage'), array('controller' => 'todopages', 'action' => 'add')); ?> </li>
 	</ul>
 </div>
 <div class="todos index">
@@ -18,6 +20,7 @@
 	<tr>
 		<th class="actions"><?php echo __('Actions'); ?></th>
 			<th><?php echo $this->Paginator->sort('id'); ?></th>
+			<th><?php echo $this->Paginator->sort('todopage_id'); ?></th>
 			<th><?php echo $this->Paginator->sort('position'); ?></th>
 			<th><?php echo $this->Paginator->sort('name'); ?></th>
 			<th><?php echo $this->Paginator->sort('created'); ?></th>
@@ -31,6 +34,9 @@
 			<?php echo $this->Icon->postLink(__('Delete'), array('action' => 'delete', $todo['Todo']['id']), null, __('Are you sure you want to delete # %s?', $todo['Todo']['id'])); ?>
 		</td>
 		<td><?php echo h($todo['Todo']['id']); ?>&nbsp;</td>
+		<td>
+			<?php echo $this->Html->link($todo['Todopage']['name'], array('controller' => 'todopages', 'action' => 'view', $todo['Todopage']['id'])); ?>
+		</td>
 		<td><?php echo h($todo['Todo']['position']); ?>&nbsp;</td>
 		<td><?php echo h($todo['Todo']['name']); ?>&nbsp;</td>
 		<td><?php echo h($todo['Todo']['created']); ?>&nbsp;</td>

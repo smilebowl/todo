@@ -4,13 +4,13 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
-"POT-Creation-Date: 2013-10-19 20:11+0900\n"
-"PO-Revision-Date: 2013-10-19 20:25+0900\n"
+"POT-Creation-Date: 2013-10-20 21:13+0900\n"
+"PO-Revision-Date: 2013-10-20 21:16+0900\n"
+"Last-Translator: \n"
+"Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Last-Translator: \n"
-"Language-Team: \n"
 "X-Generator: Poedit 1.5.7\n"
 
 #: Controller/CategoriesController.php:37;69;94
@@ -73,23 +73,47 @@ msgstr "削除しました"
 msgid "Note was not deleted"
 msgstr ""
 
-#: Controller/TodosController.php:143;175;200
+#: Controller/TodopagesController.php:37;69;94
+msgid "Invalid todopage"
+msgstr ""
+
+#: Controller/TodopagesController.php:52;73
+#, fuzzy
+msgid "The todopage has been saved."
+msgstr "更新しました"
+
+#: Controller/TodopagesController.php:55;76
+#, fuzzy
+msgid "The todopage could not be saved. Please, try again."
+msgstr "更新に失敗しました"
+
+#: Controller/TodopagesController.php:98
+#, fuzzy
+msgid "Todopage deleted."
+msgstr "削除しました"
+
+#: Controller/TodopagesController.php:101
+#, fuzzy
+msgid "Todopage was not deleted"
+msgstr "削除しました"
+
+#: Controller/TodosController.php:151;185;212
 msgid "Invalid todo"
 msgstr ""
 
-#: Controller/TodosController.php:158;179
+#: Controller/TodosController.php:166;189
 msgid "The todo has been saved."
 msgstr "更新しました"
 
-#: Controller/TodosController.php:161;182
+#: Controller/TodosController.php:169;192
 msgid "The todo could not be saved. Please, try again."
 msgstr "更新に失敗しました"
 
-#: Controller/TodosController.php:204
+#: Controller/TodosController.php:216
 msgid "Todo deleted."
 msgstr "削除しました"
 
-#: Controller/TodosController.php:207
+#: Controller/TodosController.php:219
 msgid "Todo was not deleted"
 msgstr ""
 
@@ -144,29 +168,34 @@ msgid "Add Category"
 msgstr "分類追加"
 
 #: View/Categories/add.ctp:23;24 View/Categories/edit.ctp:25;26
-#: View/Notes/add.ctp:23 View/Notes/edit.ctp:25 View/Todos/add.ctp:21;22
-#: View/Todos/edit.ctp:23;24
+#: View/Notes/add.ctp:23 View/Notes/edit.ctp:25 View/Todopages/add.ctp:23;24
+#: View/Todopages/edit.ctp:25;26 View/Todos/add.ctp:23;24;25
+#: View/Todos/edit.ctp:25;26;27
 msgid "Required"
 msgstr "必須"
 
 #: View/Categories/add.ctp:27 View/Categories/edit.ctp:29
 #: View/Histories/add.ctp:26 View/Histories/edit.ctp:28 View/Notes/add.ctp:31
-#: View/Notes/edit.ctp:33 View/Todos/add.ctp:26 View/Todos/edit.ctp:28
+#: View/Notes/edit.ctp:33 View/Todopages/add.ctp:27 View/Todopages/edit.ctp:29
+#: View/Todos/add.ctp:29 View/Todos/edit.ctp:31
 msgid "Submit"
 msgstr ""
 
 #: View/Categories/edit.ctp:4 View/Categories/index.ctp:31
 #: View/Categories/view.ctp:61 View/Helper/IconHelper.php:37;40
-#: View/Histories/edit.ctp:4 View/Histories/index.ctp:31 View/Notes/edit.ctp:4
-#: View/Notes/index.ctp:36 View/Todos/edit.ctp:4 View/Todos/index.ctp:31
+#: View/Histories/edit.ctp:4 View/Histories/index.ctp:26 View/Notes/edit.ctp:4
+#: View/Notes/index.ctp:36 View/Todopages/edit.ctp:4
+#: View/Todopages/index.ctp:32 View/Todopages/view.ctp:62
+#: View/Todos/edit.ctp:4 View/Todos/index.ctp:34
 msgid "Delete"
 msgstr "削除"
 
 #: View/Categories/edit.ctp:4 View/Categories/index.ctp:31
 #: View/Categories/view.ctp:4;61 View/Histories/edit.ctp:4
-#: View/Histories/index.ctp:31 View/Histories/view.ctp:4 View/Notes/edit.ctp:4
-#: View/Notes/index.ctp:36 View/Notes/view.ctp:4 View/Todos/edit.ctp:4
-#: View/Todos/index.ctp:31 View/Todos/view.ctp:4
+#: View/Histories/index.ctp:26 View/Histories/view.ctp:4 View/Notes/edit.ctp:4
+#: View/Notes/index.ctp:36 View/Notes/view.ctp:4 View/Todopages/edit.ctp:4
+#: View/Todopages/index.ctp:32 View/Todopages/view.ctp:4;62
+#: View/Todos/edit.ctp:4 View/Todos/index.ctp:34 View/Todos/view.ctp:4
 msgid "Are you sure you want to delete # %s?"
 msgstr "本当に #%s を削除しますか？"
 
@@ -179,31 +208,35 @@ msgstr "分類編集"
 msgid "New Category"
 msgstr "分類追加"
 
-#: View/Categories/index.ctp:9 View/Elements/menu.ctp:47
+#: View/Categories/index.ctp:9 View/Elements/menu.ctp:48
 msgid "Categories"
 msgstr "分類"
 
-#: View/Categories/index.ctp:14 View/Histories/index.ctp:12
-#: View/Notes/index.ctp:14 View/Todos/index.ctp:12
+#: View/Categories/index.ctp:14 View/Histories/index.ctp:7
+#: View/Notes/index.ctp:14 View/Todopages/index.ctp:14 View/Todos/index.ctp:14
 msgid ""
 "Page {:page} of {:pages}, showing {:current} records out of {:count} total, "
 "starting on record {:start}, ending on {:end}"
 msgstr "全 {:count} 件、{:page} / {:pages}  ページ "
 
 #: View/Categories/index.ctp:21 View/Categories/view.ctp:44
-#: View/Histories/index.ctp:19 View/Notes/index.ctp:21 View/Todos/index.ctp:19
+#: View/Histories/index.ctp:14 View/Notes/index.ctp:21
+#: View/Todopages/index.ctp:21 View/Todopages/view.ctp:47
+#: View/Todos/index.ctp:21
 msgid "Actions"
 msgstr ""
 
 #: View/Categories/index.ctp:29 View/Categories/view.ctp:59
-#: View/Helper/IconHelper.php:20;24 View/Histories/index.ctp:29
-#: View/Notes/index.ctp:34 View/Todos/index.ctp:29
+#: View/Helper/IconHelper.php:20;24 View/Histories/index.ctp:24
+#: View/Notes/index.ctp:34 View/Todopages/index.ctp:30
+#: View/Todopages/view.ctp:60 View/Todos/index.ctp:32
 msgid "View"
 msgstr "詳細"
 
 #: View/Categories/index.ctp:30 View/Categories/view.ctp:60
-#: View/Helper/IconHelper.php:26;29 View/Histories/index.ctp:30
-#: View/Notes/index.ctp:35 View/Todos/index.ctp:30
+#: View/Helper/IconHelper.php:26;29 View/Histories/index.ctp:25
+#: View/Notes/index.ctp:35 View/Todopages/index.ctp:31
+#: View/Todopages/view.ctp:61 View/Todos/index.ctp:33
 msgid "Edit"
 msgstr "編集"
 
@@ -215,18 +248,18 @@ msgstr "分類削除"
 msgid "Category"
 msgstr "分類"
 
-#: View/Categories/view.ctp:14;36 View/Histories/view.ctp:12
-#: View/Notes/view.ctp:14 View/Todos/view.ctp:12
+#: View/Categories/view.ctp:14;36 View/Histories/view.ctp:11
+#: View/Notes/view.ctp:14 View/Todopages/view.ctp:14;41 View/Todos/view.ctp:14
 msgid "Id"
 msgstr "ID"
 
-#: View/Categories/view.ctp:19;38 View/Histories/view.ctp:22
-#: View/Notes/view.ctp:24 View/Todos/view.ctp:22
+#: View/Categories/view.ctp:19;38 View/Histories/view.ctp:21
+#: View/Notes/view.ctp:24 View/Todopages/view.ctp:19;44 View/Todos/view.ctp:29
 msgid "Name"
 msgstr "名前"
 
-#: View/Categories/view.ctp:24 View/Histories/view.ctp:17
-#: View/Todos/view.ctp:17
+#: View/Categories/view.ctp:24 View/Histories/view.ctp:16
+#: View/Todopages/view.ctp:43 View/Todos/view.ctp:24
 msgid "Position"
 msgstr "位置"
 
@@ -254,32 +287,32 @@ msgstr "WH"
 msgid "Color"
 msgstr ""
 
-#: View/Categories/view.ctp:43 View/Histories/view.ctp:27
-#: View/Notes/view.ctp:49 View/Todos/view.ctp:27
+#: View/Categories/view.ctp:43 View/Histories/view.ctp:26
+#: View/Notes/view.ctp:49 View/Todopages/view.ctp:29;45 View/Todos/view.ctp:34
 msgid "Created"
 msgstr "登録日"
 
-#: View/Elements/menu.ctp:9 View/Todos/view.ctp:10
+#: View/Elements/menu.ctp:9 View/Todos/view.ctp:12
 msgid "Todo"
 msgstr ""
 
-#: View/Elements/menu.ctp:10 View/Notes/index.ctp:9
-msgid "Notes"
-msgstr "ノート"
-
-#: View/Elements/menu.ctp:25;40
+#: View/Elements/menu.ctp:23;41
 msgid "Main"
 msgstr ""
 
-#: View/Elements/menu.ctp:28;43
+#: View/Elements/menu.ctp:26;44
 msgid "Mentenance"
 msgstr ""
 
-#: View/Elements/menu.ctp:32 View/Histories/view.ctp:10
+#: View/Elements/menu.ctp:30 View/Todopages/view.ctp:12 View/Todos/view.ctp:19
+msgid "Todopage"
+msgstr "ページ"
+
+#: View/Elements/menu.ctp:33 View/Histories/view.ctp:9
 msgid "History"
 msgstr "Todo履歴"
 
-#: View/Elements/menu.ctp:56
+#: View/Elements/menu.ctp:57
 msgid "Logout"
 msgstr "ログアウト"
 
@@ -296,11 +329,7 @@ msgstr "Todo履歴追加"
 msgid "Edit History"
 msgstr "Todo履歴編集"
 
-#: View/Histories/index.ctp:3 View/Histories/view.ctp:6
-msgid "New History"
-msgstr "Todo履歴追加"
-
-#: View/Histories/index.ctp:7
+#: View/Histories/index.ctp:2
 msgid "Histories"
 msgstr "Todo履歴"
 
@@ -308,13 +337,15 @@ msgstr "Todo履歴"
 msgid "Delete History"
 msgstr "Todo履歴削除"
 
-#: View/Histories/view.ctp:32 View/Todos/view.ctp:32
+#: View/Histories/view.ctp:31 View/Todopages/view.ctp:46
+#: View/Todos/view.ctp:39
 msgid "Completed"
 msgstr "完了日"
 
 #: View/Layouts/bootstrap.ctp:6
-msgid "CakePHP: Todo:"
-msgstr ""
+#, fuzzy
+msgid "Todo:"
+msgstr "Todo"
 
 #: View/Notes/add.ctp:21
 msgid "Add Note"
@@ -324,6 +355,10 @@ msgstr "ノート追加"
 msgid "Edit Note"
 msgstr "ノート編集"
 
+#: View/Notes/index.ctp:9
+msgid "Notes"
+msgstr "ノート"
+
 #: View/Notes/view.ctp:4
 msgid "Delete Note"
 msgstr "ノート削除"
@@ -332,23 +367,66 @@ msgstr "ノート削除"
 msgid "Note"
 msgstr "ノート"
 
-#: View/Todos/add.ctp:4 View/Todos/edit.ctp:5 View/Todos/view.ctp:5
+#: View/Todopages/add.ctp:4 View/Todopages/edit.ctp:5
+#: View/Todopages/view.ctp:5 View/Todos/add.ctp:5 View/Todos/edit.ctp:6
+#: View/Todos/index.ctp:4 View/Todos/view.ctp:7
+msgid "List Todopages"
+msgstr "ページ一覧"
+
+#: View/Todopages/add.ctp:5 View/Todopages/edit.ctp:6
+#: View/Todopages/index.ctp:4 View/Todopages/view.ctp:7 View/Todos/add.ctp:4
+#: View/Todos/edit.ctp:5 View/Todos/view.ctp:5
 msgid "List Todos"
 msgstr "Todo一覧"
 
-#: View/Todos/add.ctp:19
-msgid "Add Todo"
-msgstr "Todo追加"
-
-#: View/Todos/edit.ctp:20 View/Todos/view.ctp:3
-msgid "Edit Todo"
-msgstr "Todo編集"
-
-#: View/Todos/index.ctp:3 View/Todos/view.ctp:6
+#: View/Todopages/add.ctp:6 View/Todopages/edit.ctp:7
+#: View/Todopages/index.ctp:5 View/Todopages/view.ctp:8 View/Todos/index.ctp:3
+#: View/Todos/view.ctp:6
 msgid "New Todo"
 msgstr "Todo追加"
 
-#: View/Todos/index.ctp:7
+#: View/Todopages/add.ctp:21
+msgid "Add Todopage"
+msgstr "ページ追加"
+
+#: View/Todopages/edit.ctp:22 View/Todopages/view.ctp:3
+msgid "Edit Todopage"
+msgstr "ページ編集"
+
+#: View/Todopages/index.ctp:3 View/Todopages/view.ctp:6 View/Todos/add.ctp:6
+#: View/Todos/edit.ctp:7 View/Todos/index.ctp:5 View/Todos/view.ctp:8
+msgid "New Todopage"
+msgstr "ページ追加"
+
+#: View/Todopages/index.ctp:9
+msgid "Todopages"
+msgstr "ページ"
+
+#: View/Todopages/view.ctp:4
+msgid "Delete Todopage"
+msgstr "ページ削除"
+
+#: View/Todopages/view.ctp:24
+msgid "Ord"
+msgstr ""
+
+#: View/Todopages/view.ctp:37
+msgid "Related Todos"
+msgstr "関連するTodo"
+
+#: View/Todopages/view.ctp:42
+msgid "Todopage Id"
+msgstr "ページ"
+
+#: View/Todos/add.ctp:21
+msgid "Add Todo"
+msgstr "Todo追加"
+
+#: View/Todos/edit.ctp:22 View/Todos/view.ctp:3
+msgid "Edit Todo"
+msgstr "Todo編集"
+
+#: View/Todos/index.ctp:9
 msgid "Todos"
 msgstr "Todo"
 
@@ -357,10 +435,15 @@ msgid "Delete Todo"
 msgstr "Todo削除"
 
 #: Model/Category.php:validation for field name Model/Todo.php:validation
+#: Model/Todopage.php:validation
 msgid "notempty"
 msgstr "未入力"
 
 #: Model/Category.php:validation for field position Model/Note.php:validation
-#: category_id Model/Todo.php:validation
+#: category_id Model/Todo.php:validation todopage_id;validation
+#: Model/Todopage.php:validation ord
 msgid "numeric"
 msgstr "数字でない"
+
+#~ msgid "New History"
+#~ msgstr "Todo履歴追加"

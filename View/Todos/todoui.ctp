@@ -5,6 +5,12 @@
 
 <div id="todopage">
 
+	<?php
+		echo $this->Form->create('Todo');
+		echo $this->Form->input('todopage_id', array('label'=>false, 'class'=>'form-control', 'div'=>false));
+		echo $this->Form->end();
+	?>
+
 	<button id="addButton" type="button" class="btn btn-success col-sm-2">
 		New Item
 	</button>

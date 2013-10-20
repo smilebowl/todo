@@ -4,6 +4,8 @@
 		<li><?php echo $this->Form->postLink(__('Delete Todo'), array('action' => 'delete', $todo['Todo']['id']), null, __('Are you sure you want to delete # %s?', $todo['Todo']['id'])); ?> </li>
 		<li><?php echo $this->Html->link(__('List Todos'), array('action' => 'index')); ?> </li>
 		<li><?php echo $this->Html->link(__('New Todo'), array('action' => 'add')); ?> </li>
+		<li><?php echo $this->Html->link(__('List Todopages'), array('controller' => 'todopages', 'action' => 'index')); ?> </li>
+		<li><?php echo $this->Html->link(__('New Todopage'), array('controller' => 'todopages', 'action' => 'add')); ?> </li>
 	</ul>
 </div>
 <div class="todos view well">
@@ -12,6 +14,11 @@
 		<dt><?php echo __('Id'); ?></dt>
 		<dd>
 			<?php echo h($todo['Todo']['id']); ?>
+			&nbsp;
+		</dd>
+		<dt><?php echo __('Todopage'); ?></dt>
+		<dd>
+			<?php echo $this->Html->link($todo['Todopage']['name'], array('controller' => 'todopages', 'action' => 'view', $todo['Todopage']['id'])); ?>
 			&nbsp;
 		</dd>
 		<dt><?php echo __('Position'); ?></dt>

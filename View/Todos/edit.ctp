@@ -3,6 +3,8 @@
 
 		<li><?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $this->Form->value('Todo.id')), null, __('Are you sure you want to delete # %s?', $this->Form->value('Todo.id'))); ?></li>
 		<li><?php echo $this->Html->link(__('List Todos'), array('action' => 'index')); ?></li>
+		<li><?php echo $this->Html->link(__('List Todopages'), array('controller' => 'todopages', 'action' => 'index')); ?> </li>
+		<li><?php echo $this->Html->link(__('New Todopage'), array('controller' => 'todopages', 'action' => 'add')); ?> </li>
 	</ul>
 </div>
 <div class="todos form">
@@ -20,6 +22,7 @@
 		<legend><?php echo __('Edit Todo'); ?></legend>
 	<?php
 		echo $this->Form->input('id');
+		echo $this->Form->input('todopage_id', array('afterInput'=>'<span class="help-block"><span class="label label-warning">'.__('Required').'</span></span>'));
 		echo $this->Form->input('position', array('afterInput'=>'<span class="help-block"><span class="label label-warning">'.__('Required').'</span></span>'));
 		echo $this->Form->input('name', array('afterInput'=>'<span class="help-block"><span class="label label-warning">'.__('Required').'</span></span>'));
 		echo $this->Form->input('completed');

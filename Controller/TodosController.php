@@ -18,12 +18,20 @@ class TodosController extends AppController {
 	// list 
 
 	public function todoui() {
+		$todopages = $this->Todo->Todopage->find('list');
+		if (empty($this->request->data['Todo']['todopage_id'])) {
+			$id=key($todopages);
+		} else {
+			$id = $this->request->data['Todo']['todopage_id'];
+		}
+		
 		$this->Todo->recursive = 0;
 		$todos = $this->Todo->find('all', array(
-			'order' => 'position asc',
+			'conditions'=>array('todopage_id'=>$id),
+			'order' => 'Todo.position asc',
 			'fileds' => array('id','name')
 		));
-		$this->set(compact('todos'));
+		$this->set(compact('todos', 'todopages'));
 	}
 	
 	// history
@@ -32,8 +40,12 @@ class TodosController extends AppController {
 		Configure::write('debug', 0);
 		$this->autoRender = false;
 		
-		$this->Todo->query('insert into histories select * from todos where todos.completed is not null');
-		$this->Todo->query('delete from todos where todos.completed is not null');
+		debug($this->request->data);
+		
+		$pageid = $this->request->data['todopage_id'];
+		
+		$this->Todo->query("insert into histories select * from todos where (todos.todopage_id={$pageid}) and (todos.completed is not null);");
+		$this->Todo->query("delete from todos where (todos.todopage_id={$pageid}) and (todos.completed is not null);");
 		echo 1;
 	}
 
@@ -113,7 +125,7 @@ class TodosController extends AppController {
 		$curpos = 0;
 		foreach ($pos as $key) {
 			// $this->Todo->save(array('id'=>$key,'position'=>$curpos++));
-			// 複数のUIで同時実行していた場合の対応
+			// ������UI�œ�����s���Ă����ꍇ�̑Ή�
 			if ($this->Todo->exists($key)) {
 				$this->Todo->save(array('id'=>$key,'position'=>$curpos++),false,array('position'));
 			}
@@ -161,6 +173,8 @@ class TodosController extends AppController {
 				$this->Session->setFlashError(__('The todo could not be saved. Please, try again.') );
 			}
 		}
+		$todopages = $this->Todo->Todopage->find('list');
+		$this->set(compact('todopages'));
 	}
 
 /**
@@ -185,6 +199,8 @@ class TodosController extends AppController {
 			$options = array('conditions' => array('Todo.' . $this->Todo->primaryKey => $id));
 			$this->request->data = $this->Todo->find('first', $options);
 		}
+		$todopages = $this->Todo->Todopage->find('list');
+		$this->set(compact('todopages'));
 	}
 
 /**

@@ -55,12 +55,15 @@ $(document).ready(function($){
 		buttons: {
 			'移動': function() {
 				
+				var pageid = $('#TodoTodopageId').val();
 				$.ajax({
 					type: "POST",
 					async: false,
 					url: "ajax2allhistory",
+					data:{'todopage_id':pageid},
 					success : function() {
-						location.reload(true);
+//						location.reload(true);
+						$( '#TodoTodouiForm' ).submit();
 					}
 				});
 				
@@ -214,7 +217,8 @@ $(document).ready(function($){
 	$('#addButton').click(function(e){
 
 		// $.get("ajax.php",{'action':'new','text':'New Todo Item. Doubleclick to Edit.','rand':Math.random()},function(msg){
-		$.post("ajaxadd",{'name':'New Item.'},function(msg){
+		var pageid = $('#TodoTodopageId').val();
+		$.post("ajaxadd",{'name':'New Item.','todopage_id':pageid},function(msg){
 
 			// Appending the new todo and fading it into view:
 			$(msg).hide().prependTo('.items').fadeIn().find('a.edititem').focus().click();
@@ -223,6 +227,9 @@ $(document).ready(function($){
 		e.preventDefault();
 	});
 	
+	$("#TodoTodopageId").change(function () {
+		$(this).closest('form').submit();
+	});	
 	// move completed items to history
 	
 	$('#historyButton').click(function(){
@@ -245,7 +252,8 @@ $(document).ready(function($){
 			url: "ajaxremovechecks",
 			data: {removes:checks},
 			success : function() {
-				location.reload(true);
+//				location.reload(true);
+				$( '#TodoTodouiForm' ).submit();
 			}
 		});
 	});

@@ -31,7 +31,11 @@ body {
 #history-confirm {display:none;}
 
 /*for item*/
-
+#todopage #TodoTodopageId {
+	width:150px;
+	float:left;
+	margin-right:1em;
+}
 #todopage .item {
 	margin: 5px;
 	border-bottom: dotted 1px gray;

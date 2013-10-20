@@ -2,6 +2,8 @@
 	<ul class="nav nav-pills well well-sm">
 
 		<li><?php echo $this->Html->link(__('List Todos'), array('action' => 'index')); ?></li>
+		<li><?php echo $this->Html->link(__('List Todopages'), array('controller' => 'todopages', 'action' => 'index')); ?> </li>
+		<li><?php echo $this->Html->link(__('New Todopage'), array('controller' => 'todopages', 'action' => 'add')); ?> </li>
 	</ul>
 </div>
 <div class="todos form">
@@ -18,6 +20,7 @@
 	<fieldset>
 		<legend><?php echo __('Add Todo'); ?></legend>
 	<?php
+		echo $this->Form->input('todopage_id', array('afterInput'=>'<span class="help-block"><span class="label label-warning">'.__('Required').'</span></span>'));
 		echo $this->Form->input('position', array('afterInput'=>'<span class="help-block"><span class="label label-warning">'.__('Required').'</span></span>'));
 		echo $this->Form->input('name', array('afterInput'=>'<span class="help-block"><span class="label label-warning">'.__('Required').'</span></span>'));
 		echo $this->Form->input('completed');

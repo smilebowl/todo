@@ -26,6 +26,9 @@
 						<?php echo $this -> Html -> link(__('Mentenance'), array('controller' => 'todos', 'action' => 'index')); ?>
 					</li>
 					<li class="divider"></li>
+					<li<?php echo $this->name=='Todopages' ? ' class="active"' : ''; ?>>
+						<?php echo $this -> Html -> link(__('Todopage'), array('controller' => 'todopages', 'action' => 'index')); ?>
+					</li>
 					<li<?php echo $this->name=='Histories' ? ' class="active"' : ''; ?>>
 						<?php echo $this -> Html -> link(__('History'), array('controller' => 'histories', 'action' => 'index')); ?>
 					</li>
