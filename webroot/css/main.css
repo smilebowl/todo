@@ -38,7 +38,8 @@ body {
 	padding:1px;
 }
 
-#todopage .item:hover {
+/*#todopage .item:hover {*/
+#todopage .item:not(.checked):hover {
 	background-color:rgb(252, 248, 227);
 	border-bottom: solid 1px #dd5600;
 }
@@ -49,8 +50,12 @@ body {
 #todopage .completed {
 	background-color:#ccc;
 }
-#todopage .completed:hover {
+#todopage .completed:not(.checked):hover {
 	background-color:#bbb;
+}
+
+#todopage .checked {
+	background: #F39814; color: white;
 }
 
 /*for item's children*/

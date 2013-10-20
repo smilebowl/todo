@@ -202,6 +202,12 @@ $(document).ready(function($){
 		}
 		cur('keydown : '+ e.which);
 	});
+
+	// checkbox selected
+	
+	$('.items').on('click', 'input[type=checkbox]', function(){
+		$(this).closest('.item').toggleClass('checked');
+	});	
 	
 	// add new item
 	

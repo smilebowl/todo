@@ -57,8 +57,7 @@ $(document).ready(function($){
 		
 		var h = $(this).height() + portl.find('.portlet-header').height()+26;
 		portl.height(h);
-//		var wh = portl.width() + "." + portl.height();
-		var wh = (portl.width()+2) + "." + (portl.height()+2); // 微調整
+		var wh = portl.outerWidth() + "." + portl.outerHeight();
 		
 		$.post("ajaxupdate",{'id':itemid,'text':text, 'wh':wh});
 	});
