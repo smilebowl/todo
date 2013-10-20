@@ -19,10 +19,10 @@
 			<li class="dropdown">
 				<a href="#" class="dropdown-toggle" data-toggle="dropdown">Todo <b class="caret"></b></a>
 				<ul class="dropdown-menu">
-					<li<?php echo ($this->name=='Todos' && $this->action=='ui') ? ' class="active"' : ''; ?>>
+					<li<?php echo ($this->name=='Todos' && $this->action=='todoui') ? ' class="active"' : ''; ?>>
 						<?php echo $this -> Html -> link(__('Main'), array('controller' => 'todos', 'action' => 'todoui')); ?>
 					</li>
-					<li<?php echo ($this->name=='Todos' && $this->action !='ui') ? ' class="active"' : ''; ?>>
+					<li<?php echo ($this->name=='Todos' && $this->action !='todoui') ? ' class="active"' : ''; ?>>
 						<?php echo $this -> Html -> link(__('Mentenance'), array('controller' => 'todos', 'action' => 'index')); ?>
 					</li>
 					<li class="divider"></li>
