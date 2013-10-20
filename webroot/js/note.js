@@ -32,12 +32,25 @@ $(document).ready(function($){
 	// remove note
 	
 	$('.notes').on('click', '.ui-icon-close', function(){
-		if (!confirm("削除しますか")) return;
+		if (!confirm("削除しますか？")) return;
 		
 		var curnote = $( this ).closest('.portlet');
 		var itemid = curnote.attr('id');
 		$.post("ajaxdelete/"+itemid, null, function() {
 			curnote.fadeOut('normal', function() {curnote.remove();});
+		});
+	});
+	
+	// reset format
+	
+	$('.notes').on('click', '.ui-icon-pause', function(){
+		if (!confirm("書式をリセットしますか？")) return;
+		
+		var curnote = $( this ).closest('.portlet');
+		var itemid = curnote.attr('id');
+		var text = curnote.find('.portlet-content').text();
+		$.post("ajaxupdate",{'id':itemid,'text':text}, function() {
+			 curnote.find('.portlet-content').text(text);
 		});
 	});
 

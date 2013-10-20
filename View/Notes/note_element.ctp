@@ -7,7 +7,7 @@
 <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all ui-draggable ui-resizable" id="<?php echo $note['Note']['id']; ?>" style="<?php echo $style;?>">
 	<div class="portlet-header ui-widget-header ui-corner-all">
 		<span class="ui-icon ui-icon-close"></span>
-<!--		<span class="ui-icon ui-icon-minusthick"></span>-->
+		<span class="ui-icon ui-icon-pause"></span>
 		<?php echo $note['Note']['name']; ?>
 	</div>
 	<div class="portlet-content" contenteditable="true"><?php echo $note['Note']['text']; ?></div>
