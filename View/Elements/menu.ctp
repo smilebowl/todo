@@ -8,6 +8,7 @@
 		</button>
 		<a class="navbar-brand" href="<?php echo $this->Html->url(array('controller'=>'todos','action'=>'todoui'));?>"><?php echo __('Todo'); ?></a>
 		<a class="navbar-brand" href="<?php echo $this->Html->url(array('controller'=>'notes','action'=>'noteui'));?>"><?php echo 'Notes'; ?></a>
+		<a class="navbar-brand" href="<?php echo $this->Html->url(array('controller'=>'events','action'=>'eventui'));?>"><?php echo 'Events'; ?></a>
 	</div>
 
     <div class="collapse navbar-collapse navbar-ex1-collapse">
