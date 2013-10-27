@@ -128,3 +128,7 @@ body {
 
 .fc-sun { color: red; background-color:#eee;}  /* 日曜日 */
 .fc-sat { color: blue;  background-color:#eee;} /* 土曜日 */
+
+#dialog-event label {width: 80px;}
+
+

@@ -31,7 +31,7 @@ class EventsController extends AppController {
 		$events = $this->Event->find('all', array(
 			'conditions'=>array('and'=>array('start >='=>$start, 'start <='=>$end)),
 //			'order' => 'position asc',
-			'fields' => array('id','title','start')
+			'fields' => array('id','title','start','end', 'color')
 		));
 		
 		$json = array();
@@ -40,7 +40,7 @@ class EventsController extends AppController {
 			$json[] = $evt['Event'];
 		}
 		
-		$this->log(json_encode($json));
+//		$this->log(json_encode($json));
 		echo json_encode($json);
 	}
 	
@@ -67,20 +67,10 @@ class EventsController extends AppController {
 		
 			
 	public function eventui() {
-	
-//		if (empty($this->request->data['Note']['category_id'])) {
-//			$id=key($categories);
-//		} else {
-//			$id = $this->request->data['Note']['category_id'];
-//		}
-		
-		$this->Event->recursive = 0;
-		$events = $this->Event->find('all', array(
-//			'conditions'=>array('category_id'=>$id)
-//			'order' => 'position asc',
-//			'fileds' => array('id','name')
-		));
-		$this->set(compact('events'));
+//		$this->Event->recursive = 0;
+//		$events = $this->Event->find('all', array(
+//		));
+//		$this->set(compact('events'));
 	}
 
 /**

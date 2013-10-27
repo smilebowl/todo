@@ -1,7 +1,8 @@
 $(document).ready(function($){
 	
-	var curStart;
-	var curEvent;
+	var curStart;　// for insert
+	var curEvent;  // for update
+	var e_update;
 	
 	var calendar = $('#calendar').fullCalendar({
 	
@@ -9,14 +10,21 @@ $(document).ready(function($){
 		firstDay: 1, // 1:月曜日
 
 		selectable: true,
-		selectHelper: true,//			theme: true,
+		selectHelper: true,
+//		theme: true,
 
 		titleFormat: {
 			month: 'yyyy年 M月',
 			week: '[yyyy年 ]M月 d日{ &#8212;[yyyy年 ][ M月] d日}',
 			day: 'yyyy年 M月 d日 dddd'
-		},		
+		},
+		
+		// return json
+		
 		events: "ajaxloadevent",
+		
+		// google calendar
+		
 		eventSources: [
 			{
 				url:'https://www.google.com/calendar/feeds/ja.japanese%23holiday%40group.v.calendar.google.com/public/basic',
@@ -30,46 +38,55 @@ $(document).ready(function($){
 			}
 		],
 
+		// add event
 		
 		select: function(start, end, allDay, jsEvent, view) {
-//			var title = prompt('Event Title:');
 			curStart = start;
-			$('#event_date').hide();
+			$('.datepart').hide();
 			$('#dialog-event').dialog('open');
-//			if (title) {
-//				calendar.fullCalendar('renderEvent',
-//					{
-//						title: title,
-//						start: start,
-//						end: end,
-//						allDay: allDay
-//					},
-//					true // make the event "stick"
-//				);
-//			}
 			calendar.fullCalendar('unselect');
 		},
 		
-		eventClick:function(event, jsEvent, view){
-//			'dialog-event'
+		// update event
+		
+		eventClick: function(event, jsEvent, view){
 			curEvent = event;
+			e_update = true;
 			
-			$('#event_date').show();
+			$('.datepart').show();
 			$('#event_title').val(event.title);
 			$('#event_date').val($.fullCalendar.formatDate(event.start, 'yyyy-MM-dd'));
+//			alert(event.color);
+			
+			$('#event_color').val(event.color);
+//			$('#event_color').simplecolorpicker({theme: 'glyphicons'});
+//			colorpicker('selectColor', event.color);
 			$('#dialog-event').dialog('open');
+			
+//			$('#event_color').simplecolorpicker('destroy');
+			
 		},
 		
 		eventDrop: function(event, delta) {
-			alert(event.title + ' was moved ' + delta + ' days\n' +
-				'(should probably update your database)');
+//			alert(event.title + ' was moved ' + delta + ' days\n' +
+//				'(should probably update your database)');
+			var id = event.id;
+			var nstart = $.fullCalendar.formatDate(event.start, 'yyyy-MM-dd');
+			var nend = $.fullCalendar.formatDate(event.end, 'yyyy-MM-dd');
+			$.post("ajaxupdate",{'id':id, 'start':nstart, 'end':nend},function(msg){
+				calendar.fullCalendar('updateEvent', event);
+			});
 		},
 		
-		loading: function(bool) {
-			if (bool) $('#loading').show();
-			else $('#loading').hide();
+		eventResize: function( event, dayDelta, minuteDelta, revertFunc, jsEvent, ui, view ) {
+			var id = event.id;
+			var nstart = $.fullCalendar.formatDate(event.start, 'yyyy-MM-dd');
+			var nend = $.fullCalendar.formatDate(event.end, 'yyyy-MM-dd');
+			$.post("ajaxupdate",{'id':id, 'start':nstart, 'end': nend},function(msg){
+				calendar.fullCalendar('updateEvent', event);
+			});
 		}
-		
+
 	});
 
 	$("#dialog-event").dialog({
@@ -82,50 +99,57 @@ $(document).ready(function($){
 				var title;
 				var start = $.fullCalendar.formatDate(curStart, 'yyyy-MM-dd');
 				
-				if (curEvent) {
+				if (e_update) {
+					
+					// update
 					curEvent.title = $('#event_title').val();
 					curEvent.start = $('#event_date').val();
-//					curEvent.start = $.fullCalendar.parseISO8601($('#event_date').val());
+					curEvent.color = $('#event_color').val();
 					var id = curEvent.id;
-					$.post("ajaxupdate",{'id':id, 'title':title, 'start':start},function(msg){
-						calendar.fullCalendar('updateEvent', curEvent);
+					$.post("ajaxupdate",
+						   	{'id':id, 'title':curEvent.title, 'start':curEvent.start, 'color':curEvent.color},
+						function(msg){
+							calendar.fullCalendar('updateEvent', curEvent);
 					});
+					
 				} else {
+					
+					// new event
+					
 					title = $('#event_title').val();
-					$.post("ajaxnewevent",{'title':title, 'start':start},function(id){
-//						alert(id);
+					var color = $('#event_color').val();
+					$.post("ajaxnewevent",{'title':title, 'start':start, 'color':color},function(id){
 						calendar.fullCalendar('renderEvent',
 							{
 								id: id,
 								title: title,
 								start: curStart,
 		//						end: end,
-		//						allDay: allDay
+								color: $('#event_color').val()
 							},
 							true // make the event "stick"
 						);
 					});
 				};
-//				var note_title = $('#note_title').val();
-//				var note_text = $('#note_text').val();
-//				var note_category = $('#NoteCategoryId').val();
-//				$.post("ajaxnewnote",{'name':note_title,'text':note_text, 'category_id':note_category},function(msg){
-//		
-//					// Appending the new note
-//					$(msg).hide().prependTo('.notes').fadeIn();
-////					location.reload(true);
-//					$('#NoteNoteuiForm').submit();
-//				
-//				});				
 				
 				$(this).dialog('close');
-//				curEvent = null;
+//				e_update = false;
+//				$('#event_color').simplecolorpicker('destroy');
 			},
 			Cancel: function() {
 				$(this).dialog('close');
-			}
+			},
+		},
+		open: function( event, ui ) {
+			$('#event_color').simplecolorpicker({theme: 'glyphicons'});
+		},
+		close: function( event, ui ) {
+			e_update = false;
+			$('#event_color').simplecolorpicker('destroy');
 		}
 	});
+	
+	// datepicker
 	
 	$('#event_date').datepicker({
 		dateFormat: 'yy-mm-dd',
@@ -133,6 +157,11 @@ $(document).ready(function($){
 		showAnim: 'show'
 	});
 	$('#ui-datepicker-div').hide();
+	
+//	var colorpicker = $('#event_color').simplecolorpicker({
+////		picker: true,
+//		theme: 'glyphicons'
+//	});
 
 
 });
