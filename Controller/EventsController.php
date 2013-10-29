@@ -63,6 +63,14 @@ class EventsController extends AppController {
 		$this->Event->save($this->request->data);
 	}
 
+	// remove event
+	
+	public function ajaxdelete($id = null) {
+		Configure::write('debug', 0);
+		$this->autoRender = false;
+		
+		$this->Event->delete($id);
+	}
 	
 		
 			

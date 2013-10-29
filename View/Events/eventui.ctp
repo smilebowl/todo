@@ -1,9 +1,8 @@
 <?php
 	echo $this->Html->css('/js/vendor/fullcalendar/fullcalendar.css', null, array('inline' => false));
 	echo $this->Html->css('/js/vendor/colorpicker/jquery.simplecolorpicker.css', null, array('inline' => false));
-//	echo $this->Html->css('/js/vendor/colorpicker/jquery.simplecolorpicker-fontawesome.css', null, array('inline' => false));
-//	echo $this->Html->css('/js/vendor/colorpicker/jquery.simplecolorpicker-nofont.css', null, array('inline' => false));
 	echo $this->Html->css('/js/vendor/colorpicker/jquery.simplecolorpicker-glyphicons.css', null, array('inline' => false));
+	
 	echo $this->Html->script('vendor/fullcalendar/fullcalendar.min.js', array('charset'=>'UTF-8'));
 	echo $this->Html->script('vendor/fullcalendar/gcal.js', array('charset'=>'UTF-8'));
 	echo $this->Html->script('vendor/colorpicker/jquery.simplecolorpicker.js', array('charset'=>'UTF-8'));
@@ -21,8 +20,9 @@
 <!--<div id="mydebug" class="col-sm-9 alert alert-success"></div>-->
 
 <div id="delete-confirm" title="Delete Item?">本当に削除しますか？</div>
+
 <div id="dialog-event" title="Event" style="display: none;">
-	<p>イベントを追加</p>
+<!--	<p>イベントを追加</p>-->
 
 	<div class="titlepart">
 		<label for="name">タイトル</label>
@@ -33,7 +33,7 @@
 		<input type="text" name="edate" id="event_date" class="text ui-widget-content ui-corner-all" value="date" />
 	</div>
 	<div>
-		<label for="color" class="control-label">Color</label>
+		<label for="colorpicker" class="control-label">Color</label>
 		<select name="colorpicker" id="event_color">
 		  <option value="#7bd148">Green</option>
 		  <option value="#5484ed">Bold blue</option>

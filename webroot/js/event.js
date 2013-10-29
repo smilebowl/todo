@@ -5,7 +5,12 @@ $(document).ready(function($){
 	var e_update;
 	
 	var calendar = $('#calendar').fullCalendar({
-	
+		header: {
+			left: 'prev,next today',
+			center: 'title',
+			right: 'month,basicWeek',
+			ignoreTimezone: false
+		},
 		editable: true,
 		firstDay: 1, // 1:月曜日
 
@@ -30,6 +35,7 @@ $(document).ready(function($){
 				url:'https://www.google.com/calendar/feeds/ja.japanese%23holiday%40group.v.calendar.google.com/public/basic',
 				color:'#f8d3d4',
 				textColor:'#666',
+				editable:false,
 				success:function(events){
 					$(events).each(function(){
 						this.url = null;
@@ -42,7 +48,9 @@ $(document).ready(function($){
 		
 		select: function(start, end, allDay, jsEvent, view) {
 			curStart = start;
-			$('.datepart').hide();
+//			$('.datepart').hide();
+			$('#event_date').val($.fullCalendar.formatDate(start, 'yyyy-MM-dd'));
+			$('#event_title').val('New event');
 			$('#dialog-event').dialog('open');
 			calendar.fullCalendar('unselect');
 		},
@@ -50,26 +58,22 @@ $(document).ready(function($){
 		// update event
 		
 		eventClick: function(event, jsEvent, view){
+			
+			if (!$.isNumeric(event.id)) return; // skip google calender
+			
 			curEvent = event;
 			e_update = true;
 			
 			$('.datepart').show();
 			$('#event_title').val(event.title);
 			$('#event_date').val($.fullCalendar.formatDate(event.start, 'yyyy-MM-dd'));
-//			alert(event.color);
 			
 			$('#event_color').val(event.color);
-//			$('#event_color').simplecolorpicker({theme: 'glyphicons'});
-//			colorpicker('selectColor', event.color);
 			$('#dialog-event').dialog('open');
-			
-//			$('#event_color').simplecolorpicker('destroy');
 			
 		},
 		
 		eventDrop: function(event, delta) {
-//			alert(event.title + ' was moved ' + delta + ' days\n' +
-//				'(should probably update your database)');
 			var id = event.id;
 			var nstart = $.fullCalendar.formatDate(event.start, 'yyyy-MM-dd');
 			var nend = $.fullCalendar.formatDate(event.end, 'yyyy-MM-dd');
@@ -96,12 +100,10 @@ $(document).ready(function($){
 		buttons: {
 			'OK': function() {
 				
-				var title;
-				var start = $.fullCalendar.formatDate(curStart, 'yyyy-MM-dd');
-				
 				if (e_update) {
 					
 					// update
+					
 					curEvent.title = $('#event_title').val();
 					curEvent.start = $('#event_date').val();
 					curEvent.color = $('#event_color').val();
@@ -116,14 +118,15 @@ $(document).ready(function($){
 					
 					// new event
 					
-					title = $('#event_title').val();
+					var title = $('#event_title').val();
+					var start = $('#event_date').val();
 					var color = $('#event_color').val();
 					$.post("ajaxnewevent",{'title':title, 'start':start, 'color':color},function(id){
 						calendar.fullCalendar('renderEvent',
 							{
 								id: id,
 								title: title,
-								start: curStart,
+								start: $('#event_date').val(),
 		//						end: end,
 								color: $('#event_color').val()
 							},
@@ -133,15 +136,29 @@ $(document).ready(function($){
 				};
 				
 				$(this).dialog('close');
-//				e_update = false;
-//				$('#event_color').simplecolorpicker('destroy');
 			},
 			Cancel: function() {
+				$(this).dialog('close');
+			},
+			Delete: function() {
+				if (!confirm("削除しますか？")) return;
+			
+				$.post("ajaxdelete/" + curEvent.id, null, function() {
+					calendar.fullCalendar('removeEvents', curEvent.id);
+				});
+
 				$(this).dialog('close');
 			},
 		},
 		open: function( event, ui ) {
 			$('#event_color').simplecolorpicker({theme: 'glyphicons'});
+			if (e_update) {
+//				$('.ui-dialog-buttonpane').find('button:contains("Delete")').removeAttr('disabled').removeClass('ui-state-disabled');
+				$('.ui-dialog-buttonpane').find('button:contains("Delete")').show();
+			} else {
+//				$('.ui-dialog-buttonpane').find('button:contains("Delete")').attr('disabled','disabled').addClass('ui-state-disabled');
+				$('.ui-dialog-buttonpane').find('button:contains("Delete")').hide();
+			}
 		},
 		close: function( event, ui ) {
 			e_update = false;
@@ -157,11 +174,5 @@ $(document).ready(function($){
 		showAnim: 'show'
 	});
 	$('#ui-datepicker-div').hide();
-	
-//	var colorpicker = $('#event_color').simplecolorpicker({
-////		picker: true,
-//		theme: 'glyphicons'
-//	});
-
 
 });
