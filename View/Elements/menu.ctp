@@ -50,6 +50,21 @@
 					</li>
 				</ul>
 			</li>
+			<li class="dropdown">
+				<a href="#" class="dropdown-toggle" data-toggle="dropdown">Events <b class="caret"></b></a>
+				<ul class="dropdown-menu">
+					<li<?php echo ($this->name=='Events' && $this->action=='eventui') ? ' class="active"' : ''; ?>>
+						<?php echo $this -> Html -> link(__('Main'), array('controller' => 'events', 'action' => 'eventui')); ?>
+					</li>
+					<li<?php echo ($this->name=='Events' && $this->action != 'eventui') ? ' class="active"' : ''; ?>>
+						<?php echo $this -> Html -> link(__('Mentenance'), array('controller' => 'events', 'action' => 'index')); ?>
+					</li>
+					<li class="divider"></li>
+					<li<?php echo ($this->name=='Calendars') ? ' class="active"' : ''; ?>>
+						<?php echo $this -> Html -> link(__('Calendars'), array('controller' => 'calendars', 'action' => 'index')); ?>
+					</li>
+				</ul>
+			</li>
 			<?php
 			if ($this -> Session -> read('Auth.User')) {
 				// $link = $this -> Html -> link($this -> Session -> read('Auth.User.displayname'), array('controller' => 'users', 'action' => 'view', $this -> Session -> read('Auth.User.id')));

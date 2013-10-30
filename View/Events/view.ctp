@@ -4,6 +4,8 @@
 		<li><?php echo $this->Form->postLink(__('Delete Event'), array('action' => 'delete', $event['Event']['id']), null, __('Are you sure you want to delete # %s?', $event['Event']['id'])); ?> </li>
 		<li><?php echo $this->Html->link(__('List Events'), array('action' => 'index')); ?> </li>
 		<li><?php echo $this->Html->link(__('New Event'), array('action' => 'add')); ?> </li>
+		<li><?php echo $this->Html->link(__('List Calendars'), array('controller' => 'calendars', 'action' => 'index')); ?> </li>
+		<li><?php echo $this->Html->link(__('New Calendar'), array('controller' => 'calendars', 'action' => 'add')); ?> </li>
 	</ul>
 </div>
 <div class="events view well">
@@ -12,6 +14,11 @@
 		<dt><?php echo __('Id'); ?></dt>
 		<dd>
 			<?php echo h($event['Event']['id']); ?>
+			&nbsp;
+		</dd>
+		<dt><?php echo __('Calendar'); ?></dt>
+		<dd>
+			<?php echo $this->Html->link($event['Calendar']['name'], array('controller' => 'calendars', 'action' => 'view', $event['Calendar']['id'])); ?>
 			&nbsp;
 		</dd>
 		<dt><?php echo __('Title'); ?></dt>
@@ -29,9 +36,19 @@
 			<?php echo h($event['Event']['end']); ?>
 			&nbsp;
 		</dd>
+		<dt><?php echo __('Detail'); ?></dt>
+		<dd>
+			<?php echo h($event['Event']['detail']); ?>
+			&nbsp;
+		</dd>
 		<dt><?php echo __('Color'); ?></dt>
 		<dd>
 			<?php echo h($event['Event']['color']); ?>
+			&nbsp;
+		</dd>
+		<dt><?php echo __('Textcolor'); ?></dt>
+		<dd>
+			<?php echo h($event['Event']['textcolor']); ?>
 			&nbsp;
 		</dd>
 		<dt><?php echo __('Created'); ?></dt>

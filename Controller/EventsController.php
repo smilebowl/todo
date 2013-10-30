@@ -121,6 +121,8 @@ class EventsController extends AppController {
 				$this->Session->setFlashError(__('The event could not be saved. Please, try again.') );
 			}
 		}
+		$calendars = $this->Event->Calendar->find('list');
+		$this->set(compact('calendars'));
 	}
 
 /**
@@ -145,6 +147,8 @@ class EventsController extends AppController {
 			$options = array('conditions' => array('Event.' . $this->Event->primaryKey => $id));
 			$this->request->data = $this->Event->find('first', $options);
 		}
+		$calendars = $this->Event->Calendar->find('list');
+		$this->set(compact('calendars'));
 	}
 
 /**

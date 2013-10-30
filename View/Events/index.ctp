@@ -1,6 +1,8 @@
 <div class="actions">
 	<ul class="nav nav-pills well well-sm">
 		<li><?php echo $this->Html->link(__('New Event'), array('action' => 'add')); ?></li>
+		<li><?php echo $this->Html->link(__('List Calendars'), array('controller' => 'calendars', 'action' => 'index')); ?> </li>
+		<li><?php echo $this->Html->link(__('New Calendar'), array('controller' => 'calendars', 'action' => 'add')); ?> </li>
 	</ul>
 </div>
 <div class="events index">
@@ -18,10 +20,13 @@
 	<tr>
 		<th class="actions"><?php echo __('Actions'); ?></th>
 			<th><?php echo $this->Paginator->sort('id'); ?></th>
+			<th><?php echo $this->Paginator->sort('calendar_id'); ?></th>
 			<th><?php echo $this->Paginator->sort('title'); ?></th>
 			<th><?php echo $this->Paginator->sort('start'); ?></th>
 			<th><?php echo $this->Paginator->sort('end'); ?></th>
+			<th><?php echo $this->Paginator->sort('detail'); ?></th>
 			<th><?php echo $this->Paginator->sort('color'); ?></th>
+			<th><?php echo $this->Paginator->sort('textcolor'); ?></th>
 			<th><?php echo $this->Paginator->sort('created'); ?></th>
 		</tr>
 	<?php foreach ($events as $event): ?>
@@ -32,10 +37,15 @@
 			<?php echo $this->Icon->postLink(__('Delete'), array('action' => 'delete', $event['Event']['id']), null, __('Are you sure you want to delete # %s?', $event['Event']['id'])); ?>
 		</td>
 		<td><?php echo h($event['Event']['id']); ?>&nbsp;</td>
+		<td>
+			<?php echo $this->Html->link($event['Calendar']['name'], array('controller' => 'calendars', 'action' => 'view', $event['Calendar']['id'])); ?>
+		</td>
 		<td><?php echo h($event['Event']['title']); ?>&nbsp;</td>
 		<td><?php echo h($event['Event']['start']); ?>&nbsp;</td>
 		<td><?php echo h($event['Event']['end']); ?>&nbsp;</td>
+		<td><?php echo h($event['Event']['detail']); ?>&nbsp;</td>
 		<td><?php echo h($event['Event']['color']); ?>&nbsp;</td>
+		<td><?php echo h($event['Event']['textcolor']); ?>&nbsp;</td>
 		<td><?php echo h($event['Event']['created']); ?>&nbsp;</td>
 	</tr>
 <?php endforeach; ?>

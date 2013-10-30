@@ -3,6 +3,8 @@
 
 		<li><?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $this->Form->value('Event.id')), null, __('Are you sure you want to delete # %s?', $this->Form->value('Event.id'))); ?></li>
 		<li><?php echo $this->Html->link(__('List Events'), array('action' => 'index')); ?></li>
+		<li><?php echo $this->Html->link(__('List Calendars'), array('controller' => 'calendars', 'action' => 'index')); ?> </li>
+		<li><?php echo $this->Html->link(__('New Calendar'), array('controller' => 'calendars', 'action' => 'add')); ?> </li>
 	</ul>
 </div>
 <div class="events form">
@@ -20,10 +22,13 @@
 		<legend><?php echo __('Edit Event'); ?></legend>
 	<?php
 		echo $this->Form->input('id');
+		echo $this->Form->input('calendar_id');
 		echo $this->Form->input('title', array('afterInput'=>'<span class="help-block"><span class="label label-warning">'.__('Required').'</span></span>'));
 		echo $this->Form->input('start', array('afterInput'=>'<span class="help-block"><span class="label label-warning">'.__('Required').'</span></span>'));
 		echo $this->Form->input('end');
+		echo $this->Form->input('detail');
 		echo $this->Form->input('color');
+		echo $this->Form->input('textcolor');
 	?>
 	</fieldset>
 <?php echo $this->Form->submit(__('Submit'), array('class'=>'btn btn-primary')); ?>
