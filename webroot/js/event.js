@@ -63,6 +63,10 @@ $(document).ready(function($){
 			
 			curEvent = event;
 			e_update = true;
+
+			$.post("ajaxgetdetail",	{'id':event.id}, function(msg){
+				$('#event_detail').val(msg);
+			});
 			
 			$('.datepart').show();
 			$('#event_title').val(event.title);
@@ -96,6 +100,7 @@ $(document).ready(function($){
 	$("#dialog-event").dialog({
 		resizable: false,
 		modal: true,
+		width: '420px',
 		autoOpen:false,
 		buttons: {
 			'OK': function() {
@@ -109,7 +114,7 @@ $(document).ready(function($){
 					curEvent.color = $('#event_color').val();
 					var id = curEvent.id;
 					$.post("ajaxupdate",
-						   	{'id':id, 'title':curEvent.title, 'start':curEvent.start, 'color':curEvent.color},
+						   	{'id':id, 'title':curEvent.title, 'start':curEvent.start, 'color':curEvent.color, 'detail':$('#event_detail').val()},
 						function(msg){
 							calendar.fullCalendar('updateEvent', curEvent);
 					});

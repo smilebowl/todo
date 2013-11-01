@@ -32,6 +32,10 @@
 		<label for="edate" class="control-label">日付</label>
 		<input type="text" name="edate" id="event_date" class="text ui-widget-content ui-corner-all" value="date" />
 	</div>
+	<div class="detailpart form-group">
+		<label for="edetail" class="control-label">詳細</label>
+		<textarea name="edetail" id="event_detail" cols=30 rows=3 class="text ui-widget-content ui-corner-all"></textarea>
+	</div>
 	<div>
 		<label for="colorpicker" class="control-label">Color</label>
 		<select name="colorpicker" id="event_color">

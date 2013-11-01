@@ -63,6 +63,14 @@ class EventsController extends AppController {
 		$this->Event->save($this->request->data);
 	}
 
+	public function ajaxgetdetail() {
+		Configure::write('debug', 0);
+		$this->autoRender = false;
+		
+		$this->Event->id = $this->request->data['id'];
+		echo $this->Event->field('detail');
+	}
+
 	// remove event
 	
 	public function ajaxdelete($id = null) {

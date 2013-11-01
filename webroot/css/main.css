@@ -17,6 +17,7 @@ body {
 	margin: 0px auto;
 }
 
+.ui-widget-overlay {position:fixed;}
 /* =============================== for todo ==================================== */
 
 /*for ui.sortable*/
