@@ -40,6 +40,7 @@
 
 	</div> <!-- /container -->
 
+<!--
 	<div id="footer" class="col-sm-8">
 		<?php echo $this->Html->link(
 				$this->Html->image('cake.power.gif', array('alt' => '', 'border' => '0')),
@@ -48,6 +49,7 @@
 			);
 		?>
 	</div>
+-->
 	<!-- Le javascript
     ================================================== -->
 	<!-- Placed at the end of the document so the pages load faster -->

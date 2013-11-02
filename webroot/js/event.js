@@ -1,6 +1,6 @@
 $(document).ready(function($){
 	
-	var curStart;　// for insert
+//	var curStart;　// for insert
 	var curEvent;  // for update
 	var e_update;
 	
@@ -26,7 +26,11 @@ $(document).ready(function($){
 		
 		// return json
 		
-		events: "ajaxloadevent",
+//		events: "ajaxloadevent",
+		events: {
+			url: "ajaxloadevent",
+			data : {'calendar_id':$('#EventCalendarId').val()}
+		},
 		
 		// google calendar
 		
@@ -44,13 +48,18 @@ $(document).ready(function($){
 			}
 		],
 
-		// add event
+		// new event
 		
 		select: function(start, end, allDay, jsEvent, view) {
-			curStart = start;
+//			curStart = start;
 //			$('.datepart').hide();
 			$('#event_date').val($.fullCalendar.formatDate(start, 'yyyy-MM-dd'));
 			$('#event_title').val('New event');
+			$('#event_detail').val(null);
+			$('#calendar_select').val($('#EventCalendarId').val());
+			
+			// open dialog 
+			
 			$('#dialog-event').dialog('open');
 			calendar.fullCalendar('unselect');
 		},
@@ -64,15 +73,24 @@ $(document).ready(function($){
 			curEvent = event;
 			e_update = true;
 
-			$.post("ajaxgetdetail",	{'id':event.id}, function(msg){
-				$('#event_detail').val(msg);
-			});
+			
+			// initialize dialog for update
 			
 			$('.datepart').show();
 			$('#event_title').val(event.title);
 			$('#event_date').val($.fullCalendar.formatDate(event.start, 'yyyy-MM-dd'));
 			
+			$.post("ajaxgetdetail",	{'id':event.id}, function(msg){
+				$('#event_detail').val(msg);
+			});
 			$('#event_color').val(event.color);
+			$.post("ajaxgetcid",	{'id':event.id}, function(msg){
+				$('#calendar_select').val(msg);
+			});
+//			$('#calendar_select').val($('#EventCalendarId').val());
+			
+			// open dialog 
+			
 			$('#dialog-event').dialog('open');
 			
 		},
@@ -102,6 +120,7 @@ $(document).ready(function($){
 		modal: true,
 		width: '420px',
 		autoOpen:false,
+		show: "slide",
 		buttons: {
 			'OK': function() {
 				
@@ -114,7 +133,13 @@ $(document).ready(function($){
 					curEvent.color = $('#event_color').val();
 					var id = curEvent.id;
 					$.post("ajaxupdate",
-						   	{'id':id, 'title':curEvent.title, 'start':curEvent.start, 'color':curEvent.color, 'detail':$('#event_detail').val()},
+						{'id':id,
+						 'title':curEvent.title,
+						 'start':curEvent.start,
+						 'color':curEvent.color,
+						 'detail':$('#event_detail').val(),
+						 'calendar_id':$('#calendar_select').val()
+						},
 						function(msg){
 							calendar.fullCalendar('updateEvent', curEvent);
 					});
@@ -126,17 +151,26 @@ $(document).ready(function($){
 					var title = $('#event_title').val();
 					var start = $('#event_date').val();
 					var color = $('#event_color').val();
-					$.post("ajaxnewevent",{'title':title, 'start':start, 'color':color},function(id){
-						calendar.fullCalendar('renderEvent',
-							{
-								id: id,
-								title: title,
-								start: $('#event_date').val(),
-		//						end: end,
-								color: $('#event_color').val()
-							},
-							true // make the event "stick"
-						);
+					$.post("ajaxnewevent",
+						{'title':title,
+						 'start':start,
+						 'color':color,
+						 'detail':$('#event_detail').val(),
+						 'calendar_id':$('#calendar_select').val()
+						},
+					  function(id){
+
+						if (id) {
+							calendar.fullCalendar('renderEvent',
+								{
+									id: id,
+									title: title,
+									start: $('#event_date').val(),
+									color: $('#event_color').val()
+								},
+								true // make the event "stick"
+							);
+						}
 					});
 				};
 				
@@ -179,5 +213,14 @@ $(document).ready(function($){
 		showAnim: 'show'
 	});
 	$('#ui-datepicker-div').hide();
+	
+	$('.calendarid').click(function(e){
+		cid = $(this).attr('id');
+		if (cid)
+			cid = cid.replace('cid_','');
+		$('#EventCalendarId').val(cid);
+		$('#EventEventuiForm').submit();
+		e.preventDefault();
+	});
 
 });

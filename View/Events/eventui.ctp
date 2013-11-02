@@ -9,14 +9,25 @@
 	echo $this->Html->script('event', array('charset'=>'UTF-8'));
 ?>
 
-<div id="calendar" style="height:700px">
+<?php $calendar_id = empty($this->request->data['calendar_id'])  ? '' : $this->request->data['calendar_id']; ?>
+<form id="EventEventuiForm" method="post" accept-charset="utf-8">
+<input type="hidden" name="calendar_id" id="EventCalendarId" value="<?php echo $calendar_id; ?>">
+</form>
+
+<ul class="nav nav-tabs">
+  <li class="<?php echo empty($calendar_id)?'active':''; ?>"><a href="#" class="calendarid">All events</a></li>
+	<?php foreach ($calendars as $idx =>$calendar) : ?>
+	  <li class="<?php echo ($calendar_id==$idx)?'active':''; ?>">
+	  	<a href="#" class="calendarid" id="cid_<?php echo $idx; ?>"><?php echo $calendar;?></a>
+	  </li>
+	<?php endforeach; ?>
+</ul>
+<br />
 
 
+<!-- Calendar -->
+<div id="calendar" style="height:700px"></div>
 
-</div>
-
-<div class="clearfix"></div>
-<hr />
 <!--<div id="mydebug" class="col-sm-9 alert alert-success"></div>-->
 
 <div id="delete-confirm" title="Delete Item?">本当に削除しますか？</div>
@@ -24,17 +35,25 @@
 <div id="dialog-event" title="Event" style="display: none;">
 <!--	<p>イベントを追加</p>-->
 
+	<?php
+		echo $this->Form->input('calendar_select',array(
+			'type'=>'select',
+			'label'=>'カレンダー',
+			'options'=>$calendars,
+			'class' => 'form-control'
+		));
+	?>
 	<div class="titlepart">
 		<label for="name">タイトル</label>
-		<input type="text" name="name" id="event_title" class="text ui-widget-content ui-corner-all" value="New event" />
+		<input type="text" size="30" name="name" id="event_title" class="form-control" placeholder="Event title" />
 	</div>
 	<div class="datepart form-group">
 		<label for="edate" class="control-label">日付</label>
-		<input type="text" name="edate" id="event_date" class="text ui-widget-content ui-corner-all" value="date" />
+		<input type="text" name="edate" id="event_date" class="form-control" value="date" />
 	</div>
 	<div class="detailpart form-group">
 		<label for="edetail" class="control-label">詳細</label>
-		<textarea name="edetail" id="event_detail" cols=30 rows=3 class="text ui-widget-content ui-corner-all"></textarea>
+		<textarea name="edetail" id="event_detail" cols=30 rows=3 class="form-control"></textarea>
 	</div>
 	<div>
 		<label for="colorpicker" class="control-label">Color</label>

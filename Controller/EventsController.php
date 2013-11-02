@@ -16,8 +16,8 @@ class EventsController extends AppController {
 	public $components = array('Paginator');
 
 
+	// fullcalendar loading query(json)
 	public function ajaxloadevent() {
-//		$this->log($this->request);
 		
 		Configure::write('debug', 0);
 		$this->autoRender = false;
@@ -25,29 +25,30 @@ class EventsController extends AppController {
 		
 		$start = date("Y-m-d",$this->request->query['start']);
 		$end = date("Y-m-d",$this->request->query['end']);
-		
+		$cond = array('and'=>array('start >='=>$start, 'start <='=>$end));
+	
+		if (!empty($this->request->query['calendar_id'])) {
+			$cond['and']['calendar_id'] =$this->request->query['calendar_id'];
+		}
 		
 		$this->Event->recursive = 0;
 		$events = $this->Event->find('all', array(
-			'conditions'=>array('and'=>array('start >='=>$start, 'start <='=>$end)),
-//			'order' => 'position asc',
-			'fields' => array('id','title','start','end', 'color')
+			'conditions'=>$cond,
 		));
-		
+
+		// return json
+				
 		$json = array();
 		foreach ($events as $evt) {
 			settype($evt['Event']['id'], 'integer');
 			$json[] = $evt['Event'];
 		}
-		
-//		$this->log(json_encode($json));
 		echo json_encode($json);
 	}
-	
+
+	// new event
+		
 	public function ajaxnewevent() {
-		
-//		$this->log($this->request->data);
-		
 		Configure::write('debug', 0);
 		$this->autoRender = false;
 		$this->layout = 'ajax';
@@ -55,7 +56,9 @@ class EventsController extends AppController {
 		$this->Event->save($this->request->data);
 		echo $this->Event->id;
 	}
-	
+
+	// update event
+		
 	public function ajaxupdate() {
 		Configure::write('debug', 0);
 		$this->autoRender = false;
@@ -63,12 +66,24 @@ class EventsController extends AppController {
 		$this->Event->save($this->request->data);
 	}
 
+	// get detail field
+	
 	public function ajaxgetdetail() {
 		Configure::write('debug', 0);
 		$this->autoRender = false;
 		
 		$this->Event->id = $this->request->data['id'];
 		echo $this->Event->field('detail');
+	}
+
+	// get calendar_id field
+	
+	public function ajaxgetcid() {
+		Configure::write('debug', 0);
+		$this->autoRender = false;
+		
+		$this->Event->id = $this->request->data['id'];
+		echo $this->Event->field('calendar_id');
 	}
 
 	// remove event
@@ -80,13 +95,11 @@ class EventsController extends AppController {
 		$this->Event->delete($id);
 	}
 	
-		
+	// event ui
 			
-	public function eventui() {
-//		$this->Event->recursive = 0;
-//		$events = $this->Event->find('all', array(
-//		));
-//		$this->set(compact('events'));
+	public function eventui($calendarid=null) {
+		$calendars = $this->Event->Calendar->find('list',array('order'=>'position'));
+		$this->set(compact('calendars'));
 	}
 
 /**
