@@ -22,6 +22,7 @@ class HistoriesController extends AppController {
  */
 	public function index() {
 		$this->History->recursive = 0;
+		$this->paginate = array('order'=>'completed desc');
 		$this->set('histories', $this->paginate());
 	}
 

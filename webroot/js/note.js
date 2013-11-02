@@ -1,7 +1,7 @@
 $(document).ready(function($){
 
 
-	// draggable
+	// draggable start
 	
 	$( ".portlet" ).draggable({
 		handle: ".portlet-header",
@@ -13,7 +13,7 @@ $(document).ready(function($){
 		}
 	});
 
-	// resizable
+	// resizable start
 	
 	$( ".portlet").resizable({
 		stop: function( event, ui ) {
@@ -23,11 +23,6 @@ $(document).ready(function($){
 		}
 	});
 
-	// select category
-	
-//	$("#NoteCategoryId").change(function () {
-//		$(this).closest('form').submit();
-//	});
 	
 	// remove note
 	
@@ -53,13 +48,6 @@ $(document).ready(function($){
 			 curnote.find('.portlet-content').text(text);
 		});
 	});
-
-	// toggle
-	
-//	$('.notes').on('click', '.ui-icon-minusthick', function(){
-//		$( this ).toggleClass( "ui-icon-minusthick" ).toggleClass( "ui-icon-plusthick" );
-//		$( this ).closest( ".portlet" ).find( ".portlet-content" ).toggle();
-//	});
 
 	// save text
 	
@@ -110,7 +98,8 @@ $(document).ready(function($){
 
 	// change title
 	
-	var targetTitleChange;	
+	var targetTitleChange;	// target object for title change
+	
 	$("#dialog-title").dialog({
 		resizable: false,
 		modal: true,
@@ -140,11 +129,17 @@ $(document).ready(function($){
 	// page change
 	
 	$('.categoryid').click(function(e){
+		
+		// get page-id
+		
 		cid = $(this).attr('id');
-		if (cid)
-			cid = cid.replace('cid_','');
+		if (cid) cid = cid.replace('cid_','');
+		
+		// submit
+		
 		$('#NoteCategoryId').val(cid);
 		$('#NoteNoteuiForm').submit();
+		
 		e.preventDefault();
 	});	
 });	

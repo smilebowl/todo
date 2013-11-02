@@ -38,7 +38,7 @@
 	<?php
 		echo $this->Form->input('calendar_select',array(
 			'type'=>'select',
-			'label'=>'カレンダー',
+			'label'=>__('Calendars'),
 			'options'=>$calendars,
 			'class' => 'form-control'
 		));

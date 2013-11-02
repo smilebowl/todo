@@ -4,7 +4,7 @@ $(document).ready(function($){
 	
 	var currentItem;
 	
-	// sortable
+	// sortable start
 	
 	$( ".items" ).sortable({
 		axis		: 'y',
@@ -162,17 +162,16 @@ $(document).ready(function($){
 	// save item if changed
 	
 	$('.items').on('blur', '.textbox', function() {
-		// cur('blur :' + $(this).closest('.item').attr('id') + ' / origin : ' +  currentItem.attr('id') + ' : '+ currentItem.data('origin'));
 				
 		var text = $.trim(currentItem.find("input[type=text]").val());
 
-		if (text == currentItem.data('origin')) {
-			cur('update : none ' + currentItem.attr('id') );
-		} else {
-			cur('update : yes ' + currentItem.attr('id') );
+		// update todo
+		
+		if (text != currentItem.data('origin')) {
 			var itemid = currentItem.attr('id');
 			$.post("ajaxedit",{'id':itemid,'name':text});
 		}
+		
 		$(this).closest('.item').removeClass('itemselected');
 		currentItem.removeData('origin')
 			.find('.itemtext')
@@ -203,7 +202,6 @@ $(document).ready(function($){
 			$('#addButton').focus().click();
 			e.preventDefault();
 		}
-		cur('keydown : '+ e.which);
 	});
 
 	// checkbox selected
@@ -216,7 +214,6 @@ $(document).ready(function($){
 	
 	$('#addButton').click(function(e){
 
-		// $.get("ajax.php",{'action':'new','text':'New Todo Item. Doubleclick to Edit.','rand':Math.random()},function(msg){
 		var pageid = $('#TodoTodopageId').val();
 		$.post("ajaxadd",{'name':'New Item.','todopage_id':pageid},function(msg){
 
@@ -226,10 +223,6 @@ $(document).ready(function($){
 		
 		e.preventDefault();
 	});
-	
-//	$("#TodoTodopageId").change(function () {
-//		$(this).closest('form').submit();
-//	});	
 	
 	// move completed items to history
 	
@@ -262,9 +255,14 @@ $(document).ready(function($){
 	// page change
 	
 	$('.todopageid').click(function(e){
+		
+		// get page-id
+		
 		cid = $(this).attr('id');
-		if (cid)
-			cid = cid.replace('cid_','');
+		if (cid) cid = cid.replace('cid_','');
+		
+		// submit
+		
 		$('#TodoTodopageId').val(cid);
 		$('#TodoTodouiForm').submit();
 		e.preventDefault();
