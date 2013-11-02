@@ -25,9 +25,9 @@ $(document).ready(function($){
 
 	// select category
 	
-	$("#NoteCategoryId").change(function () {
-		$(this).closest('form').submit();
-	});
+//	$("#NoteCategoryId").change(function () {
+//		$(this).closest('form').submit();
+//	});
 	
 	// remove note
 	
@@ -136,5 +136,13 @@ $(document).ready(function($){
 		$('#note_newtitle').val($.trim($(this).text()));
 		$("#dialog-title").dialog('open');
 	});
-	
+
+	$('.categoryid').click(function(e){
+		cid = $(this).attr('id');
+		if (cid)
+			cid = cid.replace('cid_','');
+		$('#NoteCategoryId').val(cid);
+		$('#NoteNoteuiForm').submit();
+		e.preventDefault();
+	});	
 });	

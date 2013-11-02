@@ -21,10 +21,10 @@ class NotesController extends AppController {
 	public function noteui() {
 		$categories = $this->Note->Category->find('list',array('order'=>'position'));
 		$this->set(compact('categories'));
-		if (empty($this->request->data['Note']['category_id'])) {
+		if (empty($this->request->data['category_id'])) {
 			$id=key($categories);
 		} else {
-			$id = $this->request->data['Note']['category_id'];
+			$id = $this->request->data['category_id'];
 		}
 		
 		$this->Note->recursive = 0;
