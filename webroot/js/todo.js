@@ -227,9 +227,10 @@ $(document).ready(function($){
 		e.preventDefault();
 	});
 	
-	$("#TodoTodopageId").change(function () {
-		$(this).closest('form').submit();
-	});	
+//	$("#TodoTodopageId").change(function () {
+//		$(this).closest('form').submit();
+//	});	
+	
 	// move completed items to history
 	
 	$('#historyButton').click(function(){
@@ -258,4 +259,15 @@ $(document).ready(function($){
 		});
 	});
 	
+	// page change
+	
+	$('.todopageid').click(function(e){
+		cid = $(this).attr('id');
+		if (cid)
+			cid = cid.replace('cid_','');
+		$('#TodoTodopageId').val(cid);
+		$('#TodoTodouiForm').submit();
+		e.preventDefault();
+	});	
+
 });

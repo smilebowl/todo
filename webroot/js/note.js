@@ -137,6 +137,8 @@ $(document).ready(function($){
 		$("#dialog-title").dialog('open');
 	});
 
+	// page change
+	
 	$('.categoryid').click(function(e){
 		cid = $(this).attr('id');
 		if (cid)
