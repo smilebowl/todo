@@ -1,8 +1,8 @@
 $(document).ready(function($){
-	
+
 	var curEvent;	// selected event object for update
 	var e_update;	// flag
-	
+
 	var calendar = $('#calendar').fullCalendar({
 		header: {
 //			left: 'prev,next today',
@@ -22,16 +22,16 @@ $(document).ready(function($){
 			week: '[yyyy年 ]M月 d日{ &#8212;[yyyy年 ][ M月] d日}',
 			day: 'yyyy年 M月 d日 dddd'
 		},
-		
+
 		// return json
-		
+
 		events: {
 			url: "ajaxloadevent",
 			data : {'calendar_id':$('#EventCalendarId').val()}
 		},
-		
+
 		// google holiday calendar(Japanese)
-		
+
 		eventSources: [
 			{
 				url:'https://www.google.com/calendar/feeds/ja.japanese%23holiday%40group.v.calendar.google.com/public/basic',
@@ -41,47 +41,47 @@ $(document).ready(function($){
 				success:function(events){
 					$(events).each(function(){
 						this.url = null;	// remove link
-					});     
+					});
 				},
 			}
 		],
 
 		// new event
-		
+
 		select: function(start, end, allDay, jsEvent, view) {
-			
+
 			// initialize dialog items for new event
-			
+
 			$('#event_date').val($.fullCalendar.formatDate(start, 'yyyy-MM-dd'));
 			$('#event_title').val('');
 			$('#event_detail').val(null);
 			$('#calendar_select').val($('#EventCalendarId').val());
 			dlg_event.dialog('option', 'title', 'New event');
-			
-			// open dialog 
-			
+
+			// open dialog
+
 			$('#dialog-event').dialog('open');
 			calendar.fullCalendar('unselect');
 		},
-		
+
 		// update event
-		
+
 		eventClick: function(event, jsEvent, view){
-			
+
 			if (!$.isNumeric(event.id)) return; // skip google calender
-			
+
 			curEvent = event;
 			e_update = true;
 
-			
+
 			// initialize dialog for update
-			
+
 			$('.datepart').show();
 			$('#event_title').val(event.title);
 			$('#event_date').val($.fullCalendar.formatDate(event.start, 'yyyy-MM-dd'));
-			
+
 			// get event record from server
-			
+
 			$.ajax({
 				type:	'post',
 				url:	"ajaxgetrecord",
@@ -92,18 +92,18 @@ $(document).ready(function($){
 					$('#calendar_select').val(data.calendar_id);
 				}
 			});
-			
+
 			$('#event_color').val(event.color);
 			dlg_event.dialog('option', 'title', 'Update event');
-			
-			// open dialog 
-			
+
+			// open dialog
+
 			$('#dialog-event').dialog('open');
-			
+
 		},
-		
+
 		// event droped
-		
+
 		eventDrop: function(event, delta) {
 
 			$.post("ajaxupdate",
@@ -117,7 +117,7 @@ $(document).ready(function($){
 				}
 			);
 		},
-		
+
 		eventResize: function( event, dayDelta, minuteDelta, revertFunc, jsEvent, ui, view ) {
 
 			$.post("ajaxupdate",
@@ -140,19 +140,19 @@ $(document).ready(function($){
 		width: '420px',
 		autoOpen:false,
 		show: "slide",
-		
+
 		buttons: {
 			'OK': function() {
-				
+
 				if (!$('#event_title').val()) {
 					alert('Title is empty.');
 					return;
 				}
-				
+
 				if (e_update) {
-					
+
 					// update
-					
+
 					curEvent.title = $('#event_title').val();
 					curEvent.start = $('#event_date').val();
 					curEvent.color = $('#event_color').val();
@@ -169,11 +169,11 @@ $(document).ready(function($){
 						function(msg){
 							calendar.fullCalendar('updateEvent', curEvent);
 					});
-					
+
 				} else {
-					
+
 					// new event
-					
+
 					var title = $('#event_title').val();
 					var start = $('#event_date').val();
 					var color = $('#event_color').val();
@@ -200,7 +200,7 @@ $(document).ready(function($){
 						}
 					});
 				};
-				
+
 				$(this).dialog('close');
 			},
 			Cancel: function() {
@@ -208,7 +208,7 @@ $(document).ready(function($){
 			},
 			Delete: function() {
 				if (!confirm("削除しますか？")) return;
-			
+
 				$.post("ajaxdelete/" + curEvent.id, null, function() {
 					calendar.fullCalendar('removeEvents', curEvent.id);
 				});
@@ -216,7 +216,7 @@ $(document).ready(function($){
 				$(this).dialog('close');
 			},
 		},
-		
+
 		open: function( event, ui ) {
 			$('#event_color').simplecolorpicker({theme: 'glyphicons'});
 			if (e_update) {
@@ -231,7 +231,7 @@ $(document).ready(function($){
 			$('#event_color').simplecolorpicker('destroy');
 		}
 	});
-	
+
 	// jquery datepicker
 //	$.datepicker.setDefaults( $.datepicker.regional[ "ja" ] );
 	$('#event_date').datepicker({
@@ -239,23 +239,23 @@ $(document).ready(function($){
 		firstDay: 1,
 		showAnim: 'show'
 	});
-	
-	// hide 
-	
+
+	// hide
+
 	$('#ui-datepicker-div').hide();
-	
+
 	// click tab
-	
+
 	$('.calendarid').click(function(e){
 		e.preventDefault();
-		
+
 		// get calendar-id
-		
+
 		cid = $(this).attr('id');
 		if (cid) cid = cid.replace('cid_','');
-		
+
 		// reload
-		
+
 		$('#EventCalendarId').val(cid);
 		$('#EventEventuiForm').submit();
 	});

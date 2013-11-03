@@ -1,15 +1,15 @@
 $(document).ready(function($){
 
 	// selected item
-	
+
 	var currentItem;
-	
+
 	// sortable start
-	
+
 	$( ".items" ).sortable({
 		axis		: 'y',
 		placeholder	: 'ui-state-highlight',
-		
+
 		update		: function(){
 			var arr = $(".items").sortable('toArray');
 			$.post("ajaxrearrange",
@@ -22,28 +22,28 @@ $(document).ready(function($){
 	$( ".items" ).disableSelection();
 
 	// デバッグ用
-	
+
 	$('#mydebug').hide();
 	function cur(v){
 //		$('#mydebug').prepend('<div>'+v+'</div');
 	}
-	
+
 	// delete confirmation dialog
-	
+
 	$("#delete-confirm").dialog({
 		resizable: false,
 		modal: true,
 		autoOpen:false,
-		
+
 		buttons: {
 			'削除': function() {
 
 				// ajaxdelete
-				
+
 				$.post("ajaxdelete/"+currentItem.data('id'),null,function(msg){
 					currentItem.fadeOut('normal', function() {currentItem.remove();});
 				});
-				
+
 				$(this).dialog('close');
 			},
 			Cancel: function() {
@@ -51,16 +51,16 @@ $(document).ready(function($){
 			}
 		}
 	});
-	
+
 	// move to history confirmation dialog
-	
+
 	$("#history-confirm").dialog({
 		resizable: false,
 		modal: true,
 		autoOpen:false,
 		buttons: {
 			'移動': function() {
-				
+
 				var pageid = $('#TodoTodopageId').val();
 				$.ajax({
 					type: "POST",
@@ -72,65 +72,65 @@ $(document).ready(function($){
 						$( '#TodoTodouiForm' ).submit();	// reload
 					}
 				});
-				
+
 				$(this).dialog('close');
 			},
 			Cancel: function() {
 				$(this).dialog('close');
 			}
 		}
-	});	
+	});
 
 	// selecting item
-	
+
 	$('.items').on('click', '.item a', function(e){
 		e.preventDefault();
-		
+
 		currentItem = $(this).closest('.item');
 		currentItem.data('id',currentItem.attr('id'));
-		
+
 		$(this).closest('.item').addClass('itemselected');
-		
+
 	});
-	
+
 	// start edit
-	
+
 	$('.items').on('click', '.item a.edititem', function(e){
 		// cur('click a.edititem:' + $(this).closest('.item').attr('id'));
 		var container = currentItem.find('.itemtext');
-		
+
 		if ( !currentItem.data('origin') ) {
 			currentItem.data('origin', container.text())
 		} else {
 			return false;
 		}
-		
+
 		// insert textbox
-		
+
 		$('<input type="text" class="textbox">')
 			.val(container.text())
 			.appendTo(container.empty())
 			.focus()
 			.select();
-		
+
 		e.preventDefault();
 	});
-	
+
 	// remove item
-	
+
 	$('.items').on('click', '.item a.removeitem', function(){
 		$("#delete-confirm").dialog('open');
 	});
 
-	// complete todo 
-	
+	// complete todo
+
 	$('.items').on('click', '.item a.compitem', function(){
 		var itemid = currentItem.attr('id');
 		var compdate = $.datepicker.formatDate('yy-mm-dd', new Date());
 		if ($(this).closest('.item').hasClass('completed')) {
-			
+
 			// cancel completed
-			
+
 			compdate = null;
 			$.post("ajaxcomplete",
 				{
@@ -140,23 +140,23 @@ $(document).ready(function($){
 			);
 			$(this).closest('.item').removeClass('completed itemselected').find('.date-completed').remove();
 			$(this).closest('.item').find('.tohistory button').attr('disabled','disabled');
-			
+
 		} else {
 
 			// to completed
-			
+
 			$.post("ajaxcomplete",{'id':itemid,'completed':compdate});
 			$(this).closest('.item').addClass('completed')
 				.find('.date-created')
 				.after('<span class="date-completed">' + compdate.substr(5,5) +'</span>');
 			$(this).closest('.item').find('.tohistory button').removeAttr('disabled');
-			
+
 		}
-		
+
 	});
-	
+
 	// to history
-	
+
 	$('.items').on('click', '.item a.tohistory', function(){
 		if (confirm('選択したアイテムを履歴に移動しますか？') != true) return;
 		var itemid = currentItem.attr('id');
@@ -164,19 +164,19 @@ $(document).ready(function($){
 			currentItem.fadeOut('normal', function() {currentItem.remove();});
 		});
 	});
-	
+
 	// start edit (double click)
 
 	$('.items').on('dblclick', '.item', function(){
 		$(this).find('a.edititem').focus().click();
 	});
-	
-	// emphasis 
-	
+
+	// emphasis
+
 	$('.items').on('click', '.itemtext', function() {
 		$(this).toggleClass('text-danger');
 		emphasis = $(this).hasClass("text-danger") ? 1 : 0;
-		
+
 		$.post('ajaxedit',
 			{
 				'id':	$(this).closest('.item').attr('id'),
@@ -184,15 +184,15 @@ $(document).ready(function($){
 			}
 		);
 	});
-				
+
 	// save item if changed
-	
+
 	$('.items').on('blur', '.textbox', function() {
-				
+
 		var text = $.trim(currentItem.find("input[type=text]").val());
 
 		// update todo
-		
+
 		if (text != currentItem.data('origin')) {
 //			var itemid = currentItem.attr('id');
 			$.post("ajaxedit",
@@ -202,7 +202,7 @@ $(document).ready(function($){
 				}
 			);
 		}
-		
+
 		$(this).closest('.item').removeClass('itemselected');
 		currentItem.removeData('origin')
 			.find('.itemtext')
@@ -210,7 +210,7 @@ $(document).ready(function($){
 	});
 
 	// keydown(uo, down, reset)
-	
+
 	$('.items').on('keydown', '.textbox', function(e) {
 		// ↓、enter
 		if(e.which == 13 || e.which == 40) {
@@ -236,13 +236,13 @@ $(document).ready(function($){
 	});
 
 	// checkbox selected
-	
+
 	$('.items').on('click', 'input[type=checkbox]', function(){
 		$(this).closest('.item').toggleClass('checked');
-	});	
-	
+	});
+
 	// add new item
-	
+
 	$('#addButton').click(function(e){
 
 		var pageid = $('#TodoTodopageId').val();
@@ -251,18 +251,18 @@ $(document).ready(function($){
 			// Appending the new todo and fading it into view:
 			$(msg).hide().prependTo('.items').fadeIn().find('a.edititem').focus().click();
 		});
-		
+
 		e.preventDefault();
 	});
-	
+
 	// move completed items to history
-	
+
 	$('#historyButton').click(function(){
 		$("#history-confirm").dialog('open');
 	});
 
 	// remove checked items
-	
+
 	$('#removeAllButton').click(function(){
 		if (confirm('選択したアイテムを本当に削除しますか？') != true) return;
 
@@ -270,7 +270,7 @@ $(document).ready(function($){
         $('.items input:checked').each(function(){
             checks.push(this.value);
         });
-		
+
 		$.ajax({
 			type: "POST",
 			async: false,
@@ -282,21 +282,21 @@ $(document).ready(function($){
 			}
 		});
 	});
-	
+
 	// page change
-	
+
 	$('.todopageid').click(function(e){
-		
+
 		// get page-id
-		
+
 		cid = $(this).attr('id');
 		if (cid) cid = cid.replace('cid_','');
-		
+
 		// submit
-		
+
 		$('#TodoTodopageId').val(cid);
 		$('#TodoTodouiForm').submit();
 		e.preventDefault();
-	});	
+	});
 
 });

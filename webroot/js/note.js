@@ -2,14 +2,14 @@ $(document).ready(function($){
 
 
 	// draggable start
-	
+
 	$( ".portlet" ).draggable({
-		
+
 		handle: ".portlet-header",
 		stack: ".portlet",
-		
+
 		stop: function(event, ui) {
-			
+
 			var allxyz=[];
 			$('.portlet').each(function(){
 				pos = $(this).position();
@@ -25,7 +25,7 @@ $(document).ready(function($){
 	});
 
 	// resizable start
-	
+
 	$( ".portlet").resizable({
 		stop: function( event, ui ) {
 //			var itemid = $( this ).attr('id');
@@ -39,24 +39,24 @@ $(document).ready(function($){
 		}
 	});
 
-	
+
 	// remove note
-	
+
 	$('.notes').on('click', '.ui-icon-close', function(){
 		if (!confirm("削除しますか？")) return;
-		
+
 		var currentnote = $( this ).closest('.portlet');
 		var itemid = currentnote.attr('id');
 		$.post("ajaxdelete/"+itemid, null, function() {
 			currentnote.fadeOut('normal', function() {currentnote.remove();});
 		});
 	});
-	
+
 	// reset format
-	
+
 	$('.notes').on('click', '.ui-icon-pause', function(){
 		if (!confirm("書式をリセットしますか？")) return;
-		
+
 		var currentnote = $( this ).closest('.portlet');
 //		var itemid = curnote.attr('id');
 		var text = currentnote.find('.portlet-content').text();
@@ -72,21 +72,21 @@ $(document).ready(function($){
 	});
 
 	// save text
-	
+
 	$('#notepage').on('blur', 'div[contenteditable]', function() {
 		var text = $(this).html();
 		var portl = $(this).closest('.portlet');
 		var itemid = portl.attr('id');
-		
+
 		var h = $(this).height() + portl.find('.portlet-header').height()+26;
 		portl.height(h);
 		var wh = portl.outerWidth() + "." + portl.outerHeight();
-		
+
 		$.post("ajaxupdate",{'id':itemid,'text':text, 'wh':wh});
 	});
-	
+
 	// new note
-	
+
 	$("#dialog-newnote").dialog({
 		resizable: false,
 		modal: true,
@@ -94,17 +94,26 @@ $(document).ready(function($){
 		buttons: {
 			'OK': function() {
 
-				var note_title = $('#note_title').val();
-				var note_text = $('#note_text').val();
-				var note_category = $('#NoteCategoryId').val();
-				$.post("ajaxnewnote",{'name':note_title,'text':note_text, 'category_id':note_category},function(msg){
-		
-					// Appending the new note
-					$(msg).hide().prependTo('.notes').fadeIn();
-					$('#NoteNoteuiForm').submit();	// reload
-				
-				});				
-				
+				if (!$('#note_title').val()) {
+					alert('Title is empty.');
+					return;
+				}
+
+				$.post("ajaxnewnote",
+					{
+						'name':	$('#note_title').val(),
+						'text':	$('#note_text').val(),
+						'category_id':	$('#NoteCategoryId').val()
+					},
+					function(msg){
+
+						// Appending the new note
+						$(msg).hide().prependTo('.notes').fadeIn();
+						$('#NoteNoteuiForm').submit();	// reload
+
+					}
+				);
+
 				$(this).dialog('close');
 			},
 			Cancel: function() {
@@ -112,29 +121,39 @@ $(document).ready(function($){
 			}
 		}
 	});
-	
+
 	// open dialog for new note
-	
+
 	$('#addButton').click(function(){
 		$("#dialog-newnote").dialog('open');
 	});
 
 	// change title
-	
+
 	var targetTitleChange;	// target object for title change
-	
+
 	$("#dialog-title").dialog({
+
 		resizable: false,
 		modal: true,
 		autoOpen:false,
+
 		buttons: {
 			'OK': function() {
 
-				var itemid = targetTitleChange.closest('.portlet').attr('id');
-				var ntitle = $('#note_newtitle').val();
-				$.post("ajaxupdate",{'id':itemid,'name':ntitle});
-				targetTitleChange.text(ntitle);
-				
+				if (!$('#note_newtitle').val()) {
+					alert('Title is empty.');
+					return;
+				}
+
+				$.post("ajaxupdate",
+					{
+						'id':	targetTitleChange.closest('.portlet').attr('id'),
+						'name':	$('#note_newtitle').val()
+					}
+				);
+				targetTitleChange.text($('#note_newtitle').val());
+
 				$(this).dialog('close');
 			},
 			Cancel: function() {
@@ -142,9 +161,9 @@ $(document).ready(function($){
 			}
 		}
 	});
-	
+
 	// set target note to variable
-	
+
 	$('.portlet-header').dblclick(function() {
 		targetTitleChange = $(this);
 		$('#note_newtitle').val($.trim($(this).text()));
@@ -152,20 +171,20 @@ $(document).ready(function($){
 	});
 
 	// page change
-	
+
 	$('.categoryid').click(function(e){
 
 		e.preventDefault();
-		
+
 		// get page-id
-		
+
 		cid = $(this).attr('id');
 		if (cid) cid = cid.replace('cid_','');
-		
+
 		// submit
-		
+
 		$('#NoteCategoryId').val(cid);
 		$('#NoteNoteuiForm').submit();
-		
-	});	
-});	
+
+	});
+});
