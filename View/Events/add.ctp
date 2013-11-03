@@ -3,7 +3,6 @@
 
 		<li><?php echo $this->Html->link(__('List Events'), array('action' => 'index')); ?></li>
 		<li><?php echo $this->Html->link(__('List Calendars'), array('controller' => 'calendars', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Calendar'), array('controller' => 'calendars', 'action' => 'add')); ?> </li>
 	</ul>
 </div>
 <div class="events form">
@@ -22,8 +21,8 @@
 	<?php
 		echo $this->Form->input('calendar_id');
 		echo $this->Form->input('title', array('afterInput'=>'<span class="help-block"><span class="label label-warning">'.__('Required').'</span></span>'));
-		echo $this->Form->input('start', array('afterInput'=>'<span class="help-block"><span class="label label-warning">'.__('Required').'</span></span>'));
-		echo $this->Form->input('end');
+		echo $this->Form->input('start', array('type'=>'text', 'class'=>'form-control dateEditable','afterInput'=>'<span class="help-block"><span class="label label-warning">'.__('Required').'</span></span>'));
+		echo $this->Form->input('end', array('type'=>'text', 'class'=>'form-control dateEditable'));
 		echo $this->Form->input('detail');
 		echo $this->Form->input('color');
 		echo $this->Form->input('textcolor');

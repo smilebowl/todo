@@ -5,7 +5,6 @@
 		<li><?php echo $this->Html->link(__('List Todopages'), array('action' => 'index')); ?> </li>
 		<li><?php echo $this->Html->link(__('New Todopage'), array('action' => 'add')); ?> </li>
 		<li><?php echo $this->Html->link(__('List Todos'), array('controller' => 'todos', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Todo'), array('controller' => 'todos', 'action' => 'add')); ?> </li>
 	</ul>
 </div>
 <div class="todopages view well">
@@ -39,8 +38,6 @@
 	<table class="table table-striped table-hover table-condensed">
 	<tr>
 		<th><?php echo __('Id'); ?></th>
-		<th><?php echo __('Todopage Id'); ?></th>
-		<th><?php echo __('Position'); ?></th>
 		<th><?php echo __('Name'); ?></th>
 		<th><?php echo __('Created'); ?></th>
 		<th><?php echo __('Completed'); ?></th>
@@ -51,8 +48,6 @@
 		foreach ($todopage['Todo'] as $todo): ?>
 		<tr>
 			<td><?php echo $todo['id']; ?></td>
-			<td><?php echo $todo['todopage_id']; ?></td>
-			<td><?php echo $todo['position']; ?></td>
 			<td><?php echo $todo['name']; ?></td>
 			<td><?php echo $todo['created']; ?></td>
 			<td><?php echo $todo['completed']; ?></td>

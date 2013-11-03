@@ -2,7 +2,6 @@
 	<ul class="nav nav-pills well well-sm">
 		<li><?php echo $this->Html->link(__('New Category'), array('action' => 'add')); ?></li>
 		<li><?php echo $this->Html->link(__('List Notes'), array('controller' => 'notes', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Note'), array('controller' => 'notes', 'action' => 'add')); ?> </li>
 	</ul>
 </div>
 <div class="categories index">

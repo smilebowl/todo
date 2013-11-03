@@ -5,7 +5,6 @@
 		<li><?php echo $this->Html->link(__('List Calendars'), array('action' => 'index')); ?> </li>
 		<li><?php echo $this->Html->link(__('New Calendar'), array('action' => 'add')); ?> </li>
 		<li><?php echo $this->Html->link(__('List Events'), array('controller' => 'events', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Event'), array('controller' => 'events', 'action' => 'add')); ?> </li>
 	</ul>
 </div>
 <div class="calendars view well">
@@ -39,13 +38,9 @@
 	<table class="table table-striped table-hover table-condensed">
 	<tr>
 		<th><?php echo __('Id'); ?></th>
-		<th><?php echo __('Calendar Id'); ?></th>
 		<th><?php echo __('Title'); ?></th>
 		<th><?php echo __('Start'); ?></th>
 		<th><?php echo __('End'); ?></th>
-		<th><?php echo __('Sdetail'); ?></th>
-		<th><?php echo __('Color'); ?></th>
-		<th><?php echo __('Textcolor'); ?></th>
 		<th><?php echo __('Created'); ?></th>
 		<th class="actions"><?php echo __('Actions'); ?></th>
 	</tr>
@@ -54,13 +49,9 @@
 		foreach ($calendar['Event'] as $event): ?>
 		<tr>
 			<td><?php echo $event['id']; ?></td>
-			<td><?php echo $event['calendar_id']; ?></td>
 			<td><?php echo $event['title']; ?></td>
 			<td><?php echo $event['start']; ?></td>
 			<td><?php echo $event['end']; ?></td>
-			<td><?php echo $event['sdetail']; ?></td>
-			<td><?php echo $event['color']; ?></td>
-			<td><?php echo $event['textcolor']; ?></td>
 			<td><?php echo $event['created']; ?></td>
 			<td class="actions">
 				<?php echo $this->Icon->link(__('View'), array('controller' => 'events', 'action' => 'view', $event['id'])); ?>

@@ -21,17 +21,17 @@
 				<a href="#" class="dropdown-toggle" data-toggle="dropdown">Todo <b class="caret"></b></a>
 				<ul class="dropdown-menu">
 					<li<?php echo ($this->name=='Todos' && $this->action=='todoui') ? ' class="active"' : ''; ?>>
-						<?php echo $this -> Html -> link(__('Main'), array('controller' => 'todos', 'action' => 'todoui')); ?>
+						<?php echo $this -> Html -> link('Todo', array('controller' => 'todos', 'action' => 'todoui')); ?>
 					</li>
 					<li<?php echo ($this->name=='Todos' && $this->action !='todoui') ? ' class="active"' : ''; ?>>
 						<?php echo $this -> Html -> link(__('Mentenance'), array('controller' => 'todos', 'action' => 'index')); ?>
 					</li>
+					<li<?php echo $this->name=='Histories' ? ' class="active"' : ''; ?>>
+						<?php echo $this -> Html -> link(__('History'), array('controller' => 'histories', 'action' => 'index')); ?>
+					</li>
 					<li class="divider"></li>
 					<li<?php echo $this->name=='Todopages' ? ' class="active"' : ''; ?>>
 						<?php echo $this -> Html -> link(__('Todopage'), array('controller' => 'todopages', 'action' => 'index')); ?>
-					</li>
-					<li<?php echo $this->name=='Histories' ? ' class="active"' : ''; ?>>
-						<?php echo $this -> Html -> link(__('History'), array('controller' => 'histories', 'action' => 'index')); ?>
 					</li>
 				</ul>
 			</li>
@@ -39,7 +39,7 @@
 				<a href="#" class="dropdown-toggle" data-toggle="dropdown">Notes <b class="caret"></b></a>
 				<ul class="dropdown-menu">
 					<li<?php echo ($this->name=='Notes' && $this->action=='noteui') ? ' class="active"' : ''; ?>>
-						<?php echo $this -> Html -> link(__('Main'), array('controller' => 'notes', 'action' => 'noteui')); ?>
+						<?php echo $this -> Html -> link('Notes', array('controller' => 'notes', 'action' => 'noteui')); ?>
 					</li>
 					<li<?php echo ($this->name=='Notes' && $this->action != 'noteui') ? ' class="active"' : ''; ?>>
 						<?php echo $this -> Html -> link(__('Mentenance'), array('controller' => 'notes', 'action' => 'index')); ?>
@@ -54,7 +54,7 @@
 				<a href="#" class="dropdown-toggle" data-toggle="dropdown">Events <b class="caret"></b></a>
 				<ul class="dropdown-menu">
 					<li<?php echo ($this->name=='Events' && $this->action=='eventui') ? ' class="active"' : ''; ?>>
-						<?php echo $this -> Html -> link(__('Main'), array('controller' => 'events', 'action' => 'eventui')); ?>
+						<?php echo $this -> Html -> link('Events', array('controller' => 'events', 'action' => 'eventui')); ?>
 					</li>
 					<li<?php echo ($this->name=='Events' && $this->action != 'eventui') ? ' class="active"' : ''; ?>>
 						<?php echo $this -> Html -> link(__('Mentenance'), array('controller' => 'events', 'action' => 'index')); ?>

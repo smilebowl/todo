@@ -47,9 +47,10 @@ class TodoSchema extends CakeSchema {
 
 	public $histories = array(
 		'id' => array('type' => 'integer', 'null' => false, 'default' => null, 'key' => 'primary'),
-		'pageid' => array('type' => 'integer', 'null' => false, 'default' => null),
+		'pageid' => array('type' => 'integer', 'null' => true, 'default' => null, 'comment' => 'page'),
 		'position' => array('type' => 'integer', 'null' => true, 'default' => null, 'comment' => 'position'),
 		'name' => array('type' => 'string', 'null' => true, 'default' => null, 'length' => 128, 'collate' => 'utf8_general_ci', 'comment' => '名前', 'charset' => 'utf8'),
+		'emphasis' => array('type' => 'boolean', 'null' => false, 'default' => '0', 'comment' => 'emphasis'),
 		'created' => array('type' => 'datetime', 'null' => true, 'default' => null, 'comment' => '登録日'),
 		'completed' => array('type' => 'date', 'null' => true, 'default' => null, 'comment' => '完了日'),
 		'indexes' => array(

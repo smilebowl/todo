@@ -3,7 +3,6 @@
 
 		<li><?php echo $this->Html->link(__('List Notes'), array('action' => 'index')); ?></li>
 		<li><?php echo $this->Html->link(__('List Categories'), array('controller' => 'categories', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Category'), array('controller' => 'categories', 'action' => 'add')); ?> </li>
 	</ul>
 </div>
 <div class="notes form">

@@ -4,8 +4,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
-"POT-Creation-Date: 2013-11-02 23:26+0900\n"
-"PO-Revision-Date: 2013-11-02 23:31+0900\n"
+"POT-Creation-Date: 2013-11-03 13:42+0900\n"
+"PO-Revision-Date: 2013-11-03 14:55+0900\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -18,24 +18,20 @@ msgid "Invalid calendar"
 msgstr ""
 
 #: Controller/CalendarsController.php:52;73
-#, fuzzy
 msgid "The calendar has been saved."
 msgstr "更新しました"
 
 #: Controller/CalendarsController.php:55;76
-#, fuzzy
 msgid "The calendar could not be saved. Please, try again."
 msgstr "更新に失敗しました"
 
 #: Controller/CalendarsController.php:98
-#, fuzzy
 msgid "Calendar deleted."
 msgstr "削除しました"
 
 #: Controller/CalendarsController.php:101
-#, fuzzy
 msgid "Calendar was not deleted"
-msgstr "削除しました"
+msgstr "更新に失敗しました"
 
 #: Controller/CategoriesController.php:37;69;94
 msgid "Invalid category"
@@ -55,95 +51,87 @@ msgstr "削除しました"
 
 #: Controller/CategoriesController.php:101
 msgid "Category was not deleted"
-msgstr ""
+msgstr "更新に失敗しました"
 
 #: Controller/EventsController.php:124;158;185
 msgid "Invalid event"
 msgstr ""
 
 #: Controller/EventsController.php:139;162
-#, fuzzy
 msgid "The event has been saved."
 msgstr "更新しました"
 
 #: Controller/EventsController.php:142;165
-#, fuzzy
 msgid "The event could not be saved. Please, try again."
 msgstr "更新に失敗しました"
 
 #: Controller/EventsController.php:189
-#, fuzzy
 msgid "Event deleted."
 msgstr "削除しました"
 
 #: Controller/EventsController.php:192
-#, fuzzy
 msgid "Event was not deleted"
-msgstr "削除しました"
+msgstr "更新に失敗しました"
 
-#: Controller/HistoriesController.php:37;69;94
+#: Controller/HistoriesController.php:38;70;95
 msgid "Invalid history"
 msgstr ""
 
-#: Controller/HistoriesController.php:52;73
+#: Controller/HistoriesController.php:53;74
 msgid "The history has been saved."
 msgstr "更新しました"
 
-#: Controller/HistoriesController.php:55;76
+#: Controller/HistoriesController.php:56;77
 msgid "The history could not be saved. Please, try again."
 msgstr "更新に失敗しました"
 
-#: Controller/HistoriesController.php:98
+#: Controller/HistoriesController.php:99
 msgid "History deleted."
 msgstr "削除しました"
 
-#: Controller/HistoriesController.php:101
+#: Controller/HistoriesController.php:102
 msgid "History was not deleted"
-msgstr ""
+msgstr "更新に失敗しました"
 
-#: Controller/NotesController.php:98;132;159
+#: Controller/NotesController.php:108;142;169
 msgid "Invalid note"
 msgstr ""
 
-#: Controller/NotesController.php:113;136
+#: Controller/NotesController.php:123;146
 msgid "The note has been saved."
 msgstr "更新しました"
 
-#: Controller/NotesController.php:116;139
+#: Controller/NotesController.php:126;149
 msgid "The note could not be saved. Please, try again."
 msgstr "更新に失敗しました"
 
-#: Controller/NotesController.php:163
+#: Controller/NotesController.php:173
 msgid "Note deleted."
 msgstr "削除しました"
 
-#: Controller/NotesController.php:166
+#: Controller/NotesController.php:176
 msgid "Note was not deleted"
-msgstr ""
+msgstr "更新に失敗しました"
 
 #: Controller/TodopagesController.php:37;69;94
 msgid "Invalid todopage"
 msgstr ""
 
 #: Controller/TodopagesController.php:52;73
-#, fuzzy
 msgid "The todopage has been saved."
 msgstr "更新しました"
 
 #: Controller/TodopagesController.php:55;76
-#, fuzzy
 msgid "The todopage could not be saved. Please, try again."
 msgstr "更新に失敗しました"
 
 #: Controller/TodopagesController.php:98
-#, fuzzy
 msgid "Todopage deleted."
 msgstr "削除しました"
 
 #: Controller/TodopagesController.php:101
-#, fuzzy
 msgid "Todopage was not deleted"
-msgstr "削除しました"
+msgstr "更新に失敗しました"
 
 #: Controller/TodosController.php:155;189;216
 msgid "Invalid todo"
@@ -163,7 +151,7 @@ msgstr "削除しました"
 
 #: Controller/TodosController.php:223
 msgid "Todo was not deleted"
-msgstr ""
+msgstr "削除しました。"
 
 #: Plugin/BoostCake/Controller/BoostCakeController.php:18
 msgid "Debug setting does not allow access to this url."
@@ -266,6 +254,7 @@ msgid "New Calendar"
 msgstr "カレンダー追加"
 
 #: View/Calendars/index.ctp:9 View/Elements/menu.ctp:64
+#: View/Events/eventui.ctp:41
 msgid "Calendars"
 msgstr "カレンダー"
 
@@ -435,21 +424,17 @@ msgstr "WH"
 msgid "Todo"
 msgstr ""
 
-#: View/Elements/menu.ctp:24;42;57
-msgid "Main"
-msgstr ""
-
 #: View/Elements/menu.ctp:27;45;60
 msgid "Mentenance"
 msgstr "メンテナンス"
 
-#: View/Elements/menu.ctp:31 View/Todopages/view.ctp:12 View/Todos/view.ctp:19
-msgid "Todopage"
-msgstr "ページ"
-
-#: View/Elements/menu.ctp:34 View/Histories/view.ctp:9
+#: View/Elements/menu.ctp:30 View/Histories/view.ctp:9
 msgid "History"
 msgstr "Todo履歴"
+
+#: View/Elements/menu.ctp:34 View/Todopages/view.ctp:12 View/Todos/view.ctp:19
+msgid "Todopage"
+msgstr "Todoページ"
 
 #: View/Elements/menu.ctp:73
 msgid "Logout"
@@ -534,7 +519,7 @@ msgstr "ノート"
 #: View/Todopages/view.ctp:5 View/Todos/add.ctp:5 View/Todos/edit.ctp:6
 #: View/Todos/index.ctp:4 View/Todos/view.ctp:7
 msgid "List Todopages"
-msgstr "ページ一覧"
+msgstr "Todoページ一覧"
 
 #: View/Todopages/add.ctp:5 View/Todopages/edit.ctp:6
 #: View/Todopages/index.ctp:4 View/Todopages/view.ctp:7 View/Todos/add.ctp:4
@@ -550,24 +535,24 @@ msgstr "Todo追加"
 
 #: View/Todopages/add.ctp:21
 msgid "Add Todopage"
-msgstr "ページ追加"
+msgstr "Todoページ追加"
 
 #: View/Todopages/edit.ctp:22 View/Todopages/view.ctp:3
 msgid "Edit Todopage"
-msgstr "ページ編集"
+msgstr "Todoページ編集"
 
 #: View/Todopages/index.ctp:3 View/Todopages/view.ctp:6 View/Todos/add.ctp:6
 #: View/Todos/edit.ctp:7 View/Todos/index.ctp:5 View/Todos/view.ctp:8
 msgid "New Todopage"
-msgstr "ページ追加"
+msgstr "Todoページ追加"
 
 #: View/Todopages/index.ctp:9
 msgid "Todopages"
-msgstr "ページ"
+msgstr "Todoページ"
 
 #: View/Todopages/view.ctp:4
 msgid "Delete Todopage"
-msgstr "ページ削除"
+msgstr "Todoページ削除"
 
 #: View/Todopages/view.ctp:24
 msgid "Ord"
@@ -579,7 +564,7 @@ msgstr "関連するTodo"
 
 #: View/Todopages/view.ctp:42
 msgid "Todopage Id"
-msgstr "ページ"
+msgstr "Todoページ"
 
 #: View/Todos/add.ctp:21
 msgid "Add Todo"
@@ -601,14 +586,14 @@ msgstr "Todo削除"
 #: Model/Event.php:validation title Model/Todo.php:validation
 #: Model/Todopage.php:validation
 msgid "notempty"
-msgstr "未入力"
+msgstr "未入力です"
 
 #: Model/Calendar.php:validation for field position
 #: Model/Category.php:validation Model/Note.php:validation category_id
 #: Model/Todo.php:validation todopage_id;validation
 #: Model/Todopage.php:validation ord
 msgid "numeric"
-msgstr "数字でない"
+msgstr "数字ではありません"
 
 #: Model/Event.php:validation for field start
 msgid "date"

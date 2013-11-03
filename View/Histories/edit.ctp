@@ -1,6 +1,5 @@
 <div class="actions">
 	<ul class="nav nav-pills well well-sm">
-
 		<li><?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $this->Form->value('History.id')), null, __('Are you sure you want to delete # %s?', $this->Form->value('History.id'))); ?></li>
 		<li><?php echo $this->Html->link(__('List Histories'), array('action' => 'index')); ?></li>
 	</ul>
@@ -22,7 +21,7 @@
 		echo $this->Form->input('id');
 		echo $this->Form->input('position');
 		echo $this->Form->input('name');
-		echo $this->Form->input('completed');
+		echo $this->Form->input('completed', array('type'=>'text', 'class'=>'form-control dateEditable'));
 	?>
 	</fieldset>
 <?php echo $this->Form->submit(__('Submit'), array('class'=>'btn btn-primary')); ?>

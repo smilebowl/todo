@@ -2,7 +2,6 @@
 	<ul class="nav nav-pills well well-sm">
 		<li><?php echo $this->Html->link(__('New Todo'), array('action' => 'add')); ?></li>
 		<li><?php echo $this->Html->link(__('List Todopages'), array('controller' => 'todopages', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Todopage'), array('controller' => 'todopages', 'action' => 'add')); ?> </li>
 	</ul>
 </div>
 <div class="todos index">

@@ -2,7 +2,6 @@
 	<ul class="nav nav-pills well well-sm">
 		<li><?php echo $this->Html->link(__('New Note'), array('action' => 'add')); ?></li>
 		<li><?php echo $this->Html->link(__('List Categories'), array('controller' => 'categories', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Category'), array('controller' => 'categories', 'action' => 'add')); ?> </li>
 	</ul>
 </div>
 <div class="notes index">
@@ -40,7 +39,7 @@
 			<?php echo $this->Html->link($note['Category']['name'], array('controller' => 'categories', 'action' => 'view', $note['Category']['id'])); ?>
 		</td>
 		<td><?php echo h($note['Note']['name']); ?>&nbsp;</td>
-		<td><?php echo String::truncate(h($note['Note']['text']),40); ?>&nbsp;</td>
+		<td><?php echo String::truncate(h($note['Note']['text']),30); ?>&nbsp;</td>
 		<td><?php echo h($note['Note']['xyz']); ?>&nbsp;</td>
 		<td><?php echo h($note['Note']['wh']); ?>&nbsp;</td>
 		<td><?php echo h($note['Note']['color']); ?>&nbsp;</td>

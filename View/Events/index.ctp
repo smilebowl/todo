@@ -2,7 +2,6 @@
 	<ul class="nav nav-pills well well-sm">
 		<li><?php echo $this->Html->link(__('New Event'), array('action' => 'add')); ?></li>
 		<li><?php echo $this->Html->link(__('List Calendars'), array('controller' => 'calendars', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Calendar'), array('controller' => 'calendars', 'action' => 'add')); ?> </li>
 	</ul>
 </div>
 <div class="events index">
@@ -26,7 +25,6 @@
 			<th><?php echo $this->Paginator->sort('end'); ?></th>
 			<th><?php echo $this->Paginator->sort('detail'); ?></th>
 			<th><?php echo $this->Paginator->sort('color'); ?></th>
-			<th><?php echo $this->Paginator->sort('textcolor'); ?></th>
 			<th><?php echo $this->Paginator->sort('created'); ?></th>
 		</tr>
 	<?php foreach ($events as $event): ?>
@@ -43,9 +41,8 @@
 		<td><?php echo h($event['Event']['title']); ?>&nbsp;</td>
 		<td><?php echo h($event['Event']['start']); ?>&nbsp;</td>
 		<td><?php echo h($event['Event']['end']); ?>&nbsp;</td>
-		<td><?php echo h($event['Event']['detail']); ?>&nbsp;</td>
+		<td><?php echo String::truncate(h($event['Event']['detail']),25); ?>&nbsp;</td>
 		<td><?php echo h($event['Event']['color']); ?>&nbsp;</td>
-		<td><?php echo h($event['Event']['textcolor']); ?>&nbsp;</td>
 		<td><?php echo h($event['Event']['created']); ?>&nbsp;</td>
 	</tr>
 <?php endforeach; ?>
