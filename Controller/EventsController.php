@@ -8,12 +8,14 @@ App::uses('AppController', 'Controller');
  */
 class EventsController extends AppController {
 
+	
 /**
  * Components
  *
  * @var array
  */
-	public $components = array('Paginator');
+	public $components = array('Paginator', 'Search.Prg');
+	public $presetVars = true;
 
 
 	// fullcalendar loading query(json)
@@ -108,8 +110,13 @@ class EventsController extends AppController {
  * @return void
  */
 	public function index() {
+		$this->Prg->commonProcess();
+        $this->Paginator->settings['conditions'] = $this->Event->parseCriteria($this->Prg->parsedParams());
+		
 		$this->Event->recursive = 0;
 		$this->set('events', $this->paginate());
+
+		$this->set('calendars', $this->Event->Calendar->find('list'));
 	}
 
 /**

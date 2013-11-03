@@ -4,8 +4,36 @@
 		<li><?php echo $this->Html->link(__('List Calendars'), array('controller' => 'calendars', 'action' => 'index')); ?> </li>
 	</ul>
 </div>
+
 <div class="events index">
 	<h2><?php echo __('Events'); ?></h2>
+
+<?php echo $this->Form->create('Event', array(
+	'inputDefaults' => array(
+		'div' => 'form-group',
+		'label' => false,
+		'wrapInput' => false,
+		'class' => 'form-control'
+	),
+	'class' => 'form-inline well well-sm',
+	'novalidate' => true
+	)); 
+	echo $this->Form->submit('Search', array(
+		'div' => 'form-group',
+		'class' => 'btn btn-primary'
+	));
+	echo $this->Form->input('calendar_id', array('empty'=>'---'));
+	echo $this->Form->input('start', array(
+		'type'=>'text','class'=>'form-control col col-sm-1 dateEditable','placeholder' => 'start day'
+	));
+	echo $this->Form->input('keyword', array(
+		'type'=>'text','class'=>'form-control','placeholder' => 'keyword'
+	));
+	echo $this->Form->end();
+?>
+
+<div class="clearfix"></div>
+
 
 	<p>
 	<?php
