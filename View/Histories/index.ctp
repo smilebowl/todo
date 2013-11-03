@@ -1,3 +1,8 @@
+<div class="actions">
+	<ul class="nav nav-pills well well-sm">
+		<li><?php echo $this->Form->postLink(__('DeleteAll'), array('action' => 'deleteall'), null, __('Are you sure you want to delete all?')); ?></li>
+	</ul>
+</div>
 <div class="histories index">
 	<h2><?php echo __('Histories'); ?></h2>
 

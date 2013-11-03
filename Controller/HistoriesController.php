@@ -101,4 +101,17 @@ class HistoriesController extends AppController {
 		}
 		$this->Session->setFlashError(__('History was not deleted'));
 		$this->redirect(array('action' => 'index'));
-	}}
+	}
+
+	// delete all records
+	
+	public function deleteall() {
+		$this->request->onlyAllow('post', 'deleteall');
+		if ($this->History->deleteAll(array('1=1'))) {
+			$this->Session->setFlashInfo(__('History deleted.'));
+			$this->redirect(array('action' => 'index'));
+		}
+		$this->Session->setFlashError(__('History was not deleted'));
+	}
+
+}
