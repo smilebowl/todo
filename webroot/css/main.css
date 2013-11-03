@@ -116,13 +116,18 @@ body {
 .portlet {
 	margin: 0 1em 1em 0;
 	position: absolute;
+	overflow:hidden;
 /*	width:200px;*/
 }
 
-.portlet-header { cursor: move; }
 .ui-icon {cursor:default}
 
-.portlet-header { margin: 0.3em; padding-bottom: 4px; padding-left: 0.2em; }
+.portlet-header {
+	cursor: move;
+	margin: 0.3em;
+	padding-bottom:4px; 
+	padding-left: 0.2em;
+}
 .portlet-header .ui-icon { float: right; }
 .portlet-content {
 	padding: 0.4em;

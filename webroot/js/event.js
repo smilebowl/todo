@@ -36,7 +36,7 @@ $(document).ready(function($){
 			{
 				url:'https://www.google.com/calendar/feeds/ja.japanese%23holiday%40group.v.calendar.google.com/public/basic',
 				color:'#f8d3d4',
-				textColor:'#666',
+				textColor:'#000',
 				editable:false,
 				success:function(events){
 					$(events).each(function(){
@@ -53,9 +53,10 @@ $(document).ready(function($){
 			// initialize dialog items for new event
 			
 			$('#event_date').val($.fullCalendar.formatDate(start, 'yyyy-MM-dd'));
-			$('#event_title').val('New event');
+			$('#event_title').val('');
 			$('#event_detail').val(null);
 			$('#calendar_select').val($('#EventCalendarId').val());
+			dlg_event.dialog('option', 'title', 'New event');
 			
 			// open dialog 
 			
@@ -86,6 +87,7 @@ $(document).ready(function($){
 			$.post("ajaxgetcid",	{'id':event.id}, function(msg){
 				$('#calendar_select').val(msg);
 			});
+			dlg_event.dialog('option', 'title', 'Update event');
 			
 			// open dialog 
 			
@@ -113,7 +115,7 @@ $(document).ready(function($){
 
 	});
 
-	$("#dialog-event").dialog({
+	var dlg_event = $("#dialog-event").dialog({
 		resizable: false,
 		modal: true,
 		width: '420px',
@@ -122,6 +124,11 @@ $(document).ready(function($){
 		
 		buttons: {
 			'OK': function() {
+				
+				if (!$('#event_title').val()) {
+					alert('Title is empty.');
+					return;
+				}
 				
 				if (e_update) {
 					
@@ -196,6 +203,7 @@ $(document).ready(function($){
 			} else {
 				$('.ui-dialog-buttonpane').find('button:contains("Delete")').hide();
 			}
+//			$('#event_title').select();
 		},
 		close: function( event, ui ) {
 			e_update = false;
@@ -203,7 +211,7 @@ $(document).ready(function($){
 		}
 	});
 	
-	// datepicker
+	// jquery datepicker
 	
 	$('#event_date').datepicker({
 		dateFormat: 'yy-mm-dd',

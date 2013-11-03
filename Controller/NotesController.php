@@ -22,12 +22,12 @@ class NotesController extends AppController {
 		$categories = $this->Note->Category->find('list',array('order'=>'position'));
 		$this->set(compact('categories'));
 		if (empty($this->request->data['category_id'])) {
-			$id=key($categories);
+			$id=key($categories);	// first key
 		} else {
 			$id = $this->request->data['category_id'];
 		}
 		
-		$this->Note->recursive = 0;
+		$this->Note->recursive = -1;
 		$notes = $this->Note->find('all', array(
 			'conditions'=>array('category_id'=>$id)
 //			'order' => 'position asc',
@@ -43,6 +43,18 @@ class NotesController extends AppController {
 		$this->autoRender = false;
 		
 		$this->Note->save($this->request->data);
+		
+//		$this->log($this->request->data);
+	}
+
+	public function ajaxallpositon() {
+		Configure::write('debug', 0);
+		$this->autoRender = false;
+		
+		foreach ($this->request->data['allxyz'] as $item) {
+			$this->Note->save($item);
+		}
+
 	}
 
 	// new note
@@ -50,8 +62,6 @@ class NotesController extends AppController {
 	public function ajaxnewnote() {
 		Configure::write('debug', 0);
 		$this->autoRender = false;
-		
-//		$this->Note->save($this->request->data);
 		
 		$this->Note->create();
 		if (empty($this->request->data['name'])) $this->request->data['name']='New note.';

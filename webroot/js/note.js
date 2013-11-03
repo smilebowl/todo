@@ -7,9 +7,23 @@ $(document).ready(function($){
 		handle: ".portlet-header",
 		stack: ".portlet",
 		stop: function(event, ui) {
-			 var xyz = ui.position.left +"."+ ui.position.top + "." + $( this ).zIndex();
-			 var itemid = $( this ).attr('id');
-			 $.post("ajaxupdate",{'id':itemid,'xyz':xyz});
+			
+			var allxyz=[];
+			$('.portlet').each(function(){
+				pos = $(this).position();
+				curxyz = pos.left +"."+ pos.top + "." + $(this).zIndex();
+				allxyz.push( {'id':$(this).attr('id') ,'xyz':curxyz} );
+			});
+			$.post('ajaxallpositon', {'allxyz':allxyz});
+			
+//			 var xyz = ui.position.left +"."+ ui.position.top + "." + $( this ).zIndex();
+//			 var itemid = $( this ).attr('id');
+//			 $.post("ajaxupdate",
+//				{
+//					'id': $( this ).attr('id'),
+//					'xyz': ui.position.left +"."+ ui.position.top + "." + $( this ).zIndex()
+//				}
+//			);
 		}
 	});
 
