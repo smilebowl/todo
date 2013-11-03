@@ -89,6 +89,7 @@ class TodoSchema extends CakeSchema {
 		'todopage_id' => array('type' => 'integer', 'null' => false, 'default' => null),
 		'position' => array('type' => 'integer', 'null' => false, 'default' => '0', 'key' => 'index', 'comment' => 'position'),
 		'name' => array('type' => 'string', 'null' => false, 'default' => 'new item', 'length' => 128, 'collate' => 'utf8_general_ci', 'comment' => 'name', 'charset' => 'utf8'),
+		'emphasis' => array('type' => 'boolean', 'null' => false, 'default' => '0'),
 		'created' => array('type' => 'datetime', 'null' => true, 'default' => null, 'comment' => '登録日'),
 		'completed' => array('type' => 'date', 'null' => true, 'default' => null),
 		'indexes' => array(

@@ -159,6 +159,14 @@ $(document).ready(function($){
 		$(this).find('a.edititem').focus().click();
 	});
 	
+	// emphasis 
+	
+	$('.items').on('click', '.itemtext', function() {
+		$(this).toggleClass('text-danger');
+		emphasis = $(this).hasClass("text-danger") ? 1 : 0;
+		$.post('ajaxedit', {'id':$(this).closest('.item').attr('id'), 'emphasis':emphasis});
+	});
+				
 	// save item if changed
 	
 	$('.items').on('blur', '.textbox', function() {

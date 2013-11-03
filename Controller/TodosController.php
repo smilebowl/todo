@@ -25,11 +25,11 @@ class TodosController extends AppController {
 			$id = $this->request->data['todopage_id'];
 		}
 		
-		$this->Todo->recursive = 0;
+		$this->Todo->recursive = -1;
 		$todos = $this->Todo->find('all', array(
 			'conditions'=>array('todopage_id'=>$id),
 			'order' => 'Todo.position asc',
-			'fileds' => array('id','name')
+//			'fileds' => array('id','name')
 		));
 		$this->set(compact('todos', 'todopages'));
 	}

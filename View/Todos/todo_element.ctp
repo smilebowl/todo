@@ -6,6 +6,7 @@
 		$completed = '';
 		$dishistory = 'disabled="disabled"';
 	}
+	$emphasis = $todo['Todo']['emphasis'] ? ' text-danger' : '';
 ?>
 
 
@@ -35,6 +36,6 @@
 	
 	<span class="date-created"><?php echo substr($todo['Todo']['created'],5,5); ?></span>
 	<span class="date-completed"><?php echo substr($todo['Todo']['completed'],5,5); ?></span>
-	<span class="itemtext"><?php echo $todo['Todo']['name']; ?></span>
+	<span class="itemtext<?php echo $emphasis;?>"><?php echo $todo['Todo']['name']; ?></span>
 	
 </div>
