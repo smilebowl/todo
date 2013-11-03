@@ -68,6 +68,18 @@ class EventsController extends AppController {
 		$this->Event->save($this->request->data);
 	}
 
+	// get json
+	
+	public function ajaxgetrecord() {
+		Configure::write('debug', 0);
+		$this->autoRender = false;
+		$this->layout = 'ajax';
+		
+		$this->Event->id = $this->request->data['id'];
+		$data = $this->Event->read();
+		echo json_encode($data['Event']);
+	}
+
 	// get detail field
 	
 	public function ajaxgetdetail() {

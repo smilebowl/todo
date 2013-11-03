@@ -9,9 +9,14 @@ $(document).ready(function($){
 	$( ".items" ).sortable({
 		axis		: 'y',
 		placeholder	: 'ui-state-highlight',
+		
 		update		: function(){
 			var arr = $(".items").sortable('toArray');
-			$.post("ajaxrearrange",{pos:arr});
+			$.post("ajaxrearrange",
+				{
+					pos:	arr
+				}
+			);
 		}
 	});
 	$( ".items" ).disableSelection();
@@ -29,8 +34,9 @@ $(document).ready(function($){
 		resizable: false,
 		modal: true,
 		autoOpen:false,
+		
 		buttons: {
-			'Delete': function() {
+			'削除': function() {
 
 				// ajaxdelete
 				
@@ -63,7 +69,7 @@ $(document).ready(function($){
 					data:{'todopage_id':pageid},
 					success : function() {
 //						location.reload(true);
-						$( '#TodoTodouiForm' ).submit();
+						$( '#TodoTodouiForm' ).submit();	// reload
 					}
 				});
 				
@@ -78,13 +84,13 @@ $(document).ready(function($){
 	// selecting item
 	
 	$('.items').on('click', '.item a', function(e){
+		e.preventDefault();
 		
 		currentItem = $(this).closest('.item');
 		currentItem.data('id',currentItem.attr('id'));
 		
 		$(this).closest('.item').addClass('itemselected');
 		
-		e.preventDefault();
 	});
 	
 	// start edit
@@ -93,7 +99,7 @@ $(document).ready(function($){
 		// cur('click a.edititem:' + $(this).closest('.item').attr('id'));
 		var container = currentItem.find('.itemtext');
 		
-		if(!currentItem.data('origin')) {
+		if ( !currentItem.data('origin') ) {
 			currentItem.data('origin', container.text())
 		} else {
 			return false;
@@ -104,7 +110,8 @@ $(document).ready(function($){
 		$('<input type="text" class="textbox">')
 			.val(container.text())
 			.appendTo(container.empty())
-			.focus().select();
+			.focus()
+			.select();
 		
 		e.preventDefault();
 	});
@@ -122,10 +129,15 @@ $(document).ready(function($){
 		var compdate = $.datepicker.formatDate('yy-mm-dd', new Date());
 		if ($(this).closest('.item').hasClass('completed')) {
 			
-			// to uncompleted
+			// cancel completed
 			
 			compdate = null;
-			$.post("ajaxcomplete",{'id':itemid,'completed':compdate});
+			$.post("ajaxcomplete",
+				{
+					'id':itemid,
+					'completed':compdate
+				}
+			);
 			$(this).closest('.item').removeClass('completed itemselected').find('.date-completed').remove();
 			$(this).closest('.item').find('.tohistory button').attr('disabled','disabled');
 			
@@ -164,7 +176,13 @@ $(document).ready(function($){
 	$('.items').on('click', '.itemtext', function() {
 		$(this).toggleClass('text-danger');
 		emphasis = $(this).hasClass("text-danger") ? 1 : 0;
-		$.post('ajaxedit', {'id':$(this).closest('.item').attr('id'), 'emphasis':emphasis});
+		
+		$.post('ajaxedit',
+			{
+				'id':	$(this).closest('.item').attr('id'),
+				'emphasis'	:emphasis
+			}
+		);
 	});
 				
 	// save item if changed
@@ -176,8 +194,13 @@ $(document).ready(function($){
 		// update todo
 		
 		if (text != currentItem.data('origin')) {
-			var itemid = currentItem.attr('id');
-			$.post("ajaxedit",{'id':itemid,'name':text});
+//			var itemid = currentItem.attr('id');
+			$.post("ajaxedit",
+				{
+					'id':	currentItem.attr('id'),
+					'name':	text
+				}
+			);
 		}
 		
 		$(this).closest('.item').removeClass('itemselected');
@@ -191,24 +214,24 @@ $(document).ready(function($){
 	$('.items').on('keydown', '.textbox', function(e) {
 		// ↓、enter
 		if(e.which == 13 || e.which == 40) {
+			e.preventDefault();
 			cur('keydown :' + $(this).closest('.item').attr('id'));
 			$(this).closest('.item').next().find('a.edititem').focus().click();
-			e.preventDefault();
 		}
 		// escape
 		if(e.which == 27) {
-			$(this).val(currentItem.data('origin'));
 			e.preventDefault();
+			$(this).val(currentItem.data('origin'));
 		}
 		// ↑
 		if(e.which == 38) {
-			$(this).closest('.item').prev().find('a.edititem').focus().click();
 			e.preventDefault();
+			$(this).closest('.item').prev().find('a.edititem').focus().click();
 		}
 		// insert item into next posion
 		if(e.which == 45 && !e.shiftKey) {
-			$('#addButton').focus().click();
 			e.preventDefault();
+			$('#addButton').focus().click();
 		}
 	});
 
