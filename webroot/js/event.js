@@ -233,7 +233,7 @@ $(document).ready(function($){
 	});
 	
 	// jquery datepicker
-	
+//	$.datepicker.setDefaults( $.datepicker.regional[ "ja" ] );
 	$('#event_date').datepicker({
 		dateFormat: 'yy-mm-dd',
 		firstDay: 1,

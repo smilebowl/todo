@@ -55,7 +55,7 @@ body {
 }
 
 #todopage .completed {
-	background-color:#ccc;
+	background-color:#999;
 }
 #todopage .completed:not(.checked):hover {
 	background-color:#bbb;
@@ -99,7 +99,7 @@ body {
 /* =============================== for note ==================================== */
 
 #notepage {
-	background-color:#F5F5DC;
+/*	background-color:#F5F5DC;*/
 	padding:5px;
 }
 /*
@@ -136,9 +136,19 @@ body {
 
 /* =============================== for event ==================================== */
 
-.fc-sun { color: red; background-color:#eec;}  /* 日曜日 */
-.fc-sat { color: blue;  background-color:#eee;} /* 土曜日 */
+/* 日曜日 */
+.fc-sun {
+	color: red;
+/*	background-color:#eec;*/
+} 
 
+/* 土曜日 */
+.fc-sat {
+	color: blue;
+/*	background-color:#eee;*/
+}
+
+/*
 #dialog-event label {width: 80px;}
 #dialog-event input:focus, #dialog-event textarea:focus {
   border-color: #66afe9;
@@ -146,4 +156,5 @@ body {
   -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(102, 175, 233, 0.6);
           box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(102, 175, 233, 0.6);
 }
+*/
 
