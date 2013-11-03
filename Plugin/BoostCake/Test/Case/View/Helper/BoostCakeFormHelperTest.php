@@ -179,6 +179,26 @@ class BoostCakeFormHelperTest extends CakeTestCase {
 		));
 	}
 
+	public function testCheckboxLabelEscape() {
+		$result = $this->Form->input('name', array(
+			'type' => 'checkbox',
+			'label' => 'I want $1'
+		));
+		$this->assertTags($result, array(
+			array('div' => array()),
+			array('div' => array('class' => 'input checkbox')),
+			array('div' => array('class' => 'checkbox')),
+			array('input' => array('type' => 'hidden', 'name' => 'data[name]', 'id' => 'name_', 'value' => '0')),
+			'label' => array('for' => 'name'),
+			array('input' => array('name' => 'data[name]', 'type' => 'checkbox', 'value' => '1', 'id' => 'name')),
+			' I want $1',
+			'/label',
+			'/div',
+			'/div',
+			'/div'
+		));
+	}
+
 	public function testSelectMultipleCheckbox() {
 		$result = $this->Form->select('name',
 			array(
@@ -288,6 +308,37 @@ class BoostCakeFormHelperTest extends CakeTestCase {
 				'type' => 'password', 'name' => 'data[Contact][password]',
 				'id' => 'ContactPassword', 'class' => 'input-with-feedback form-error'
 			),
+			'/div',
+			'/div'
+		));
+
+		$result = $this->Form->input('Contact.password', array(
+			'div' => 'control-group',
+			'label' => array(
+				'class' => 'control-label'
+			),
+			'wrapInput' => 'controls',
+			'beforeInput' => '<div class="input-append">',
+			'afterInput' => '<span class="add-on">AddOn</span></div>'
+		));
+		$this->assertTags($result, array(
+			array('div' => array('class' => 'control-group has-error error')),
+			'label' => array('for' => 'ContactPassword', 'class' => 'control-label'),
+			'Password',
+			'/label',
+			array('div' => array('class' => 'controls')),
+			array('div' => array('class' => 'input-append')),
+			'input' => array(
+				'type' => 'password', 'name' => 'data[Contact][password]',
+				'id' => 'ContactPassword', 'class' => 'form-error'
+			),
+			array('span' => array('class' => 'add-on')),
+			'AddOn',
+			'/span',
+			'/div',
+			array('span' => array('class' => 'help-block text-danger')),
+			'Please provide a password',
+			'/span',
 			'/div',
 			'/div'
 		));

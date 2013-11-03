@@ -125,54 +125,18 @@
         ]
     },
     {
-        "name": "cakedc/search",
-        "version": "1.1.1",
-        "version_normalized": "1.1.1.0",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/CakeDC/search.git",
-            "reference": "112b36f08a1e9dbbdba596a16a32f8b5207ab5c7"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/CakeDC/search/zipball/112b36f08a1e9dbbdba596a16a32f8b5207ab5c7",
-            "reference": "112b36f08a1e9dbbdba596a16a32f8b5207ab5c7",
-            "shasum": ""
-        },
-        "require": {
-            "composer/installers": "*",
-            "php": ">=5.3.0"
-        },
-        "time": "2013-07-14 23:11:07",
-        "type": "cakephp-plugin",
-        "installation-source": "dist",
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "MIT"
-        ],
-        "authors": [
-            {
-                "name": "Cake Development Corporation",
-                "email": "team@cakedc.com",
-                "homepage": "http://cakedc.com"
-            }
-        ],
-        "description": "The Search plugin allows you to make any kind of data searchable, enabling you to implement a robust searching rapidly.",
-        "homepage": "http://github.com/CakeDC/search"
-    },
-    {
         "name": "slywalker/boost_cake",
-        "version": "1.0.1",
-        "version_normalized": "1.0.1.0",
+        "version": "1.0.3",
+        "version_normalized": "1.0.3.0",
         "source": {
             "type": "git",
             "url": "https://github.com/slywalker/cakephp-plugin-boost_cake.git",
-            "reference": "a25ab6a59d009a853fb63dae17dbdd6e4bf4ec56"
+            "reference": "d1f5e7157afb806a174c52fa4f2794fd8461024c"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/slywalker/cakephp-plugin-boost_cake/zipball/a25ab6a59d009a853fb63dae17dbdd6e4bf4ec56",
-            "reference": "a25ab6a59d009a853fb63dae17dbdd6e4bf4ec56",
+            "url": "https://api.github.com/repos/slywalker/cakephp-plugin-boost_cake/zipball/d1f5e7157afb806a174c52fa4f2794fd8461024c",
+            "reference": "d1f5e7157afb806a174c52fa4f2794fd8461024c",
             "shasum": ""
         },
         "require": {
@@ -182,7 +146,7 @@
         "suggest": {
             "twitter/bootstrap": "Bootstrap for Twitter"
         },
-        "time": "2013-09-04 11:35:03",
+        "time": "2013-10-18 06:20:39",
         "type": "cakephp-plugin",
         "installation-source": "dist",
         "notification-url": "https://packagist.org/downloads/",
@@ -204,21 +168,60 @@
         ]
     },
     {
-        "name": "twitter/bootstrap",
-        "version": "v3.0.0",
-        "version_normalized": "3.0.0.0",
+        "name": "cakedc/search",
+        "version": "2.2.1",
+        "version_normalized": "2.2.1.0",
         "source": {
             "type": "git",
-            "url": "https://github.com/twbs/bootstrap.git",
-            "reference": "e8a1df5f060bf7e6631554648e0abde150aedbe4"
+            "url": "https://github.com/CakeDC/search.git",
+            "reference": "9bcaa6fe0453a1c9d911b8f25d38e3f64e6943b6"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/twbs/bootstrap/zipball/e8a1df5f060bf7e6631554648e0abde150aedbe4",
-            "reference": "e8a1df5f060bf7e6631554648e0abde150aedbe4",
+            "url": "https://api.github.com/repos/CakeDC/search/zipball/9bcaa6fe0453a1c9d911b8f25d38e3f64e6943b6",
+            "reference": "9bcaa6fe0453a1c9d911b8f25d38e3f64e6943b6",
             "shasum": ""
         },
-        "time": "2013-08-19 21:18:20",
+        "require": {
+            "composer/installers": "*",
+            "php": ">=5.3.0"
+        },
+        "time": "2013-10-21 10:51:10",
+        "type": "cakephp-plugin",
+        "extra": {
+            "installer-name": "Search"
+        },
+        "installation-source": "dist",
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Cake Development Corporation",
+                "email": "team@cakedc.com",
+                "homepage": "http://cakedc.com"
+            }
+        ],
+        "description": "The Search plugin allows you to make any kind of data searchable, enabling you to implement a robust searching rapidly.",
+        "homepage": "http://github.com/CakeDC/search"
+    },
+    {
+        "name": "twitter/bootstrap",
+        "version": "v3.0.1",
+        "version_normalized": "3.0.1.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/twbs/bootstrap.git",
+            "reference": "867e2bef8d9c9b901022899227b306a532f5baf3"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/twbs/bootstrap/zipball/867e2bef8d9c9b901022899227b306a532f5baf3",
+            "reference": "867e2bef8d9c9b901022899227b306a532f5baf3",
+            "shasum": ""
+        },
+        "time": "2013-10-30 17:03:56",
         "type": "library",
         "installation-source": "dist",
         "notification-url": "https://packagist.org/downloads/",
@@ -227,12 +230,12 @@
         ],
         "authors": [
             {
-                "name": "Mark Otto",
-                "email": "markdotto@gmail.com"
-            },
-            {
                 "name": "Jacob Thornton",
                 "email": "jacobthornton@gmail.com"
+            },
+            {
+                "name": "Mark Otto",
+                "email": "markdotto@gmail.com"
             }
         ],
         "description": "Sleek, intuitive, and powerful mobile first front-end framework for faster and easier web development.",
@@ -244,20 +247,20 @@
     },
     {
         "name": "thomaspark/bootswatch",
-        "version": "v3.0.0",
-        "version_normalized": "3.0.0.0",
+        "version": "v3.0.1",
+        "version_normalized": "3.0.1.0",
         "source": {
             "type": "git",
             "url": "https://github.com/thomaspark/bootswatch.git",
-            "reference": "9a15c26e171ec2b6bcee30eafc6ebe120b5f5fce"
+            "reference": "48c64127b37be4a692a70cb7b38ed9744163582b"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/thomaspark/bootswatch/zipball/9a15c26e171ec2b6bcee30eafc6ebe120b5f5fce",
-            "reference": "9a15c26e171ec2b6bcee30eafc6ebe120b5f5fce",
+            "url": "https://api.github.com/repos/thomaspark/bootswatch/zipball/48c64127b37be4a692a70cb7b38ed9744163582b",
+            "reference": "48c64127b37be4a692a70cb7b38ed9744163582b",
             "shasum": ""
         },
-        "time": "2013-08-20 04:43:46",
+        "time": "2013-10-30 20:13:42",
         "type": "library",
         "installation-source": "dist",
         "notification-url": "https://packagist.org/downloads/",
@@ -267,6 +270,6 @@
                 "email": "hello@thomaspark.me"
             }
         ],
-        "description": "Themes for Twitter Bootstrap"
+        "description": "Themes for Bootstrap"
     }
 ]
