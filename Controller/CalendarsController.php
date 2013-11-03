@@ -94,7 +94,7 @@ class CalendarsController extends AppController {
 			throw new NotFoundException(__('Invalid calendar'));
 		}
 		$this->request->onlyAllow('post', 'delete');
-		if ($this->Calendar->delete()) {
+		if ($this->Calendar->delete($id, true)) {
 			$this->Session->setFlashInfo(__('Calendar deleted.')."(#$id)");
 			$this->redirect(array('action' => 'index'));
 		}

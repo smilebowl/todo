@@ -24,7 +24,6 @@
 			<th><?php echo $this->Paginator->sort('start'); ?></th>
 			<th><?php echo $this->Paginator->sort('end'); ?></th>
 			<th><?php echo $this->Paginator->sort('detail'); ?></th>
-			<th><?php echo $this->Paginator->sort('color'); ?></th>
 			<th><?php echo $this->Paginator->sort('created'); ?></th>
 		</tr>
 	<?php foreach ($events as $event): ?>
@@ -42,7 +41,6 @@
 		<td><?php echo h($event['Event']['start']); ?>&nbsp;</td>
 		<td><?php echo h($event['Event']['end']); ?>&nbsp;</td>
 		<td><?php echo String::truncate(h($event['Event']['detail']),25); ?>&nbsp;</td>
-		<td><?php echo h($event['Event']['color']); ?>&nbsp;</td>
 		<td><?php echo h($event['Event']['created']); ?>&nbsp;</td>
 	</tr>
 <?php endforeach; ?>

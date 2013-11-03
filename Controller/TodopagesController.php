@@ -94,7 +94,7 @@ class TodopagesController extends AppController {
 			throw new NotFoundException(__('Invalid todopage'));
 		}
 		$this->request->onlyAllow('post', 'delete');
-		if ($this->Todopage->delete()) {
+		if ($this->Todopage->delete($id, true)) {
 			$this->Session->setFlashInfo(__('Todopage deleted.')."(#$id)");
 			$this->redirect(array('action' => 'index'));
 		}

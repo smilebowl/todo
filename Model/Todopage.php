@@ -46,7 +46,7 @@ class Todopage extends AppModel {
 		'Todo' => array(
 			'className' => 'Todo',
 			'foreignKey' => 'todopage_id',
-			'dependent' => false,
+			'dependent' => true,
 			'conditions' => '',
 			'fields' => '',
 			'order' => '',

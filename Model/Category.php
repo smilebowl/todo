@@ -46,7 +46,7 @@ class Category extends AppModel {
 		'Note' => array(
 			'className' => 'Note',
 			'foreignKey' => 'category_id',
-			'dependent' => false,
+			'dependent' => true,
 			'conditions' => '',
 			'fields' => '',
 			'order' => '',

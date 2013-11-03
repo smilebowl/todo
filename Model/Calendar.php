@@ -46,7 +46,7 @@ class Calendar extends AppModel {
 		'Event' => array(
 			'className' => 'Event',
 			'foreignKey' => 'calendar_id',
-			'dependent' => false,
+			'dependent' => true,
 			'conditions' => '',
 			'fields' => '',
 			'order' => '',
