@@ -1,9 +1,47 @@
 {
+	"name": "todo",
+	"license": "MIT",
+
+	"scripts" : {
+		"post-update-cmd" : [
+			"cp -rp Vendor/arshaw/fullcalendar/fullcalendar webroot/js/vendor/"
+			,"cp -rp Vendor/tkrotoff/jquery-simplecolorpicker webroot/js/vendor/"
+			,"cp -rp Vendor/twitter/bootstrap/dist/* webroot/"
+		]
+	},
+
     "require": {
         "slywalker/boost_cake": "*"
-        ,"cakephp/debug_kit": "2.2.*"
+        ,"cakephp/debug_kit": "*"
         ,"cakedc/search": "*"
         ,"twitter/bootstrap": "3.*"
-        ,"thomaspark/bootswatch": "*"
-    }
+        ,"thomaspark/bootswatch": "3.*"
+        ,"arshaw/fullcalendar": "*"
+        ,"tkrotoff/jquery-simplecolorpicker": "*"
+    },
+
+	"repositories":	[
+		{
+			"type": "package",
+			"package": {
+				"name": "arshaw/fullcalendar",
+				"version": "1.6.4",
+				"dist": {
+					"type": "zip",
+					"url": "https://github.com/arshaw/fullcalendar/archive/master.zip"
+				}
+			}
+		},
+		{
+			"type": "package",
+			"package": {
+				"name": "tkrotoff/jquery-simplecolorpicker",
+				"version": "0.2.0",
+				"dist": {
+					"type": "zip",
+					"url": "https://github.com/tkrotoff/jquery-simplecolorpicker/archive/master.zip"
+				}
+			}
+		}
+	]
 }

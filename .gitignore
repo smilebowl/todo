@@ -4,4 +4,4 @@ tmp/cache/
 tmp/logs/
 Vendor/*
 Locale/*.*
-composer.lock
+Plugin/*
