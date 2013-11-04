@@ -1,11 +1,11 @@
 <?php
 	echo $this->Html->css('/js/vendor/fullcalendar/fullcalendar.css', null, array('inline' => false));
-	echo $this->Html->css('/js/vendor/colorpicker/jquery.simplecolorpicker.css', null, array('inline' => false));
-	echo $this->Html->css('/js/vendor/colorpicker/jquery.simplecolorpicker-glyphicons.css', null, array('inline' => false));
+	echo $this->Html->css('/js/vendor/jquery-simplecolorpicker/jquery.simplecolorpicker.css', null, array('inline' => false));
+	echo $this->Html->css('/js/vendor/jquery-simplecolorpicker/jquery.simplecolorpicker-glyphicons.css', null, array('inline' => false));
 	
 	echo $this->Html->script('vendor/fullcalendar/fullcalendar.min.js', array('charset'=>'UTF-8'));
 	echo $this->Html->script('vendor/fullcalendar/gcal.js', array('charset'=>'UTF-8'));
-	echo $this->Html->script('vendor/colorpicker/jquery.simplecolorpicker.js', array('charset'=>'UTF-8'));
+	echo $this->Html->script('vendor/jquery-simplecolorpicker/jquery.simplecolorpicker.js', array('charset'=>'UTF-8'));
 	echo $this->Html->script('event', array('charset'=>'UTF-8'));
 ?>
 

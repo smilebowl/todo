@@ -23,7 +23,7 @@
 	<script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
 	<script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/i18n/jquery-ui-i18n.min.js"></script>
 <!--    <?php // echo $this->Html->script('vendor/jquery-1.9.1.min'); ?>-->
-    <?php echo $this->Html->script('vendor/bootstrap.min'); ?>
+    <?php echo $this->Html->script('bootstrap.min'); ?>
     <?php echo $this->Html->script('main'); ?>
     <?php echo $this->fetch('script'); ?>
 

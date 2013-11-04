@@ -3,8 +3,19 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "1e0b25347c85240484819c93bac34e0b",
+    "hash": "8d8812e42e211bb030c9f747687826db",
     "packages": [
+        {
+            "name": "arshaw/fullcalendar",
+            "version": "1.6.4",
+            "dist": {
+                "type": "zip",
+                "url": "https://github.com/arshaw/fullcalendar/archive/master.zip",
+                "reference": null,
+                "shasum": null
+            },
+            "type": "library"
+        },
         {
             "name": "cakedc/search",
             "version": "2.2.1",
@@ -228,6 +239,17 @@
             ],
             "description": "Themes for Bootstrap",
             "time": "2013-10-30 20:13:42"
+        },
+        {
+            "name": "tkrotoff/jquery-simplecolorpicker",
+            "version": "0.2.0",
+            "dist": {
+                "type": "zip",
+                "url": "https://github.com/tkrotoff/jquery-simplecolorpicker/archive/master.zip",
+                "reference": null,
+                "shasum": null
+            },
+            "type": "library"
         },
         {
             "name": "twitter/bootstrap",

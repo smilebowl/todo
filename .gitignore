@@ -2,6 +2,6 @@
 .settings
 tmp/cache/
 tmp/logs/
-Vendor/*
 Locale/*.*
+Vendor/*
 Plugin/*
