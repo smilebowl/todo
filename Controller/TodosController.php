@@ -18,7 +18,7 @@ class TodosController extends AppController {
 	// list 
 
 	public function todoui() {
-		$todopages = $this->Todo->Todopage->find('list');
+		$todopages = $this->Todo->Todopage->find('list', array('order'=>'ord'));
 		if (empty($this->request->data['todopage_id'])) {
 			$id=key($todopages);
 		} else {
