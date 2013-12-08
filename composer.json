@@ -7,6 +7,20 @@
 			"cp -rp Vendor/arshaw/fullcalendar/fullcalendar webroot/js/vendor/"
 			,"cp -rp Vendor/tkrotoff/jquery-simplecolorpicker webroot/js/vendor/"
 			,"cp -rp Vendor/twitter/bootstrap/dist/* webroot/"
+			,"cp Vendor/twitter/bootstrap/dist/css/*.css webroot/css/choice/default/"
+			,"cp Vendor/thomaspark/bootswatch/amelia/*.css webroot/css/choice/Amelia/"
+			,"cp Vendor/thomaspark/bootswatch/cerulean/*.css webroot/css/choice/cerulean/"
+			,"cp Vendor/thomaspark/bootswatch/cosmo/*.css webroot/css/choice/cosmo/"
+			,"cp Vendor/thomaspark/bootswatch/cyborg/*.css webroot/css/choice/cyborg/"
+			,"cp Vendor/thomaspark/bootswatch/flatly/*.css webroot/css/choice/flatly/"
+			,"cp Vendor/thomaspark/bootswatch/journal/*.css webroot/css/choice/journal/"
+			,"cp Vendor/thomaspark/bootswatch/readable/*.css webroot/css/choice/readable/"
+			,"cp Vendor/thomaspark/bootswatch/simplex/*.css webroot/css/choice/simplex/"
+			,"cp Vendor/thomaspark/bootswatch/slate/*.css webroot/css/choice/slate/"
+			,"cp Vendor/thomaspark/bootswatch/spacelab/*.css webroot/css/choice/spacelab/"
+			,"cp Vendor/thomaspark/bootswatch/united/*.css webroot/css/choice/united/"
+			,"cp Vendor/thomaspark/bootswatch/yeti/*.css webroot/css/choice/yeti/"
+			,"cp Vendor/thomaspark/bootswatch/amelia/*.css webroot/css/choice/Amelia/"
 		]
 	},
 
